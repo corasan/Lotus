@@ -11,8 +11,8 @@ export default class Posts extends Component {
     }
     componentWillMount() {
         firebase.database().ref('Posts').on('value', (data) => {
-
-        });
+            this.setState({posts: data.val()});
+        }.bind(this));
     }
 
     render() {
