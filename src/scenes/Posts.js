@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import firebase from '../../firebaseInit';
+import PostsList from '../components/postsList';
 
 export default class Posts extends Component {
     constructor(props) {
@@ -9,8 +10,9 @@ export default class Posts extends Component {
             posts: []
         }
     }
+
     componentWillMount() {
-        firebase.database().ref('Posts').on('value', (data) => {
+        firebase.database().ref('posts').on('value', function(data) {
             this.setState({posts: data.val()});
         }.bind(this));
     }
@@ -18,7 +20,7 @@ export default class Posts extends Component {
     render() {
         return (
             <View>
-
+                <PostsList posts={this.state.posts} />
             </View>
         )
     }
