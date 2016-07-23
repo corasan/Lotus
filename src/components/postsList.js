@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, ListView } from 'react-native';
+import { StyleSheet, Text, View, ListView } from 'react-native';
 
 export default class PostsList extends Component {
     constructor(props) {
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
     postTitle: {
         fontSize: 16,
         fontWeight: '900',
-        marginBottom: 15
+        marginBottom: 15,
     }
 })

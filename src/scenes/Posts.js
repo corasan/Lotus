@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import firebase from '../../firebaseInit';
 import PostsList from '../components/postsList';
+import Toolbar from '../components/toolbar';
 
 export default class Posts extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class Posts extends Component {
     render() {
         return (
             <View>
+                <Toolbar/>
                 <PostsList posts={this.state.posts} />
             </View>
         )
