@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingBottom: 40,
         width: 360,
         elevation: 4,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     postTitle: {
         fontSize: 16,

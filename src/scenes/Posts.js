@@ -20,8 +20,7 @@ export default class Posts extends Component {
 
     render() {
         return (
-            <View>
-                <Toolbar/>
+            <View style={{marginTop: 50}}>
                 <PostsList posts={this.state.posts} />
             </View>
         )

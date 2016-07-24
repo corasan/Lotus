@@ -12,21 +12,17 @@ import {
   View,
   Navigator
 } from 'react-native';
+import {Scene, Router} from 'react-native-router-flux';
 import Posts from './src/scenes/Posts';
 
 class Lotus extends Component {
-    renderScene = (route, navigator) => {
-        switch (route.name) {
-            case 'Posts':
-                return <Posts />
-        }
-    }
     render() {
         return (
-            <Navigator
-                initialRoute={{name: 'Posts', index: 0}}
-                renderScene={this.renderScene}
-            />
+            <Router>
+                <Scene key="root">
+                    <Scene key="posts" component={Posts} title={Posts} />
+                </Scene>
+            </Router>
         );
     }
 }
