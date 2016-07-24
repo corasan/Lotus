@@ -47,12 +47,12 @@ export default class PostsList extends Component {
 
 const styles = StyleSheet.create({
     posts: {
-        flex: 1,
         padding: 14,
         paddingBottom: 40,
         width: 360,
         elevation: 4,
         backgroundColor: 'white',
+        marginBottom: 10,
     },
     postTitle: {
         fontSize: 16,
