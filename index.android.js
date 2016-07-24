@@ -9,16 +9,24 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 
 class Lotus extends Component {
+    renderScene = (route, navigator) => {
+        switch (route.name) {
+            case 'Posts':
+                return <Posts />
+        }
+    }
     render() {
         return (
-            <View style={styles.container}>
-                <Posts/>
-            </View>
+            <Navigator
+                initialRoute={{name: 'Posts', index: 0}}
+                renderScene={this.renderScene}
+            />
         );
     }
 }

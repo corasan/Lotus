@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ToolbarAndroid } from 'react-native';
+import { StyleSheet, Text, View, ToolbarAndroid, } from 'react-native';
 import firebase from '../../firebaseInit';
+import NewPost from './newPost';
 
 export default class Toolbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalVisible: false
+        }
+    }
 
     onActionSelected = (position) => {
         if(position === 0) {
-            console.log('pressed');
-            firebase.database().ref('posts').push({
-                author: 'henry',
-                title: 'Text',
-                text: 'Testing the creation of a new post'
-            });
+            // firebase.database().ref('posts').push({
+            //     author: 'henry',
+            //     title: 'Text',
+            //     text: 'Testing the creation of a new post'
+            // });
         }
     }
     render() {
