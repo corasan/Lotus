@@ -19,11 +19,6 @@ import NewPost from './src/components/newPost';
 
 class Lotus extends Component {
     newPost = () => {
-        // firebase.database().ref('posts').push({
-        //     author: 'henry',
-        //     title: 'Text',
-        //     text: 'Testing the creation of a new post'
-        // });
         Actions.newPost({hide: false});
     }
 

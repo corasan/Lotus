@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Modal, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableHighlight, TextInput } from 'react-native';
 import firebase from '../../firebaseInit';
 
 export default class NewPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hide: props.hide
+            hide: props.hide,
+            text: ''
         }
     }
 
     hideModal = () => {
         this.setState({hide: true});
+    }
+
+    sendPost = () => {
+        firebase.database().ref('posts').push({
+            author: 'henry',
+            title: 'Text',
+            text: this.state.text
+        });
+        this.hideModal();
+    }
+
+    handleText = (text) => {
+        this.setState({text});
     }
 
     render() {
@@ -20,9 +34,19 @@ export default class NewPost extends Component {
         } else {
             return(
                 <View style={styles.modal}>
-                    <Text>Hello World!</Text>
+                    <View style={styles.input}>
+                        <TextInput onChangeText={this.handleText}
+                            value={this.state.text}
+                            autofocus={true}
+                            multiline={true}
+                            underlineColorAndroid='transparent'
+                        />
+                    </View>
                     <TouchableHighlight onPress={this.hideModal}>
                         <Text>Close</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight onPress={this.sendPost}>
+                        <Text>Post</Text>
                     </TouchableHighlight>
                 </View>
             )
@@ -36,5 +60,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: 'black'
+    },
+    input: {
+        width: 300,
+        borderColor: 'black',
+        borderStyle: 'solid',
+        borderWidth: 2
     }
 })
