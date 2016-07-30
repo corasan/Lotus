@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'black'
+        borderColor: 'black',
     },
     input: {
         width: 300,
         borderColor: 'black',
         borderStyle: 'solid',
-        borderWidth: 2
+        borderWidth: 2,
     }
 })
