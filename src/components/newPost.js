@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Modal, TouchableHighlight, TextInput } from 'react-native';
 import firebase from '../../firebaseInit';
+import { Actions } from 'react-native-router-flux';
 
 export default class NewPost extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export default class NewPost extends Component {
 
     hideModal = () => {
         this.setState({hide: true});
+        Actions.pop();
     }
 
     sendPost = () => {

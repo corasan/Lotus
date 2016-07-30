@@ -19,6 +19,7 @@ import NewPost from './src/components/newPost';
 
 class Lotus extends Component {
     newPost = () => {
+        console.log('Open');
         Actions.newPost({hide: false});
     }
 
