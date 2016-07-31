@@ -9,12 +9,12 @@ const navbar = {
                     <Text>Back</Text>
                 </TouchableHighlight>
             )
-        } else { return null}
+        } else { return null }
     },
     RightButton(route, navigator, index, navState) {
         if(route.name === 'Posts') {
             return (
-                <TouchableHighlight onPress={ () => {console.log('Pressed')} }>
+                <TouchableHighlight onPress={ () => { navigator.push({name: 'New Post'}) } }>
                     <Image source={require('../img/AddFile48.png')} style={styles.addPostImg}/>
                 </TouchableHighlight>
             )

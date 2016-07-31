@@ -17,7 +17,7 @@ import {
 // import { Scene, Router, Modal, Actions } from 'react-native-router-flux';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
-import NewPost from './src/components/newPost';
+import NewPost from './src/scenes/NewPost';
 import navbar from './src/components/navbar';
 
 class Lotus extends Component {
@@ -25,6 +25,8 @@ class Lotus extends Component {
         switch (route.name) {
             case 'Posts':
                 return <Posts/>
+            case 'New Post':
+                return <NewPost navigator={nav}/>
         }
     }
 
@@ -34,8 +36,9 @@ class Lotus extends Component {
                 initialRoute={{name: 'Posts', index: 0}}
                 renderScene={this.renderScene}
                 navigationBar={
-                    <Navigator.NavigationBar routeMapper={navbar}/>
+                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 3, backgroundColor: 'white'}}/>
                 }
+                sceneStyle={styles.container}
             />
         );
     }
