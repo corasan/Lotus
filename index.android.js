@@ -11,12 +11,37 @@ import {
   Text,
   View,
   Navigator,
-  Modal
+  Modal,
+  TouchableHighlight
 } from 'react-native';
 // import { Scene, Router, Modal, Actions } from 'react-native-router-flux';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/components/newPost';
+
+const navbar = {
+    LeftButton(route, navigator, index, navState) {
+        if(index > 0) {
+            return (
+                <TouchableHighlight onPress={ () => {navigator.pop()} }>
+                    <Text>Back</Text>
+                </TouchableHighlight>
+            )
+        } else { return null}
+    },
+    RightButton(route, navigator, index, navState) {
+        if(route.name === 'Posts') {
+            return (
+                <TouchableHighlight onPress={ () => {console.log('Pressed')} }>
+                    <Text>New Post</Text>
+                </TouchableHighlight>
+            )
+        }
+    },
+    Title(route, navigator, index, navState) {
+        return <Text>{route.name}</Text>
+    }
+}
 
 class Lotus extends Component {
     renderScene = (route, nav) => {
@@ -31,6 +56,9 @@ class Lotus extends Component {
             <Navigator
                 initialRoute={{name: 'Posts', index: 0}}
                 renderScene={this.renderScene}
+                navigationBar={
+                    <Navigator.NavigationBar routeMapper={navbar}/>
+                }
             />
         );
     }
