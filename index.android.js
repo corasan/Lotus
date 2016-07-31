@@ -10,29 +10,28 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  Modal
 } from 'react-native';
-import { Scene, Router, Modal, Actions } from 'react-native-router-flux';
+// import { Scene, Router, Modal, Actions } from 'react-native-router-flux';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/components/newPost';
 
 class Lotus extends Component {
-    newPost = () => {
-        Actions.newPost({hide: false});
+    renderScene = (route, nav) => {
+        switch (route.name) {
+            case 'Posts':
+                return <Posts/>
+        }
     }
 
     render() {
         return (
-            <Router>
-                <Scene key="modal" component={Modal}>
-                    <Scene key="root">
-                        <Scene key="posts" component={Posts} title="Posts" rightTitle="New Post"
-                        onRight={this.newPost}/>
-                    </Scene>
-                    <Scene key="newPost" component={NewPost}/>
-                </Scene>
-            </Router>
+            <Navigator
+                initialRoute={{name: 'Posts', index: 0}}
+                renderScene={this.renderScene}
+            />
         );
     }
 }

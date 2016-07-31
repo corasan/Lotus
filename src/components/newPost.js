@@ -31,28 +31,7 @@ export default class NewPost extends Component {
     }
 
     render() {
-        if (this.state.hide === true) {
-            return <View></View>
-        } else {
-            return(
-                <View style={styles.modal}>
-                    <View style={styles.input}>
-                        <TextInput onChangeText={this.handleText}
-                            value={this.state.text}
-                            autofocus={true}
-                            multiline={true}
-                            underlineColorAndroid='transparent'
-                        />
-                    </View>
-                    <TouchableHighlight onPress={this.hideModal}>
-                        <Text>Close</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={this.sendPost}>
-                        <Text>Post</Text>
-                    </TouchableHighlight>
-                </View>
-            )
-        }
+
     }
 }
 
