@@ -18,30 +18,7 @@ import {
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/components/newPost';
-
-const navbar = {
-    LeftButton(route, navigator, index, navState) {
-        if(index > 0) {
-            return (
-                <TouchableHighlight onPress={ () => {navigator.pop()} }>
-                    <Text>Back</Text>
-                </TouchableHighlight>
-            )
-        } else { return null}
-    },
-    RightButton(route, navigator, index, navState) {
-        if(route.name === 'Posts') {
-            return (
-                <TouchableHighlight onPress={ () => {console.log('Pressed')} }>
-                    <Text>New Post</Text>
-                </TouchableHighlight>
-            )
-        }
-    },
-    Title(route, navigator, index, navState) {
-        return <Text>{route.name}</Text>
-    }
-}
+import navbar from './src/components/navbar';
 
 class Lotus extends Component {
     renderScene = (route, nav) => {
@@ -73,11 +50,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 
