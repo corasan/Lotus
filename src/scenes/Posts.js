@@ -13,14 +13,14 @@ export default class Posts extends Component {
     }
 
     componentWillMount() {
-        firebase.database().ref('posts').on('value', function(data) {
+        firebase.database().ref('posts').orderByChild('postedAt').on('value', function(data) {
             this.setState({posts: data.val()});
         }.bind(this));
     }
 
     render() {
         return (
-            <View style={{marginTop: 55, flex: 1}}>
+            <View style={{flex: 1}}>
                 <ScrollView>
                     <PostsList posts={this.state.posts} />
                 </ScrollView>

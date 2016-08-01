@@ -14,7 +14,6 @@ export default class PostsList extends Component {
     getDataSource(posts: Array<any>): ListView.DataSource {
         if(!posts) return;
         return this.state.dataSource.cloneWithRows(posts);
-        console.log('getDataSource:', posts);
     }
 
     componentDidMount() {
@@ -23,6 +22,7 @@ export default class PostsList extends Component {
 
     componentWillReceiveProps(props) {
         this.setState({dataSource: this.getDataSource(props.posts)});
+
     }
 
     renderRow = (data) => {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         padding: 14,
         paddingBottom: 40,
         width: 360,
-        elevation: 4,
+        elevation: 3,
         backgroundColor: 'white',
         marginBottom: 10,
     },
