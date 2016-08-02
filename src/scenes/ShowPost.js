@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-nati
 export default class ShowPost extends Component {
     render() {
         return (
-            <Text>Hello</Text>
+            <Text>{this.props.id}</Text>
         );
     }
 }

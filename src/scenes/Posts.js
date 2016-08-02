@@ -8,7 +8,8 @@ export default class Posts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            nav: this.props.navigator
         }
     }
 
@@ -20,13 +21,19 @@ export default class Posts extends Component {
         }.bind(this));
     }
 
+    test = (postId) => {
+        if (postId) {
+            this.props.navigator.push({name: 'Show Post', id: postId})
+        }
+    }
+
     render() {
         return (
             <View style={{flex: 1}}>
                 <ScrollView>
                     <PostsList
                         posts={this.state.posts}
-                        navigate={  }
+                        navigator={ this.state.nav}
                     />
                 </ScrollView>
             </View>

@@ -31,7 +31,7 @@ export default class PostsList extends Component {
                 <Text style={styles.postTitle}>{data.title}</Text>
                 <Text>{data.text}</Text>
 
-                <TouchableHighlight onPress={this.props.navigate(data.id)}>
+                <TouchableHighlight onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
                     <Text>Reply</Text>
                 </TouchableHighlight>
             </View>
