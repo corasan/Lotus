@@ -20,7 +20,7 @@ class Lotus extends Component {
             case 'Posts':
                 return <Posts/>
             case 'New Post':
-                return <NewPost navigator={nav}/>
+                return <NewPost navigator={nav} {...route.passProps}/>
         }
     }
 

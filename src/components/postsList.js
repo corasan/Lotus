@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ListView } from 'react-native';
+import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 
 export default class PostsList extends Component {
     constructor(props) {
@@ -26,10 +26,15 @@ export default class PostsList extends Component {
     }
 
     renderRow = (data) => {
+        console.log(data);
         return(
             <View style={styles.posts}>
                 <Text style={styles.postTitle}>{data.title}</Text>
                 <Text>{data.text}</Text>
+
+                <TouchableHighlight onPress={this.getPostId}>
+                    <Text>Reply</Text>
+                </TouchableHighlight>
             </View>
         )
     }
