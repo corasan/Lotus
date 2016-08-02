@@ -13,14 +13,17 @@ import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/scenes/NewPost';
 import navbar from './src/components/navbar';
+import ShowPost from './src/scenes/ShowPost';
 
 class Lotus extends Component {
     renderScene = (route, nav) => {
         switch (route.name) {
             case 'Posts':
-                return <Posts/>
+                return <Posts navigator={nav} {...route.passProps}/>
             case 'New Post':
                 return <NewPost navigator={nav} {...route.passProps}/>
+            case 'Show Post':
+                return <ShowPost />
         }
     }
 

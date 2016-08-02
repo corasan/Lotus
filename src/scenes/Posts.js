@@ -24,7 +24,10 @@ export default class Posts extends Component {
         return (
             <View style={{flex: 1}}>
                 <ScrollView>
-                    <PostsList posts={this.state.posts} />
+                    <PostsList
+                        posts={this.state.posts}
+                        navigate={  }
+                    />
                 </ScrollView>
             </View>
         )
