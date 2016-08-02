@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
+import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert } from 'react-native';
 import firebase from '../../firebaseInit';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
@@ -22,13 +22,16 @@ export default class NewPost extends Component {
     }
 
     sendPost = () => {
-        let d = new Date;
-        firebase.database().ref('posts').push({
-            title: this.state.title,
-            text: this.state.text
-        });
-        this.setState({title: '', text: ''});
-        this.props.navigator.pop();
+        if (this.state.title === '' || this.state.text === '') {
+            Alert.alert('Can\'t post', 'Title or Text content cannot be empty.');
+        } else {
+            firebase.database().ref('posts').push({
+                title: this.state.title,
+                text: this.state.text
+            });
+            this.setState({title: '', text: ''});
+            this.props.navigator.pop();
+        }
     }
 
     render() {
