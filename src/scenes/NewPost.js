@@ -25,8 +25,7 @@ export default class NewPost extends Component {
         let d = new Date;
         firebase.database().ref('posts').push({
             title: this.state.title,
-            text: this.state.text,
-            postedAt: -d.getTime()
+            text: this.state.text
         });
         this.setState({title: '', text: ''});
         this.props.navigator.pop();
@@ -56,7 +55,7 @@ export default class NewPost extends Component {
                     />
                 </View>
 
-                <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn}>
+                <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#27ae60">
                     <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
                 </TouchableHighlight>
             </View>

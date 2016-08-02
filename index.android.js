@@ -30,7 +30,7 @@ class Lotus extends Component {
                 initialRoute={{name: 'Posts', index: 0}}
                 renderScene={this.renderScene}
                 navigationBar={
-                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 3, backgroundColor: 'white'}}/>
+                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 4, backgroundColor: 'white'}}/>
                 }
                 sceneStyle={styles.container}
             />
