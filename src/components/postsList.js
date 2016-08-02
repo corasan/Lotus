@@ -26,13 +26,12 @@ export default class PostsList extends Component {
     }
 
     renderRow = (data) => {
-        console.log(data);
         return(
             <View style={styles.posts}>
                 <Text style={styles.postTitle}>{data.title}</Text>
                 <Text>{data.text}</Text>
 
-                <TouchableHighlight onPress={this.getPostId}>
+                <TouchableHighlight onPress={ () => { this.props.navigator.push({name: 'Show Post'})} }>
                     <Text>Reply</Text>
                 </TouchableHighlight>
             </View>

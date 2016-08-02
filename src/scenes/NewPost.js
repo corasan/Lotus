@@ -27,12 +27,12 @@ export default class NewPost extends Component {
     sendPost = () => {
         if (this.state.title === '' || this.state.text === '') {
             Alert.alert('Can\'t post', 'Title or Text content cannot be empty.');
-        } else if (this.state.text.length() < 100) {
-            Alert.alert('Post must be more than 20 characters long.');
         } else {
-            firebase.database().ref('posts').push({
+            let postId = firebase.database().ref('posts').push().key;
+            firebase.database().ref('posts/'+postId).update({
                 title: this.state.title,
-                text: this.state.text
+                text: this.state.text,
+                id: postId
             });
             this.setState({title: '', text: ''});
             this.props.navigator.pop();
