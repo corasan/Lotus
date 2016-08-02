@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableHighlight, Image } from 'react-native';
 export default class NavigationBtn extends Component {
     render() {
         return(
-            <TouchableHighlight onPress={this.props.onPress} style={styles.navBtn} underlayColor="transparent">
+            <TouchableHighlight onPress={this.props.onPress} style={styles.navBtn} underlayColor="gray">
                 <Image source={this.props.source} style={styles.img}/>
             </TouchableHighlight>
         );
@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
         height: 27,
     },
     navBtn: {
-        marginTop: 12
+        height: 100,
+        width: 50,
+        alignItems: 'center',
+        paddingTop: 12
     }
 });
