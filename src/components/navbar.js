@@ -5,7 +5,7 @@ const navbar = {
     LeftButton(route, navigator, index, navState) {
         if(index > 0) {
             return (
-                <TouchableHighlight onPress={ () => {navigator.pop()} } style={{marginTop: 5}}>
+                <TouchableHighlight onPress={ () => {navigator.pop()} } style={styles.navBtn}>
                     <Image source={require('../img/Back48.png')} style={styles.img}/>
                 </TouchableHighlight>
             )
@@ -14,7 +14,7 @@ const navbar = {
     RightButton(route, navigator, index, navState) {
         if(route.name === 'Posts') {
             return (
-                <TouchableHighlight onPress={ () => { navigator.push({name: 'New Post'}) } }>
+                <TouchableHighlight onPress={ () => { navigator.push({name: 'New Post'}) } } style={styles.navBtn} underlayColor="transparent">
                     <Image source={require('../img/AddFile48.png')} style={styles.img}/>
                 </TouchableHighlight>
             )
@@ -33,8 +33,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     img: {
-        width: 30,
-        height: 35,
-        marginTop: 5
+        width: 27,
+        height: 27,
+    },
+    navBtn: {
+        marginTop: 12
     }
 });
