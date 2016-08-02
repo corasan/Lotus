@@ -9,6 +9,7 @@
     "firebase": "^3.2.0",
     "react": "15.2.1",
     "react-native": "0.29.2",
+    "react-native-autogrow-textinput": "^2.0.4",
     "react-native-router-flux": "^3.32.0"
   }
 }
