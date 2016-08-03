@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import TimeAgo from 'react-native-timeago';
 
 export default class PostsList extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ export default class PostsList extends Component {
             <View style={styles.posts}>
                 <Text style={styles.postTitle}>{data.title}</Text>
                 <Text>{data.text}</Text>
+                <TimeAgo time={data.createdAt}/>
 
                 <TouchableHighlight onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
                     <Text>Reply</Text>
