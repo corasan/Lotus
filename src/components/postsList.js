@@ -37,12 +37,12 @@ export default class PostsList extends Component {
                         <TimeAgo time={data.createdAt}/>
                     </View>
                     <TouchableHighlight style={{marginLeft: 160, padding: 10}} underlayColor="gray"
-                        onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
+                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.postId})} }>
                         <Text style={{fontWeight: '900', fontSize: 14}}>Comment</Text>
                     </TouchableHighlight>
                 </View>
             </View>
-        )
+        );
     }
 
     render() {

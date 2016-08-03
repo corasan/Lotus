@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import TimeAgo from 'react-native-timeago';
+import WriteComment from '../components/writeComment';
 
 export default class ShowPost extends Component {
     constructor(props) {
@@ -8,12 +9,13 @@ export default class ShowPost extends Component {
         this.state = {
             title: '',
             content: '',
-            createdAt: ''
+            createdAt: '',
+            postId: this.props.postId
         }
     }
 
     componentWillMount() {
-        firebase.database().ref('posts/'+this.props.id).once('value')
+        firebase.database().ref('posts/'+this.state.postId).once('value')
         .then((data) => {
             let post = data.val();
             this.setState({title: post.title, content: post.text, createdAt: post.createdAt});
@@ -22,7 +24,7 @@ export default class ShowPost extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{flex: 1}}>
                 <View style={styles.post}>
                     <Text style={styles.postTitle}>{this.state.title}</Text>
                     <Text style={styles.postContent}>{this.state.content}</Text>
@@ -32,7 +34,8 @@ export default class ShowPost extends Component {
                     </View>
                 </View>
 
-                <Text style={styles.commentSection}>Comments</Text>
+                {/*<Text style={styles.commentSection}>Comments</Text>*/}
+                <WriteComment postId={this.state.postId}/>
             </View>
         );
     }
@@ -59,6 +62,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 15,
         marginBottom: 5,
-        fontSize: 20
+        fontSize: 16,
+        fontWeight: '900'
     }
 });

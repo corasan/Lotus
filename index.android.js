@@ -24,7 +24,7 @@ class Lotus extends Component {
             case 'New Post':
                 return <NewPost navigator={navigator} {...route.passProps}/>
             case 'Show Post':
-                return <ShowPost id={route.id}/>
+                return <ShowPost postId={route.postId}/>
         }
     }
 
