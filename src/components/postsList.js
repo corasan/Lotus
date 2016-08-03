@@ -30,12 +30,17 @@ export default class PostsList extends Component {
         return(
             <View style={styles.posts}>
                 <Text style={styles.postTitle}>{data.title}</Text>
-                <Text>{data.text}</Text>
-                <TimeAgo time={data.createdAt}/>
+                <Text style={styles.postContent}>{data.text}</Text>
 
-                <TouchableHighlight onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
-                    <Text>Reply</Text>
-                </TouchableHighlight>
+                <View style={styles.footer}>
+                    <View>
+                        <TimeAgo time={data.createdAt}/>
+                    </View>
+                    <TouchableHighlight style={{marginLeft: 160}}
+                        onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
+                        <Text style={{fontWeight: '900', fontSize: 14}}>Comment</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         )
     }
@@ -54,15 +59,22 @@ export default class PostsList extends Component {
 const styles = StyleSheet.create({
     posts: {
         padding: 14,
-        paddingBottom: 40,
+        paddingBottom: 10,
         width: 360,
         elevation: 3,
         backgroundColor: 'white',
         marginBottom: 10,
     },
     postTitle: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: '900',
         marginBottom: 15,
+    },
+    postContent: {
+        marginBottom: 30
+    },
+    footer: {
+        alignItems: 'flex-end',
+        flexDirection: 'row',
     }
 })
