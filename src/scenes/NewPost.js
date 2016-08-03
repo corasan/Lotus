@@ -47,13 +47,13 @@ export default class NewPost extends Component {
                 <View style={styles.inputTitle}>
                     <TextInput value={this.state.title} placeholder="Title"
                         onChangeText={this.handleTitle} style={styles.input}
-                        underlineColorAndroid="transparent"
+                        underlineColorAndroid="transparent" autoCapitalize="sentences"
                     />
                 </View>
 
                 <View style={styles.inputText}>
                     <TextInput value={this.state.text} placeholder="Write something here..."
-                        onChangeText={this.handleText}
+                        onChangeText={this.handleText} autoCapitalize="sentences"
                         multiline={true}
                         onChange={(event) => {
                             this.setState({
