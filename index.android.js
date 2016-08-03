@@ -29,10 +29,6 @@ class Lotus extends Component {
     }
 
     componentDidMount() {
-        // BackAndroid.addEventListener('hardwareBackPress', function() {
-        //     this.props.navigator.pop();
-        //     return true;
-        // }.bind(this));
         BackAndroid.addEventListener('hardwareBackPress', () => {
             if (navigator && navigator.getCurrentRoutes().length > 1) {
                 navigator.pop();
