@@ -6,29 +6,45 @@ import {
   View,
   Navigator,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
+  BackAndroid
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/scenes/NewPost';
 import navbar from './src/components/navbar';
 import ShowPost from './src/scenes/ShowPost';
+let navigator;
 
 class Lotus extends Component {
-    renderScene = (route, nav) => {
+    renderScene = (route, navigator) => {
         switch (route.name) {
             case 'Posts':
-                return <Posts navigator={nav} {...route.passProps}/>
+                return <Posts navigator={navigator} {...route.passProps}/>
             case 'New Post':
-                return <NewPost navigator={nav} {...route.passProps}/>
+                return <NewPost navigator={navigator} {...route.passProps}/>
             case 'Show Post':
                 return <ShowPost id={route.id}/>
         }
     }
 
+    componentDidMount() {
+        // BackAndroid.addEventListener('hardwareBackPress', function() {
+        //     this.props.navigator.pop();
+        //     return true;
+        // }.bind(this));
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            if (navigator && navigator.getCurrentRoutes().length > 1) {
+                navigator.pop();
+                return true;
+            }
+            return false;
+        });
+    }
+
     render() {
         return (
-            <Navigator
+            <Navigator ref={(nav) => { navigator = nav; }}
                 initialRoute={{name: 'Posts', index: 0}}
                 renderScene={this.renderScene}
                 navigationBar={
