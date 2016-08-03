@@ -23,10 +23,42 @@ export default class ShowPost extends Component {
     render() {
         return (
             <View>
-                <Text>{this.state.title}</Text>
-                <Text>{this.state.content}</Text>
-                <TimeAgo time={this.state.createdAt}/>
+                <View style={styles.post}>
+                    <Text style={styles.postTitle}>{this.state.title}</Text>
+                    <Text style={styles.postContent}>{this.state.content}</Text>
+
+                    <View>
+                        <TimeAgo time={this.state.createdAt}/>
+                    </View>
+                </View>
+
+                <Text style={styles.commentSection}>Comments</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    post: {
+        backgroundColor: 'white',
+        padding: 15,
+        elevation: 3
+    },
+    postTitle: {
+        fontSize: 18,
+        fontWeight: '900',
+        marginBottom: 15,
+    },
+    postContent: {
+        marginBottom: 30
+    },
+    time: {
+        alignItems: 'flex-end'
+    },
+    commentSection: {
+        marginTop: 10,
+        marginLeft: 15,
+        marginBottom: 5,
+        fontSize: 20
+    }
+});

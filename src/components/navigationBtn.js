@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableHighlight, Image } from 'react-native';
 export default class NavigationBtn extends Component {
     render() {
         return(
-            <TouchableHighlight onPress={this.props.onPress} style={styles.navBtn} underlayColor="gray">
+            <TouchableHighlight onPress={this.props.onPress} style={[styles.navBtn, this.props.btnStyle]} underlayColor="gray">
                 <Image source={this.props.source} style={styles.img}/>
             </TouchableHighlight>
         );

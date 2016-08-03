@@ -8,7 +8,6 @@ import {
   Modal,
   TouchableHighlight
 } from 'react-native';
-// import { Scene, Router, Modal, Actions } from 'react-native-router-flux';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/scenes/NewPost';

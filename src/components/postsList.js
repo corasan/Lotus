@@ -28,15 +28,15 @@ export default class PostsList extends Component {
 
     renderRow = (data) => {
         return(
-            <View style={styles.posts}>
+            <View style={styles.post}>
                 <Text style={styles.postTitle}>{data.title}</Text>
                 <Text style={styles.postContent}>{data.text}</Text>
 
                 <View style={styles.footer}>
-                    <View>
+                    <View style={{paddingBottom: 10}}>
                         <TimeAgo time={data.createdAt}/>
                     </View>
-                    <TouchableHighlight style={{marginLeft: 160}}
+                    <TouchableHighlight style={{marginLeft: 160, padding: 10}} underlayColor="gray"
                         onPress={ () => { this.props.navigator.push({name: 'Show Post', id: data.id})} }>
                         <Text style={{fontWeight: '900', fontSize: 14}}>Comment</Text>
                     </TouchableHighlight>
@@ -57,9 +57,8 @@ export default class PostsList extends Component {
 }
 
 const styles = StyleSheet.create({
-    posts: {
-        padding: 14,
-        paddingBottom: 10,
+    post: {
+        padding: 15,
         width: 360,
         elevation: 3,
         backgroundColor: 'white',
