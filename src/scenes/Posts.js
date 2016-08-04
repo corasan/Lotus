@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import PostsList from '../components/Posts/postsList';
 
 export default class Posts extends Component {
@@ -7,7 +7,7 @@ export default class Posts extends Component {
         super(props);
         this.state = {
             posts: [],
-            nav: this.props.navigator
+            nav: this.props.navigator,
         }
     }
 
@@ -17,6 +17,7 @@ export default class Posts extends Component {
             let sortedPosts = Object.keys(posts).reverse().map((date) => posts[date])
             this.setState({posts: sortedPosts});
         }.bind(this));
+
     }
 
     render() {
