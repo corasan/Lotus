@@ -30,8 +30,8 @@ export default class CommentsList extends Component {
             return <Text>No comments</Text>
         } else {
             return(
-                <View>
-                    <Text style={{fontSize: 40}}>{data.comment}</Text>
+                <View style={styles.comment}>
+                    <Text style={{fontSize: 16}}>{data.comment}</Text>
                 </View>
             );
         }
@@ -49,23 +49,11 @@ export default class CommentsList extends Component {
 }
 
 const styles = StyleSheet.create({
-    post: {
+    comment: {
         padding: 15,
         width: 360,
         elevation: 3,
         backgroundColor: 'white',
-        marginBottom: 10,
-    },
-    postTitle: {
-        fontSize: 18,
-        fontWeight: '900',
         marginBottom: 15,
-    },
-    postContent: {
-        marginBottom: 30
-    },
-    footer: {
-        justifyContent: 'space-between',
-        flexDirection: 'row',
     }
 })
