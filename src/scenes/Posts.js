@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView, BackAndroid } from 'react-native';
 import firebase from '../../firebaseInit';
-import PostsList from '../components/postsList';
-// import Toolbar from '../components/toolbar';
+import PostsList from '../components/Posts/postsList';
 
 export default class Posts extends Component {
     constructor(props) {

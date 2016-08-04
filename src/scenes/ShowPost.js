@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
-import WriteComment from '../components/writeComment';
-import Post from '../components/post';
+import WriteComment from '../components/ShowPost/comment';
+import Post from '../components/ShowPost/post';
 
 export default class ShowPost extends Component {
     constructor(props) {

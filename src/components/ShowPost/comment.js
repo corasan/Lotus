@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions } from 'react-native';
-import firebase from '../../firebaseInit';
+import firebase from '../../../firebaseInit';
 import CommentInput from './commentInput';
 
 export default class WriteComment extends Component {

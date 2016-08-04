@@ -12,7 +12,7 @@ import {
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
 import NewPost from './src/scenes/NewPost';
-import navbar from './src/components/navbar';
+import navbar from './src/components/Navigation/navbar';
 import ShowPost from './src/scenes/ShowPost';
 let navigator;
 
