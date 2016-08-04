@@ -25,22 +25,12 @@ export default class Login extends Component {
         });
     }
 
-    handleEmail = (email) => {
-        this.setState({email});
-    }
-
-    handlePassword = (password) => {
-        this.setState({password});
-    }
-
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
-            console.log(user);
             AsyncStorage.setItem('User', JSON.stringify(user));
-            this.props.navigator.resetTo({name: 'Posts'});
-        })
-        .catch((error) => {
+            this.props.navigator.resetTo({name: route});
+        }).catch((error) => {
             Alert.alert('Login', error.message);
         });
     }
@@ -49,11 +39,22 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <View style={[styles.inputDiv]}>
-                    <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent' placeholder="Email"/>
+                    <TextInput value={this.state.email}
+                        onChangeText={ (email) => this.setState({email}) }
+                        style={styles.input}
+                        underlineColorAndroid='transparent'
+                        placeholder="Email"
+                    />
                 </View>
 
                 <View style={[styles.inputDiv]}>
-                    <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
+                    <TextInput value={this.state.password}
+                        onChangeText={(password) => this.setState({password}) }
+                        style={styles.input}
+                        underlineColorAndroid='transparent'
+                        placeholder="Password"
+                        secureTextEntry={true}
+                    />
                 </View>
 
                 <View style={{alignItems: 'center'}}>
