@@ -92,19 +92,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     inputTitle: {
-        borderWidth: 1,
-        borderColor: 'black',
-        borderStyle: 'solid',
         paddingTop: -10,
         borderRadius: 2,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        elevation: 2
     },
     inputText: {
-        borderWidth: 1,
-        borderColor: 'black',
-        borderStyle: 'solid',
         borderRadius: 2,
         marginTop: 40,
         backgroundColor: 'white',
+        elevation: 2
     }
 });
