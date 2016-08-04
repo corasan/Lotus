@@ -16,8 +16,8 @@ export default class Login extends Component {
             if(result) {
                 this.setState({animating: true});
                 setTimeout(() => {
-                    // this.setState({animating: !this.state.animating});
-                    // this.props.navigator.resetTo({name: 'Posts'});
+                    this.setState({animating: !this.state.animating});
+                    this.props.navigator.resetTo({name: 'Posts'});
                 }, 1000);
             } else {
                 this.setState({animating: !this.state.animating});
