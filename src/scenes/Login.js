@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage, ActivityIndicator } from 'react-native';
 
 export default class Login extends Component {
     constructor(props) {
@@ -7,7 +7,22 @@ export default class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            animating: true
         }
+    }
+
+    componentWillMount() {
+        AsyncStorage.getItem('User', (err, result) => {
+            if(result) {
+                this.setState({animating: true});
+                setTimeout(() => {
+                    // this.setState({animating: !this.state.animating});
+                    // this.props.navigator.resetTo({name: 'Posts'});
+                }, 1000);
+            } else {
+                this.setState({animating: !this.state.animating});
+            }
+        });
     }
 
     handleEmail = (email) => {
@@ -22,7 +37,7 @@ export default class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
             AsyncStorage.setItem('User', JSON.stringify(user));
-            this.props.navigator.resetTo({name: 'Posts'})
+            this.props.navigator.resetTo({name: 'Posts'});
         })
         .catch((error) => {
             Alert.alert('Login', error.message);
@@ -31,14 +46,21 @@ export default class Login extends Component {
 
     render() {
         return (
-            <View>
-                <Text>{this.state.user.email}</Text>
-                <TextInput value={this.state.email} onChangeText={this.handleEmail}/>
-                <TextInput value={this.state.password} onChangeText={this.handlePassword}/>
+            <View style={styles.container}>
 
-                <TouchableHighlight onPress={this.login} style={styles.loginBtn}>
-                    <Text>Login</Text>
-                </TouchableHighlight>
+                <View style={[styles.inputDiv]}>
+                    <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent'/>
+                </View>
+                <View style={[styles.inputDiv]}>
+                    <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent'/>
+                </View>
+
+                <View style={{alignItems: 'center'}}>
+                    <TouchableHighlight onPress={this.login} style={styles.loginBtn}>
+                        <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Login</Text>
+                    </TouchableHighlight>
+                </View>
+                <ActivityIndicator size="large" color="#00BFA5" animating={this.state.animating} style={{top: -210, elevation: 4}} />
             </View>
         );
     }
@@ -46,6 +68,12 @@ export default class Login extends Component {
 
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingLeft: 15,
+        paddingRight: 15
+    },
     loginBtn: {
         marginTop: 40,
         height: 60,
@@ -55,4 +83,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 4
     },
+    inputDiv: {
+        backgroundColor: 'white',
+        marginBottom: 30,
+        borderRadius: 4,
+        elevation: 2,
+        padding: -2
+    },
+    input: {
+        paddingBottom: 6,
+        paddingLeft: 6,
+        fontSize: 20,
+        paddingTop: 5
+    }
 });

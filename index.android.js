@@ -7,7 +7,8 @@ import {
   Navigator,
   Modal,
   TouchableHighlight,
-  BackAndroid
+  BackAndroid,
+  AsyncStorage
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
@@ -19,14 +20,6 @@ import Login from './src/scenes/Login';
 let navigator;
 
 class Lotus extends Component {
-    constructor(props) {
-        super(props);
-        let user = firebase.auth().currentUser;
-        this.state = {
-            user: user
-        }
-    }
-
     renderScene = (route, navigator) => {
         switch (route.name) {
             case 'Posts':
@@ -36,14 +29,7 @@ class Lotus extends Component {
             case 'Show Post':
                 return <ShowPost postId={route.postId}/>
             case 'Login':
-                    return <Login navigator={navigator}/>
-        }
-    }
-
-    componentWillMount() {
-        let user = firebase.auth().currentUser;
-        if (this.state.user) {
-            this.props.navigator.resetTo({name: 'Posts'});
+                return <Login navigator={navigator}/>
         }
     }
 
