@@ -48,6 +48,12 @@ export default class Signup extends Component {
                 <View style={[styles.inputDiv, {top: 10}]}>
                     <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
                 </View>
+
+                <View style={{alignItems: 'center'}}>
+                    <TouchableHighlight style={styles.signupBtn}>
+                        <Text style={{fontSize: 20, fontWeight: '900', color: 'white'}}>Sign up</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -74,5 +80,14 @@ const styles = StyleSheet.create({
         paddingLeft: 6,
         fontSize: 20,
         paddingTop: 5
+    },
+    signupBtn: {
+        marginTop: 40,
+        height: 60,
+        width: 160,
+        backgroundColor: '#00BFA5',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 4
     },
 });

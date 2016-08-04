@@ -51,7 +51,7 @@ export default class Login extends Component {
                 <View style={[styles.inputDiv]}>
                     <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent' placeholder="Email"/>
                 </View>
-                
+
                 <View style={[styles.inputDiv]}>
                     <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
                 </View>
@@ -62,7 +62,7 @@ export default class Login extends Component {
                     </TouchableHighlight>
                 </View>
 
-                <View style={styles.signUpBtn}>
+                <View style={styles.signupBtn}>
                     <TouchableHighlight onPress={ () => {this.props.navigator.push({name: 'Sign up'})} }>
                         <Text style={{fontSize: 20, fontWeight: '900'}}>Sign up!</Text>
                     </TouchableHighlight>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingTop: 5
     },
-    signUpBtn: {
+    signupBtn: {
         alignItems: 'center',
         // top: 30,
         marginTop: 30
