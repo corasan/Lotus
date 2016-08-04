@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage } from 'react-native';
 import PostsList from '../components/Posts/postsList';
 
 export default class Posts extends Component {
@@ -20,9 +20,18 @@ export default class Posts extends Component {
 
     }
 
+
+
     render() {
         return (
             <View style={{flex: 1}}>
+                <TouchableHighlight onPress={
+                    () => { AsyncStorage.removeItem('User', () => {
+                        this.props.navigator.resetTo({name: 'Login'});
+                    })}
+                }>
+                    <Text>Sign out</Text>
+                </TouchableHighlight>
                 <ScrollView>
                     <PostsList
                         posts={this.state.posts}

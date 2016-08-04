@@ -49,10 +49,10 @@ export default class Login extends Component {
             <View style={styles.container}>
 
                 <View style={[styles.inputDiv]}>
-                    <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent'/>
+                    <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent' placeholder="Email"/>
                 </View>
                 <View style={[styles.inputDiv]}>
-                    <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent'/>
+                    <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
                 </View>
 
                 <View style={{alignItems: 'center'}}>
