@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions, Alert } from 'react-native';
 
 export default class WriteComment extends Component {
     constructor(props) {
@@ -19,12 +19,16 @@ export default class WriteComment extends Component {
         let commentsRef = `Comments/${this.state.postId}`;
         let commentId = firebase.database().ref(commentsRef).push().key;
 
-        firebase.database().ref(`${commentsRef}/${commentId}`).update({
-            comment: this.state.commentText,
-            id: this.state.postId,
-            commentId: commentId
-        });
-        this.setState({commentText: ''});
+        if (!this.state.commentText) {
+            Alert.alert('Error', 'You must type something to post a comment.');
+        } else {
+            firebase.database().ref(`${commentsRef}/${commentId}`).update({
+                comment: this.state.commentText,
+                id: this.state.postId,
+                commentId: commentId
+            });
+            this.setState({commentText: ''});
+        }
     }
 
     render() {
@@ -32,7 +36,7 @@ export default class WriteComment extends Component {
             <View style={styles.content}>
                 <TextInput value={this.state.commentText}
                     onChangeText={this.handleComment}
-                    capitalize="sentence"
+                    autoCapitalize="sentences"
                     underlineColorAndroid="transparent"
                     multiline={true}
                     placeholder="Write something..."
