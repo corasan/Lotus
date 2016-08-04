@@ -29,7 +29,7 @@ export default class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
             AsyncStorage.setItem('User', JSON.stringify(user));
-            this.props.navigator.resetTo({name: route});
+            this.props.navigator.resetTo({name: 'Posts'});
         }).catch((error) => {
             Alert.alert('Login', error.message);
         });
