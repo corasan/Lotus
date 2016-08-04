@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions } from 'react-native';
 import firebase from '../../../firebaseInit';
-import CommentInput from './commentInput';
 
 export default class WriteComment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             postId: this.props.postId,
+            commentText: '',
+            height: 0
         }
     }
 
+    handleComment = (commentText) => {
+        this.setState({commentText});
+    }
+
     sendComment = () => {
-        let commentsRef = 'posts/'+this.state.postId+'/comments';
+        let commentsRef = `Comments/${this.state.postId}`;
         let commentId = firebase.database().ref(commentsRef).push().key;
 
-        firebase.database().ref(commentsRef).update({
-            comment: this.state.commentText
+        firebase.database().ref(`${commentsRef}/${commentId}`).update({
+            comment: this.state.commentText,
+            id: this.state.postId,
+            commentId: commentId
         });
         this.setState({commentText: ''});
     }
@@ -24,7 +31,20 @@ export default class WriteComment extends Component {
     render() {
         return (
             <View style={styles.content}>
-                <CommentInput/>
+                <TextInput value={this.state.commentText}
+                    onChangeText={this.handleComment}
+                    capitalize="sentence"
+                    underlineColorAndroid="transparent"
+                    multiline={true}
+                    placeholder="Write something..."
+                    onChange={(event) => {
+                        this.setState({
+                            commentText: event.nativeEvent.commentText,
+                            height: event.nativeEvent.contentSize.height,
+                        });
+                    }}
+                    style={{height: Math.max(45, this.state.height), fontSize: 18, width: 300}}
+                />
 
                 <View>
                     <TouchableHighlight underlayColor="gray" onPress={this.sendComment} style={styles.sendBtn}>

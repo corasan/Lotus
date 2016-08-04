@@ -14,13 +14,21 @@ export default class NewPost extends Component {
         }
     }
 
+    handleText = (text) => {
+        this.setState({text});
+    }
+
+    handleTitle = (title) => {
+        this.setState({title});
+    }
+
     sendPost = () => {
         if (this.state.title === '' || this.state.text === '') {
             Alert.alert('Can\'t post', 'Title or Text content cannot be empty.');
         } else {
             let date = new Date();
-            let postId = firebase.database().ref('posts').push().key;
-            firebase.database().ref('posts/'+postId).update({
+            let postId = firebase.database().ref('Posts').push().key;
+            firebase.database().ref('Posts/'+postId).update({
                 title: this.state.title,
                 text: this.state.text,
                 id: postId,
@@ -34,7 +42,26 @@ export default class NewPost extends Component {
     render() {
         return (
             <View style={styles.content}>
-                <NewPostInput/>
+                <View style={styles.inputTitle}>
+                    <TextInput value={this.state.title} placeholder="Title"
+                        onChangeText={this.handleTitle} style={styles.input}
+                        underlineColorAndroid="transparent" autoCapitalize="sentences"
+                    />
+                </View>
+
+                <View style={styles.inputText}>
+                    <TextInput value={this.state.text} placeholder="Write something here..."
+                        onChangeText={this.handleText} autoCapitalize="sentences"
+                        multiline={true}
+                        onChange={(event) => {
+                            this.setState({
+                                text: event.nativeEvent.text,
+                                height: event.nativeEvent.contentSize.height,
+                            });
+                        }}
+                        style={[styles.input, {height: Math.max(45, this.state.height)}]}
+                    />
+                </View>
 
                 <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#27ae60">
                     <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
@@ -50,9 +77,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         paddingLeft: 20,
         paddingRight: 20,
-    },
-    postTitle: {
-
     },
     sendBtn: {
         backgroundColor: '#2ecc71',

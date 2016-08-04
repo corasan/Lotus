@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
-import WriteComment from '../components/ShowPost/comment';
+import SendComment from '../components/ShowPost/sendComment';
 import Post from '../components/ShowPost/post';
 
 export default class ShowPost extends Component {
@@ -10,16 +10,17 @@ export default class ShowPost extends Component {
             title: '',
             content: '',
             createdAt: '',
-            postId: this.props.postId
+            postId: this.props.postId,
+            comments: []
         }
     }
 
     componentWillMount() {
-        firebase.database().ref('posts/'+this.state.postId).once('value')
-        .then((data) => {
+        firebase.database().ref('Posts/'+this.state.postId).on('value', function(data) {
             let post = data.val();
+            console.log(post.title);
             this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
-        });
+        }.bind(this));
     }
 
     render() {
@@ -27,7 +28,7 @@ export default class ShowPost extends Component {
             <View style={{flex: 1}}>
                 <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
 
-                <WriteComment postId={this.state.postId}/>
+                <SendComment postId={this.state.postId}/>
             </View>
         );
     }

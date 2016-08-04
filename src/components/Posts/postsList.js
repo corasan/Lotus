@@ -33,11 +33,11 @@ export default class PostsList extends Component {
                 <Text style={styles.postContent}>{data.text}</Text>
 
                 <View style={styles.footer}>
-                    <View style={{paddingBottom: 10}}>
+                    <View style={{marginTop: 8}}>
                         <TimeAgo time={data.createdAt}/>
                     </View>
-                    <TouchableHighlight style={{marginLeft: 160, padding: 10}} underlayColor="gray"
-                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.postId})} }>
+                    <TouchableHighlight style={{padding: 10}} underlayColor="gray"
+                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.id})} }>
                         <Text style={{fontWeight: '900', fontSize: 14}}>Comment</Text>
                     </TouchableHighlight>
                 </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     footer: {
-        alignItems: 'flex-end',
+        justifyContent: 'space-between',
         flexDirection: 'row',
     }
 })

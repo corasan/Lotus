@@ -10,26 +10,11 @@ export default class CommentInput extends Component {
         }
     }
 
-    handleComment = (commentText) => {
-        this.setState({commentText});
-    }
+
 
     render() {
         return (
-            <TextInput value={this.state.commentText}
-                onChangeText={this.handleComment}
-                capitalize="sentence"
-                underlineColorAndroid="transparent"
-                multiline={true}
-                placeholder="Write something..."
-                onChange={(event) => {
-                    this.setState({
-                        commentText: event.nativeEvent.commentText,
-                        height: event.nativeEvent.contentSize.height,
-                    });
-                }}
-                style={{height: Math.max(45, this.state.height), fontSize: 18, width: 300}}
-            />
+
         );
     }
 }

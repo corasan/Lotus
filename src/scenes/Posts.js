@@ -13,7 +13,7 @@ export default class Posts extends Component {
     }
 
     componentWillMount() {
-        firebase.database().ref('posts').on('value', function(data) {
+        firebase.database().ref('Posts').on('value', function(data) {
             let posts = data.val();
             let sortedPosts = Object.keys(posts).reverse().map((date) => posts[date])
             this.setState({posts: sortedPosts});

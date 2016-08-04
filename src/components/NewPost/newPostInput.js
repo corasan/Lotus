@@ -12,13 +12,7 @@ export default class NewPostInput extends Component {
         }
     }
 
-    handleText = (text) => {
-        this.setState({text});
-    }
-
-    handleTitle = (title) => {
-        this.setState({title});
-    }
+    
 
     render() {
         return (
@@ -47,3 +41,27 @@ export default class NewPostInput extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    input: {
+        paddingBottom: 5,
+        paddingLeft: 5,
+        fontSize: 16,
+    },
+    inputTitle: {
+        borderWidth: 1,
+        borderColor: 'black',
+        borderStyle: 'solid',
+        paddingTop: -10,
+        borderRadius: 2,
+        backgroundColor: 'white'
+    },
+    inputText: {
+        borderWidth: 1,
+        borderColor: 'black',
+        borderStyle: 'solid',
+        borderRadius: 2,
+        marginTop: 40,
+        backgroundColor: 'white',
+    }
+});
