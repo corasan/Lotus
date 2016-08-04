@@ -51,7 +51,7 @@ export default class Login extends Component {
                 <View style={[styles.inputDiv]}>
                     <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent' placeholder="Email"/>
                 </View>
-                <View style={[styles.inputDiv]}>
+                <View style={[styles.inputDiv, {top: 10}]}>
                     <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
                 </View>
 
@@ -60,7 +60,15 @@ export default class Login extends Component {
                         <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Login</Text>
                     </TouchableHighlight>
                 </View>
-                <ActivityIndicator size="large" color="#00BFA5" animating={this.state.animating} style={{top: -210, elevation: 4}} />
+
+                <View style={styles.signUpBtn}>
+                    <TouchableHighlight onPress={ () => {this.props.navigator.push({name: 'Sign up'})} }>
+                        <Text style={{fontSize: 20, fontWeight: '900'}}>Sign up!</Text>
+                    </TouchableHighlight>
+                </View>
+
+                <ActivityIndicator size="large" color="#00BFA5"
+                    animating={this.state.animating} style={{top: -210, elevation: 4}} />
             </View>
         );
     }
@@ -95,5 +103,9 @@ const styles = StyleSheet.create({
         paddingLeft: 6,
         fontSize: 20,
         paddingTop: 5
+    },
+    signUpBtn: {
+        alignItems: 'center',
+        top: 30
     }
 });
