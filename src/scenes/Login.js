@@ -36,6 +36,7 @@ export default class Login extends Component {
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
+            console.log(user);
             AsyncStorage.setItem('User', JSON.stringify(user));
             this.props.navigator.resetTo({name: 'Posts'});
         })
@@ -47,11 +48,11 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-
                 <View style={[styles.inputDiv]}>
                     <TextInput value={this.state.email} onChangeText={this.handleEmail} style={styles.input} underlineColorAndroid='transparent' placeholder="Email"/>
                 </View>
-                <View style={[styles.inputDiv, {top: 10}]}>
+                
+                <View style={[styles.inputDiv]}>
                     <TextInput value={this.state.password} onChangeText={this.handlePassword} style={styles.input} underlineColorAndroid='transparent' placeholder="Password" secureTextEntry={true}/>
                 </View>
 
@@ -80,7 +81,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         paddingLeft: 15,
-        paddingRight: 15
+        paddingRight: 15,
+        top: 20
     },
     loginBtn: {
         marginTop: 40,
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
     },
     signUpBtn: {
         alignItems: 'center',
-        top: 30
+        // top: 30,
+        marginTop: 30
     }
 });

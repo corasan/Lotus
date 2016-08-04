@@ -16,6 +16,7 @@ import navbar from './src/components/Navigation/navbar';
 import NewPost from './src/scenes/NewPost';
 import ShowPost from './src/scenes/ShowPost';
 import Login from './src/scenes/Login';
+import Signup from './src/scenes/Signup';
 
 let navigator;
 
@@ -30,6 +31,8 @@ class Lotus extends Component {
                 return <ShowPost postId={route.postId}/>
             case 'Login':
                 return <Login navigator={navigator}/>
+            case 'Sign up':
+                return <Signup navigator={navigator}/>
         }
     }
 
