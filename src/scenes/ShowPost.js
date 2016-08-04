@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import SendComment from '../components/ShowPost/sendComment';
 import Post from '../components/ShowPost/post';
+import CommentsList from '../components/ShowPost/commentsList';
 
 export default class ShowPost extends Component {
     constructor(props) {
@@ -15,22 +16,37 @@ export default class ShowPost extends Component {
         }
     }
 
+    componentDidMount() {
+        firebase.database().ref('Comments/'+this.state.postId).on('value', function(data) {
+            this.setState({comments: data.val()});
+        }.bind(this));
+    }
+
     componentWillMount() {
         firebase.database().ref('Posts/'+this.state.postId).on('value', function(data) {
             let post = data.val();
-            console.log(post.title);
             this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
         }.bind(this));
     }
 
     render() {
-        return (
-            <View style={{flex: 1}}>
-                <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
-
-                <SendComment postId={this.state.postId}/>
-            </View>
-        );
+        if(!this.state.comments) {
+            return (
+                <View style={{flex: 1}}>
+                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
+                    <Text>No comments</Text>
+                    <SendComment postId={this.state.postId}/>
+                </View>
+            );
+        } else {
+            return (
+                <View style={{flex: 1}}>
+                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
+                    <CommentsList comments={this.state.comments}/>
+                    <SendComment postId={this.state.postId}/>
+                </View>
+            );
+        }
     }
 }
 

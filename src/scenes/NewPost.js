@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert } from 'react-native';
 import firebase from '../../firebaseInit';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
-import NewPostInput from '../components/NewPost/newPostInput';
 
 export default class NewPost extends Component {
     constructor(props) {
