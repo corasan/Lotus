@@ -16,16 +16,13 @@ export default class ShowPost extends Component {
         }
     }
 
-    componentDidMount() {
-        firebase.database().ref('Comments/'+this.state.postId).on('value', function(data) {
-            this.setState({comments: data.val()});
-        }.bind(this));
-    }
-
     componentWillMount() {
         firebase.database().ref('Posts/'+this.state.postId).on('value', function(data) {
             let post = data.val();
             this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
+            firebase.database().ref('Comments/'+this.state.postId).on('value', function(data2) {
+                this.setState({comments: data2.val()});
+            }.bind(this));
         }.bind(this));
     }
 

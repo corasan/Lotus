@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, BackAndroid } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import firebase from '../../firebaseInit';
 import PostsList from '../components/Posts/postsList';
 
