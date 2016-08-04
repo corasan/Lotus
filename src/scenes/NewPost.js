@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     inputTitle: {
-        paddingTop: -10,
+        paddingTop: -6,
         borderRadius: 2,
         backgroundColor: 'white',
-        elevation: 2
+        elevation: 2,
+        paddingBottom: -2
     },
     inputText: {
         borderRadius: 2,
