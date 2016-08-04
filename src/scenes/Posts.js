@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import firebase from '../../firebaseInit';
 import PostsList from '../components/Posts/postsList';
 
 export default class Posts extends Component {

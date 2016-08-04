@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
-import NewPost from './src/scenes/NewPost';
 import navbar from './src/components/Navigation/navbar';
+import NewPost from './src/scenes/NewPost';
 import ShowPost from './src/scenes/ShowPost';
+import Login from './src/scenes/Login';
+
 let navigator;
 
 class Lotus extends Component {
@@ -25,6 +27,8 @@ class Lotus extends Component {
                 return <NewPost navigator={navigator} {...route.passProps}/>
             case 'Show Post':
                 return <ShowPost postId={route.postId}/>
+            case 'Login':
+                return <Login navigator={navigator} />
         }
     }
 
@@ -41,7 +45,7 @@ class Lotus extends Component {
     render() {
         return (
             <Navigator ref={(nav) => { navigator = nav; }}
-                initialRoute={{name: 'Posts', index: 0}}
+                initialRoute={{name: 'Login', index: 0}}
                 renderScene={this.renderScene}
                 navigationBar={
                     <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 4, backgroundColor: 'white'}}/>
