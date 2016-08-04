@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
-import TimeAgo from 'react-native-timeago';
 import WriteComment from '../components/writeComment';
+import Post from '../components/post';
 
 export default class ShowPost extends Component {
     constructor(props) {
@@ -18,23 +18,15 @@ export default class ShowPost extends Component {
         firebase.database().ref('posts/'+this.state.postId).once('value')
         .then((data) => {
             let post = data.val();
-            this.setState({title: post.title, content: post.text, createdAt: post.createdAt});
+            this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
         });
     }
 
     render() {
         return (
             <View style={{flex: 1}}>
-                <View style={styles.post}>
-                    <Text style={styles.postTitle}>{this.state.title}</Text>
-                    <Text style={styles.postContent}>{this.state.content}</Text>
+                <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
 
-                    <View>
-                        <TimeAgo time={this.state.createdAt}/>
-                    </View>
-                </View>
-
-                {/*<Text style={styles.commentSection}>Comments</Text>*/}
                 <WriteComment postId={this.state.postId}/>
             </View>
         );
