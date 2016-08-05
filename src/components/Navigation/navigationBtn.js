@@ -5,12 +5,12 @@ export default class NavigationBtn extends Component {
     static propTypes = {
         onPress: PropTypes.func.isRequired,
         btnStyle: PropTypes.object,
-        imgSource: PropTypes.string.isRequired
+        imgSource: PropTypes.number.isRequired
     }
     render() {
         return(
             <TouchableHighlight onPress={this.props.onPress} style={[styles.navBtn, this.props.btnStyle]} underlayColor="gray">
-                <Image source={require(this.props.imgSource)} style={styles.img}/>
+                <Image source={this.props.imgSource} style={styles.img}/>
             </TouchableHighlight>
         );
     }

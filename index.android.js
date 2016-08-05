@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, StatusBar } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -52,7 +52,7 @@ class Lotus extends Component {
                 initialRoute={{name: 'Login', index: 0}}
                 renderScene={this.renderScene}
                 navigationBar={
-                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 4, backgroundColor: 'white'}}/>
+                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 4, backgroundColor: '#1ABC9C'}}/>
                 }
                 sceneStyle={styles.container}
             />
