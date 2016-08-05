@@ -64,10 +64,11 @@ const styles = StyleSheet.create({
     post: {
         paddingLeft: 16,
         paddingRight: 16,
+        paddingTop: 16,
         backgroundColor: 'white',
         borderColor: '#E5E5E5',
         borderStyle: 'solid',
-        borderWidth: 1
+        borderWidth: 1,
     },
     postTitle: {
         fontSize: 18,
@@ -80,5 +81,6 @@ const styles = StyleSheet.create({
     footer: {
         justifyContent: 'space-between',
         flexDirection: 'row',
+        marginBottom: 15
     }
 })

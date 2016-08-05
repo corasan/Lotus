@@ -18,7 +18,7 @@ const navbar = {
         }
     },
     Title(route, navigator, index, navState) {
-        return <Text style={{marginTop: 10, fontSize: 20, color: 'white', fontWeight: '900'}}>{route.name}</Text>
+        return <Text style={{marginTop: 10, fontSize: 20, color: 'white'}}>{route.name}</Text>
     }
 }
 
