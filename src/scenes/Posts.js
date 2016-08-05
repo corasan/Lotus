@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage, Image, Dimensions } from 'react-native';
 import PostsList from '../components/Posts/postsList';
+
+const height = Dimensions.get('window').height;
 
 export default class Posts extends Component {
     constructor(props) {
@@ -20,11 +22,9 @@ export default class Posts extends Component {
 
     }
 
-
-
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.posts}>
                 <TouchableHighlight onPress={
                     () => { AsyncStorage.removeItem('User', () => {
                         this.props.navigator.resetTo({name: 'Login'});
@@ -38,7 +38,32 @@ export default class Posts extends Component {
                         navigator={ this.state.nav}
                     />
                 </ScrollView>
+
+                    <TouchableHighlight underlayColor="#16a085"
+                        onPress={ () => this.props.navigator.push({name: 'New Post'}) } style={styles.newPost}
+                    >
+                        {/*<Image source={require('../img/plus.png')} style={{height: 50, width: 50}}/>*/}
+                        <View style={{alignItems: 'center', marginTop: -2}}>
+                            <Text style={{fontSize: 40, color: 'white'}}>+</Text>
+                        </View>
+                    </TouchableHighlight>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    posts: {
+        flex: 1,
+        height: height
+    },
+    newPost: {
+        height: 60,
+        width: 60,
+        top: -95,
+        left: 290,
+        elevation: 10,
+        borderRadius: 100,
+        backgroundColor: '#1ABC9C'
+    }
+});

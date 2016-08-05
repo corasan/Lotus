@@ -1,12 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import TimeAgo from 'react-native-timeago';
 
 export default class CommentsList extends Component {
-    static propTypes = {
-        comments: PropTypes.array.isRequired
-    }
-    
     constructor(props) {
         super(props);
         this.state = {

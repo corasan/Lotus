@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
 import TimeAgo from 'react-native-timeago';
 
 export default class PostsList extends Component {
@@ -40,9 +40,13 @@ export default class PostsList extends Component {
                     <View style={{marginTop: 8}}>
                         <TimeAgo time={data.createdAt}/>
                     </View>
-                    <TouchableHighlight style={{padding: 10}} underlayColor="gray"
-                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.id})} }>
-                        <Text style={{fontWeight: '900', fontSize: 14}}>Comment</Text>
+                    <TouchableHighlight style={{padding: 10}} underlayColor="#ecf0f1"
+                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.id})} }
+                    >
+                        <View style={{flexDirection: 'row'}}>
+                            <Image source={require('../../img/reply.png')} style={styles.commentImg}/>
+                            <Text style={styles.commentText}>Comment</Text>
+                        </View>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -81,6 +85,18 @@ const styles = StyleSheet.create({
     footer: {
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginBottom: 15
+        marginBottom: 10
+    },
+    commentText: {
+        fontWeight: '900',
+        fontSize: 14,
+        color: '#1ABC9C',
+        marginTop: 2,
+        marginLeft: 2
+    },
+    commentImg: {
+        height: 25,
+        width: 25,
+        marginBottom: 5
     }
 })
