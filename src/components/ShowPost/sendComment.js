@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions, Alert } from 'react-native';
 
 export default class WriteComment extends Component {
+    static propTypes = {
+        postId: PropTypes.string.isRequired
+    }
+    
     constructor(props) {
         super(props);
         this.state = {

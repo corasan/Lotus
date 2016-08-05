@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, TouchableHighlight, Image } from 'react-native';
 
 export default class NavigationBtn extends Component {
+    static propTypes = {
+        onPress: PropTypes.func.isRequired,
+        btnStyle: PropTypes.object,
+        imgSource: PropTypes.string.isRequired
+    }
     render() {
         return(
             <TouchableHighlight onPress={this.props.onPress} style={[styles.navBtn, this.props.btnStyle]} underlayColor="gray">
-                <Image source={this.props.source} style={styles.img}/>
+                <Image source={require(this.props.imgSource)} style={styles.img}/>
             </TouchableHighlight>
         );
     }

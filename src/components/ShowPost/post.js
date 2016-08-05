@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import TimeAgo from 'react-native-timeago';
 
 export default class Post extends Component {
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        createdAt: PropTypes.string.isRequired
+    }
     render() {
         return (
             <View style={styles.post}>

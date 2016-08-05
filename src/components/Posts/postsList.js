@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import TimeAgo from 'react-native-timeago';
 
 export default class PostsList extends Component {
+    static propTypes = {
+        posts: PropTypes.array.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {
