@@ -61,7 +61,7 @@ export default class NewPost extends Component {
                     />
                 </View>
 
-                <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#27ae60">
+                <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#16a085">
                     <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
                 </TouchableHighlight>
             </View>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
     },
     sendBtn: {
-        backgroundColor: '#2ecc71',
+        backgroundColor: '#1ABC9C',
         width: 130,
         alignItems: 'center',
         marginLeft: 95,

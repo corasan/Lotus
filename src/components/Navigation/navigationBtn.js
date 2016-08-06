@@ -9,7 +9,7 @@ export default class NavigationBtn extends Component {
     }
     render() {
         return(
-            <TouchableHighlight onPress={this.props.onPress} style={[styles.navBtn, this.props.btnStyle]} underlayColor="gray">
+            <TouchableHighlight onPress={this.props.onPress} style={[styles.navBtn, this.props.btnStyle]} underlayColor="#16a085">
                 <Image source={this.props.imgSource} style={styles.img}/>
             </TouchableHighlight>
         );

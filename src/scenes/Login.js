@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  Alert,
+  TextInput,
+  AsyncStorage,
+  ActivityIndicator,
+} from 'react-native'
+import TextField from 'react-native-md-textinput';
 
 export default class Login extends Component {
     constructor(props) {
@@ -38,7 +48,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={[styles.inputDiv]}>
+                <View style={styles.inputDiv}>
                     <TextInput value={this.state.email}
                         onChangeText={ (email) => this.setState({email}) }
                         style={styles.input}
@@ -47,7 +57,7 @@ export default class Login extends Component {
                     />
                 </View>
 
-                <View style={[styles.inputDiv]}>
+                <View style={styles.inputDiv}>
                     <TextInput value={this.state.password}
                         onChangeText={(password) => this.setState({password}) }
                         style={styles.input}
@@ -64,13 +74,13 @@ export default class Login extends Component {
                 </View>
 
                 <View style={styles.signupBtn}>
-                    <TouchableHighlight onPress={ () => {this.props.navigator.push({name: 'Sign up'})} }>
-                        <Text style={{fontSize: 20, fontWeight: '900'}}>Sign up!</Text>
+                    <TouchableHighlight onPress={ () => {this.props.navigator.push({name: 'Sign up'})} } underlayColor="#16a085">
+                        <Text style={{fontSize: 20, fontWeight: '900', color: '#1ABC9C'}}>Sign up!</Text>
                     </TouchableHighlight>
                 </View>
 
-                <ActivityIndicator size="large" color="#00BFA5"
-                    animating={this.state.animating} style={{top: -210, elevation: 4}} />
+                {/*<ActivityIndicator size="large" color="#00BFA5"
+                    animating={this.state.animating} style={{top: -210, elevation: 4}} />*/}
             </View>
         );
     }
@@ -81,14 +91,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingLeft: 16,
+        paddingRight: 16,
         top: 20
     },
     loginBtn: {
-        marginTop: 40,
-        height: 60,
-        width: 160,
+        marginTop: 20,
+        height: 50,
+        width: 334,
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
@@ -102,6 +112,7 @@ const styles = StyleSheet.create({
         padding: -2
     },
     input: {
+        backgroundColor: 'white',
         paddingBottom: 6,
         paddingLeft: 6,
         fontSize: 20,
@@ -109,7 +120,7 @@ const styles = StyleSheet.create({
     },
     signupBtn: {
         alignItems: 'center',
-        // top: 30,
+        top: 30,
         marginTop: 30
     }
 });

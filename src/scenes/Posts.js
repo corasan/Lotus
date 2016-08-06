@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage, Image, Dimensions } from 'react-native';
 import PostsList from '../components/Posts/postsList';
+import firebase from '../../firebaseInit';
 
 const height = Dimensions.get('window').height;
 
@@ -42,7 +43,6 @@ export default class Posts extends Component {
                     <TouchableHighlight underlayColor="#16a085"
                         onPress={ () => this.props.navigator.push({name: 'New Post'}) } style={styles.newPost}
                     >
-                        {/*<Image source={require('../img/plus.png')} style={{height: 50, width: 50}}/>*/}
                         <View style={{alignItems: 'center', marginTop: -2}}>
                             <Text style={{fontSize: 40, color: 'white'}}>+</Text>
                         </View>

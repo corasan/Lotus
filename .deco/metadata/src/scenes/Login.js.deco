@@ -1,0 +1,128 @@
+{
+	"liveValues": [
+		{
+			"range": {
+				"from": {
+					"line": 71,
+					"ch": 28
+				},
+				"to": {
+					"line": 71,
+					"ch": 30
+				}
+			},
+			"type": "number",
+			"name": "Height",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 72,
+					"ch": 27
+				},
+				"to": {
+					"line": 72,
+					"ch": 30
+				}
+			},
+			"type": "number",
+			"name": "Width",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 74,
+					"ch": 33
+				},
+				"to": {
+					"line": 74,
+					"ch": 50
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "BorderColor",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 77,
+					"ch": 40
+				},
+				"to": {
+					"line": 77,
+					"ch": 61
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "PlaceholderTextColor",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 84,
+					"ch": 28
+				},
+				"to": {
+					"line": 84,
+					"ch": 30
+				}
+			},
+			"type": "number",
+			"name": "Height",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 85,
+					"ch": 27
+				},
+				"to": {
+					"line": 85,
+					"ch": 30
+				}
+			},
+			"type": "number",
+			"name": "Width",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 87,
+					"ch": 33
+				},
+				"to": {
+					"line": 87,
+					"ch": 50
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "BorderColor",
+			"group": "TEXT INPUT"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 90,
+					"ch": 40
+				},
+				"to": {
+					"line": 90,
+					"ch": 61
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "PlaceholderTextColor",
+			"group": "TEXT INPUT"
+		}
+	]
+}
