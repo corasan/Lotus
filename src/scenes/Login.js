@@ -66,7 +66,7 @@ export default class Login extends Component {
                 />
 
                 <View style={{alignItems: 'center', marginTop: 20}}>
-                    <TouchableHighlight onPress={this.login} style={styles.loginBtn}>
+                    <TouchableHighlight onPress={this.login} style={styles.loginBtn} underlayColor="#16a085">
                         <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Log in</Text>
                     </TouchableHighlight>
                 </View>
