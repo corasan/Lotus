@@ -8,8 +8,8 @@ import {
   TextInput,
   AsyncStorage,
   ActivityIndicator,
-} from 'react-native'
-import TextField from 'react-native-md-textinput';
+} from 'react-native';
+// import { LoginForm }
 
 export default class Login extends Component {
     constructor(props) {
@@ -48,28 +48,26 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.inputDiv}>
-                    <TextInput value={this.state.email}
-                        onChangeText={ (email) => this.setState({email}) }
-                        style={styles.input}
-                        underlineColorAndroid='transparent'
-                        placeholder="Email"
-                    />
-                </View>
+                <TextInput
+                    value={this.state.email}
+                    onChangeText={ (email) => this.setState({email}) }
+                    underlineColorAndroid="#1abc9c"
+                    placeholder="Email Address"
+                    style={{paddingBottom: 6, fontSize: 20}}
+                />
 
-                <View style={styles.inputDiv}>
-                    <TextInput value={this.state.password}
-                        onChangeText={(password) => this.setState({password}) }
-                        style={styles.input}
-                        underlineColorAndroid='transparent'
-                        placeholder="Password"
-                        secureTextEntry={true}
-                    />
-                </View>
+                <TextInput
+                    value={this.state.password}
+                    onChangeText={ (password) => this.setState({password}) }
+                    underlineColorAndroid="#1abc9c"
+                    placeholder="Password"
+                    secureTextEntry={true}
+                    style={{paddingBottom: 6, fontSize: 20}}
+                />
 
-                <View style={{alignItems: 'center'}}>
+                <View style={{alignItems: 'center', marginTop: 20}}>
                     <TouchableHighlight onPress={this.login} style={styles.loginBtn}>
-                        <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Login</Text>
+                        <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Log in</Text>
                     </TouchableHighlight>
                 </View>
 
@@ -93,22 +91,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 16,
         paddingRight: 16,
-        top: 20
+        backgroundColor: 'white',
+        // alignItems: 'center'
     },
     loginBtn: {
         marginTop: 20,
         height: 50,
-        width: 334,
+        width: 220,
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4
+        borderRadius: 30
     },
     inputDiv: {
-        backgroundColor: 'white',
+        backgroundColor: '#bdc3c7',
         marginBottom: 30,
         borderRadius: 4,
-        elevation: 2,
+        // elevation: 2,
         padding: -2
     },
     input: {

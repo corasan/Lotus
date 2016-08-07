@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 15,
         paddingRight: 15,
-        // top: 20
+        top: 20
     },
     inputDiv: {
         backgroundColor: 'white',
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     },
     signupBtn: {
         marginTop: 40,
-        height: 60,
-        width: 160,
+        height: 51,
+        width: 334,
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',

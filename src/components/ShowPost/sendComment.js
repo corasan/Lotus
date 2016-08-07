@@ -5,7 +5,7 @@ export default class WriteComment extends Component {
     static propTypes = {
         postId: PropTypes.string.isRequired
     }
-    
+
     constructor(props) {
         super(props);
         this.state = {

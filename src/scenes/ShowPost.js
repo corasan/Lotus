@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ListView, TouchableHighlight, ScrollView } from 'react-native';
 import SendComment from '../components/ShowPost/sendComment';
 import Post from '../components/ShowPost/post';
 import CommentsList from '../components/ShowPost/commentsList';
