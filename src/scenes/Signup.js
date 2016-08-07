@@ -40,35 +40,39 @@ export default class Signup extends Component {
         return (
             <View style={styles.container}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <View style={[styles.inputDiv, {width: 160}]}>
-                        <TextInput value={this.state.firstName}
-                            onChangeText={ (firstName) => this.setState({firstName}) }
-                            style={styles.input} underlineColorAndroid='transparent' placeholder="First name" autoCapitalize="sentences"
-                        />
-                    </View>
+                    <TextInput
+                        value={this.state.firstName}
+                        onChangeText={ (firstName) => this.setState({firstName}) }
+                        style={[styles.input, {width: 160}]}
+                        underlineColorAndroid='#1abc9c'
+                         placeholder="First name"
+                         autoCapitalize="sentences"
+                    />
 
-                    <View style={[styles.inputDiv, {width: 160}]}>
-                        <TextInput value={this.state.lastName}
-                            onChangeText={ (lastName) => this.setState({lastName}) }
-                            style={styles.input} underlineColorAndroid='transparent' placeholder="Last name" autoCapitalize="sentences"
-                        />
-                    </View>
-                </View>
-
-                <View style={[styles.inputDiv, {top: 10}]}>
-                    <TextInput value={this.state.email}
-                        onChangeText={ (email) => this.setState({email}) }
-                        style={styles.input} underlineColorAndroid='transparent' placeholder="Email"
+                    <TextInput
+                        value={this.state.lastName}
+                        onChangeText={ (lastName) => this.setState({lastName}) }
+                        style={[styles.input, {width: 160}]}
+                        underlineColorAndroid='#1abc9c'
+                        placeholder="Last name"
+                        autoCapitalize="sentences"
                     />
                 </View>
 
-                <View style={[styles.inputDiv, {top: 10}]}>
-                    <TextInput value={this.state.password}
-                        onChangeText={ (password) => this.setState({password}) }
-                        style={styles.input} underlineColorAndroid='transparent' placeholder="Password"
-                        secureTextEntry={true}
-                    />
-                </View>
+                <TextInput value={this.state.email}
+                    onChangeText={ (email) => this.setState({email}) }
+                    style={styles.input}
+                    underlineColorAndroid='#1abc9c'
+                    placeholder="Email"
+                />
+
+                <TextInput value={this.state.password}
+                    onChangeText={ (password) => this.setState({password}) }
+                    style={styles.input}
+                    underlineColorAndroid='#1abc9c'
+                    placeholder="Password"
+                    secureTextEntry={true}
+                />
 
                 <View style={{alignItems: 'center'}}>
                     <TouchableHighlight style={styles.signupBtn} onPress={this.signup}>
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 15,
         paddingRight: 15,
-        top: 20
+        backgroundColor: 'white'
     },
     inputDiv: {
         backgroundColor: 'white',
@@ -98,17 +102,15 @@ const styles = StyleSheet.create({
     },
     input: {
         paddingBottom: 6,
-        paddingLeft: 6,
         fontSize: 20,
-        paddingTop: 5
     },
     signupBtn: {
         marginTop: 40,
-        height: 51,
-        width: 334,
+        height: 55,
+        width: 220,
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4
+        borderRadius: 30
     },
 });
