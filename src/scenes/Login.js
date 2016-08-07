@@ -8,8 +8,8 @@ import {
   TextInput,
   AsyncStorage,
   ActivityIndicator,
+  Image
 } from 'react-native';
-// import { LoginForm }
 
 export default class Login extends Component {
     constructor(props) {
@@ -48,6 +48,13 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={{alignItems: 'center', }}>
+                    <Image
+                        source={require('../img/lotus-logo-big.png')}
+                        style={{height: 64, width: 110, marginBottom: 20}}
+                    />
+                    <Text style={{fontSize: 24, fontWeight: '600', color: '#1ABC9C', marginBottom: 20}}>Lotus</Text>
+                </View>
                 <TextInput
                     value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
@@ -92,7 +99,6 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
         paddingRight: 16,
         backgroundColor: 'white',
-        // alignItems: 'center'
     },
     loginBtn: {
         marginTop: 20,
