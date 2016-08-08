@@ -40,34 +40,42 @@ export default class NewPost extends Component {
     render() {
         return (
             <View style={styles.content}>
-                    <TextInput
-                        value={this.state.title}
-                        placeholder="Title"
-                        onChangeText={this.handleTitle}
-                        autoCapitalize="sentences"
-                        style={styles.input}
-                    />
+                <TextInput
+                    value={this.state.title}
+                    placeholder="Title"
+                    onChangeText={this.handleTitle}
+                    autoCapitalize="sentences"
+                    style={[styles.input, {marginBottom: 30}]}
+                    underlineColorAndroid="#1abc9c"
+                />
 
-                    <TextInput
-                        value={this.state.text}
-                        placeholder="Write something here..."
-                        onChangeText={this.handleText}
-                        autoCapitalize="sentences"
-                        multiline={true}
-                        maxLength={600}
-                        numberOfLines={5}
-                        onChange={(event) => {
-                            this.setState({
-                                text: event.nativeEvent.text,
-                                height: event.nativeEvent.contentSize.height,
-                            });
-                        }}
-                        style={[styles.input, {height: Math.max(58, this.state.height > 200 ? 200 : this.state.height)}]}
-                    />
+                <TextInput
+                    value={this.state.text}
+                    placeholder="Write something here..."
+                    onChangeText={this.handleText}
+                    autoCapitalize="sentences"
+                    multiline={true}
+                    maxLength={600}
+                    numberOfLines={5}
+                    underlineColorAndroid="#1abc9c"
+                    onChange={(event) => {
+                        this.setState({
+                            text: event.nativeEvent.text,
+                            height: event.nativeEvent.contentSize.height,
+                        });
+                    }}
+                    style={[styles.input, {height: Math.max(58, this.state.height > 200 ? 200 : this.state.height)}]}
+                />
 
-                <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#16a085">
-                    <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
-                </TouchableHighlight>
+                <View style={{marginTop: 40, alignItems: 'center'}}>
+                    <TouchableHighlight
+                        onPress={this.sendPost}
+                        placeholder="Title" style={styles.sendBtn}
+                        underlayColor="#16a085"
+                    >
+                        <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -83,13 +91,12 @@ const styles = StyleSheet.create({
     },
     sendBtn: {
         backgroundColor: '#1ABC9C',
-        width: 130,
+        width: 200,
         alignItems: 'center',
-        marginLeft: 95,
         marginTop: 30,
         paddingTop: 15,
         paddingBottom: 15,
-        borderRadius: 4
+        borderRadius: 30
     },
     input: {
         paddingBottom: 6,

@@ -11,13 +11,12 @@ const navbar = {
         } else { return null }
     },
     RightButton(route, navigator, index, navState) {
-        // if(route.name === 'Posts') {
-        //     return (
-        //         <NavigationBtn onPress={() => navigator.push({name: 'New Post'}) } imgSource={require("../../img/AddFile48.png")} />
-        //     )
-        // }
+
     },
     Title(route, navigator, index, navState) {
+        if (route.name === 'Show Post') {
+            return <Text style={{marginTop: 10, fontSize: 20, color: 'white', fontWeight: '900'}}>Comments</Text>
+        }
         return <Text style={{marginTop: 10, fontSize: 20, color: 'white', fontWeight: '900'}}>{route.name}</Text>
     }
 }
