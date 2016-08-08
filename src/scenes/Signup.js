@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
     },
     signupBtn: {
         marginTop: 40,
-        height: 55,
-        width: 220,
+        height: 50,
+        width: 250,
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
