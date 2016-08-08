@@ -40,26 +40,30 @@ export default class NewPost extends Component {
     render() {
         return (
             <View style={styles.content}>
-                <View style={styles.inputTitle}>
-                    <TextInput value={this.state.title} placeholder="Title"
-                        onChangeText={this.handleTitle} style={styles.input}
-                        underlineColorAndroid="transparent" autoCapitalize="sentences"
+                    <TextInput
+                        value={this.state.title}
+                        placeholder="Title"
+                        onChangeText={this.handleTitle}
+                        autoCapitalize="sentences"
+                        style={styles.input}
                     />
-                </View>
 
-                <View style={styles.inputText}>
-                    <TextInput value={this.state.text} placeholder="Write something here..."
-                        onChangeText={this.handleText} autoCapitalize="sentences"
+                    <TextInput
+                        value={this.state.text}
+                        placeholder="Write something here..."
+                        onChangeText={this.handleText}
+                        autoCapitalize="sentences"
                         multiline={true}
+                        maxLength={600}
+                        numberOfLines={5}
                         onChange={(event) => {
                             this.setState({
                                 text: event.nativeEvent.text,
                                 height: event.nativeEvent.contentSize.height,
                             });
                         }}
-                        style={[styles.input, {height: Math.max(45, this.state.height)}]}
+                        style={[styles.input, {height: Math.max(58, this.state.height > 200 ? 200 : this.state.height)}]}
                     />
-                </View>
 
                 <TouchableHighlight onPress={this.sendPost} placeholder="Title" style={styles.sendBtn} underlayColor="#16a085">
                     <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
@@ -72,9 +76,10 @@ export default class NewPost extends Component {
 const styles = StyleSheet.create({
     content: {
         flex: 1,
-        marginTop: 50,
         paddingLeft: 20,
         paddingRight: 20,
+        backgroundColor: 'white',
+        justifyContent: 'center'
     },
     sendBtn: {
         backgroundColor: '#1ABC9C',
@@ -87,21 +92,7 @@ const styles = StyleSheet.create({
         borderRadius: 4
     },
     input: {
-        paddingBottom: 5,
-        paddingLeft: 5,
-        fontSize: 16,
+        paddingBottom: 6,
+        fontSize: 18,
     },
-    inputTitle: {
-        paddingTop: -6,
-        borderRadius: 2,
-        backgroundColor: 'white',
-        elevation: 2,
-        paddingBottom: -2
-    },
-    inputText: {
-        borderRadius: 2,
-        marginTop: 40,
-        backgroundColor: 'white',
-        elevation: 2
-    }
 });

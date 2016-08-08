@@ -40,6 +40,7 @@ export default class PostsList extends Component {
                     <View style={{marginTop: 8}}>
                         <TimeAgo time={data.createdAt}/>
                     </View>
+
                     <TouchableHighlight style={{padding: 10}} underlayColor="#ecf0f1"
                         onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.id})} }
                     >

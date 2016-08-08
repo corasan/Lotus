@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     },
     signupBtn: {
         alignItems: 'center',
-        top: 30,
-        marginTop: 30
+        marginTop: 50
     }
 });
