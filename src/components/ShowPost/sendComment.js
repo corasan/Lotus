@@ -50,12 +50,12 @@ export default class WriteComment extends Component {
                             height: event.nativeEvent.contentSize.height,
                         });
                     }}
-                    style={{height: Math.max(45, this.state.height), fontSize: 18, width: 300}}
+                    style={{height: Math.max(50, this.state.height > 200 ? 200 : this.state.height), fontSize: 18, width: 300}}
                 />
 
                 <View>
-                    <TouchableHighlight underlayColor="gray" onPress={this.sendComment} style={styles.sendBtn}>
-                        <Text style={{fontSize: 18, fontWeight: '900'}}>Send</Text>
+                    <TouchableHighlight underlayColor="#ecf0f1" onPress={this.sendComment} style={styles.sendBtn}>
+                        <Text style={{fontSize: 18, fontWeight: '900', color: '#1abc9c'}}>Send</Text>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -69,13 +69,17 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         elevation: 3,
-        padding: 6,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight: 5,
         flexDirection: 'row'
     },
     sendBtn: {
-        height: 45,
+        height: 50,
         alignItems: 'center',
-        width: 50,
-        paddingTop: 8
+        width: 60,
+        paddingTop: 10,
+        marginRight: 10,
+        borderRadius: 8
     }
 });

@@ -12,7 +12,7 @@ export default class ShowPost extends Component {
             content: '',
             createdAt: '',
             postId: this.props.postId,
-            comments: []
+            comments: [],
         }
     }
 
@@ -20,8 +20,12 @@ export default class ShowPost extends Component {
         firebase.database().ref('Posts/'+this.state.postId).on('value', function(data) {
             let post = data.val();
             this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
-            firebase.database().ref('Comments/'+this.state.postId).on('value', function(data2) {
-                this.setState({comments: data2.val()});
+            firebase.database().ref('Comments/'+this.state.postId).on('value', function(commentsData) {
+                if (!commentsData.exists()) {
+                    this.setState({comments: {comment: 'No comments'}});
+                } else {
+                    this.setState({comments: commentsData.val()})
+                }
             }.bind(this));
         }.bind(this));
     }
@@ -39,7 +43,7 @@ export default class ShowPost extends Component {
             return (
                 <View style={{flex: 1}}>
                     <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
-                    <CommentsList comments={this.state.comments}/>
+                    <CommentsList comments={this.state.comments} noComment={this.state.noComment}/>
                     <SendComment postId={this.state.postId}/>
                 </View>
             );
