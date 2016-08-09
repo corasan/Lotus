@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
 import TimeAgo from 'react-native-timeago';
+import { Actions } from 'react-native-router-flux';
 
 export default class PostsList extends Component {
     static propTypes = {
@@ -42,7 +43,7 @@ export default class PostsList extends Component {
                     </View>
 
                     <TouchableHighlight style={{padding: 10}} underlayColor="#ecf0f1"
-                        onPress={ () => { this.props.navigator.push({name: 'Show Post', postId: data.id})} }
+                        onPress={ () => Actions.showPost({postId: data.id}) }
                     >
                         <View style={{flexDirection: 'row'}}>
                             <Image source={require('../../img/reply.png')} style={styles.commentImg}/>
