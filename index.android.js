@@ -17,6 +17,7 @@ import NewPost from './src/scenes/NewPost';
 import ShowPost from './src/scenes/ShowPost';
 import Login from './src/scenes/Login';
 import Signup from './src/scenes/Signup';
+import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 
 let navigator;
 
@@ -48,14 +49,14 @@ class Lotus extends Component {
 
     render() {
         return (
-            <Navigator ref={(nav) => { navigator = nav; }}
-                initialRoute={{name: 'Login', index: 0}}
-                renderScene={this.renderScene}
-                navigationBar={
-                    <Navigator.NavigationBar routeMapper={navbar} style={{elevation: 4, backgroundColor: '#1ABC9C'}}/>
-                }
-                sceneStyle={styles.container}
-            />
+            <Router>
+                <Scene key="root">
+                    <Scene key="login" component={Login} initial={true} hideNavBar={true}/>
+                    <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
+                    <Scene key="newPost" component={NewPost} />
+                    <Scene key="signup" component={Signup} hideNavBar={true}/>
+                </Scene>
+            </Router>
         );
     }
 }

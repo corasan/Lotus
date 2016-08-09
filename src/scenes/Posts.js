@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage, Image, Dimensions } from 'react-native';
 import PostsList from '../components/Posts/postsList';
 import firebase from '../../firebaseInit';
+import { Actions } from 'react-native-router-flux';
 
 const height = Dimensions.get('window').height;
 
@@ -23,25 +24,26 @@ export default class Posts extends Component {
 
     }
 
+    logout = () => {
+        AsyncStorage.removeItem('User', () => {
+            Actions.login();
+        });
+    }
+
     render() {
         return (
             <View style={styles.posts}>
-                <TouchableHighlight onPress={
-                    () => { AsyncStorage.removeItem('User', () => {
-                        this.props.navigator.resetTo({name: 'Login'});
-                    })}
-                }>
+                <TouchableHighlight style={{marginTop: 60}} onPress={this.logout}>
                     <Text>Sign out</Text>
                 </TouchableHighlight>
                 <ScrollView>
-                    <PostsList
-                        posts={this.state.posts}
-                        navigator={ this.state.nav}
-                    />
+                    <PostsList posts={this.state.posts} navigator={ this.state.nav}/>
                 </ScrollView>
 
-                    <TouchableHighlight underlayColor="#16a085"
-                        onPress={ () => this.props.navigator.push({name: 'New Post'}) } style={styles.newPost}
+                    <TouchableHighlight
+                        underlayColor="#16a085"
+                        onPress={ () => Actions.newPost() }
+                        style={styles.newPost}
                     >
                         <View style={{alignItems: 'center', marginTop: -2}}>
                             <Text style={{fontSize: 40, color: 'white'}}>+</Text>

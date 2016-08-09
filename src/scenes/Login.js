@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   Image
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export default class Login extends Component {
     constructor(props) {
@@ -27,7 +28,8 @@ export default class Login extends Component {
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
-                    this.props.navigator.resetTo({name: 'Posts'});
+                    // this.props.navigator.resetTo({name: 'Posts'});
+                    Actions.posts();
                 }, 1000);
             } else {
                 this.setState({animating: !this.state.animating});
@@ -39,10 +41,15 @@ export default class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
             AsyncStorage.setItem('User', JSON.stringify(user));
-            this.props.navigator.resetTo({name: 'Posts'});
+            // this.props.navigator.resetTo({name: 'Posts'});
+            Actions.posts();
         }).catch((error) => {
             Alert.alert('Login', error.message);
         });
+    }
+
+    goToSignup = () => {
+        Actions.signup();
     }
 
     render() {
@@ -79,7 +86,7 @@ export default class Login extends Component {
                 </View>
 
                 <View style={styles.signupBtn}>
-                    <TouchableHighlight onPress={ () => {this.props.navigator.push({name: 'Sign up'})} } underlayColor="#16a085">
+                    <TouchableHighlight onPress={ () => {Actions.signup()} } underlayColor="#16a085">
                         <Text style={{fontSize: 20, fontWeight: '900', color: '#1ABC9C'}}>Sign up!</Text>
                     </TouchableHighlight>
                 </View>
