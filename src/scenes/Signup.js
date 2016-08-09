@@ -23,17 +23,13 @@ export default class Signup extends Component {
                 uid: user.uid
             });
         })
-        .catch((error) => {
-            Alert.alert('Signup Error', error.message);
-        })
+        .catch((error) =>  Alert.alert('Signup Error', error.message) )
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
                 AsyncStorage.setItem('User', JSON.stringify(user));
-                this.props.navigator.resetTo({name: 'Posts'});
-            }).catch((error) => {
-                Alert.alert('Login Error', error.message);
-            });
+                Actions.posts();
+            }).catch((error) => Alert.alert('Login Error', error.message) );
         });
     }
 
