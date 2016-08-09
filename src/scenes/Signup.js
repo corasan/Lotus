@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage, ActivityIndicator } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export default class Signup extends Component {
     constructor(props) {
@@ -79,6 +80,12 @@ export default class Signup extends Component {
                         <Text style={{fontSize: 20, fontWeight: '900', color: 'white'}}>Sign up</Text>
                     </TouchableHighlight>
                 </View>
+
+                <View style={{marginTop: 50, alignItems: 'center'}}>
+                    <TouchableHighlight onPress={ () => {Actions.pop()} } underlayColor="#16a085">
+                        <Text style={{fontSize: 20, fontWeight: '900', color: '#1ABC9C'}}>Login</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -90,7 +97,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 15,
         paddingRight: 15,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        marginTop: 30
     },
     inputDiv: {
         backgroundColor: 'white',
