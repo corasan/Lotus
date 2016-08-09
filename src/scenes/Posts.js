@@ -33,7 +33,7 @@ export default class Posts extends Component {
     render() {
         return (
             <View style={styles.posts}>
-                <TouchableHighlight style={{marginTop: 60}} onPress={this.logout}>
+                <TouchableHighlight onPress={this.logout}>
                     <Text>Sign out</Text>
                 </TouchableHighlight>
                 <ScrollView>

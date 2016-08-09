@@ -49,10 +49,10 @@ class Lotus extends Component {
 
     render() {
         return (
-            <Router>
+            <Router sceneStyle={styles.container}>
                 <Scene key="root">
                     <Scene key="login" component={Login} initial={true} hideNavBar={true}/>
-                    <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
+                    <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE} tabs={true}/>
                     <Scene key="newPost" component={NewPost}/>
                     <Scene key="showPost" component={ShowPost} passProps={true}/>
                     <Scene key="signup" component={Signup} hideNavBar={true}/>
