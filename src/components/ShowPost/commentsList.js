@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
-import Comment from './comment';
 
 export default class CommentsList extends Component {
     constructor(props) {
@@ -26,16 +25,11 @@ export default class CommentsList extends Component {
     }
 
     renderRow = (data) => {
-        console.log(data);
-        if(typeof data !== Object) {
-            return <Text style={{fontSize: 24, marginTop: 100, marginLeft: 100}}>No comments</Text>
-        } else {
-            return(
-                <View style={styles.comment}>
-                    <Text style={{fontSize: 16}}>{data.comment}</Text>
-                </View>
-            );
-        }
+        return(
+            <View style={styles.comment}>
+                <Text style={{fontSize: 16}}>{data.comment}</Text>
+            </View>
+        );
     }
 
     render() {

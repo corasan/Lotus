@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         backgroundColor: 'white',
-        marginTop: 30
+        // marginTop: 30
     },
     inputDiv: {
         backgroundColor: 'white',

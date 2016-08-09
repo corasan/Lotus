@@ -21,11 +21,7 @@ export default class ShowPost extends Component {
             let post = data.val();
             this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
             firebase.database().ref('Comments/'+this.state.postId).on('value', function(commentsData) {
-                if (!commentsData.exists()) {
-                    this.setState({comments: {comment: 'No comments'}});
-                } else {
-                    this.setState({comments: commentsData.val()})
-                }
+                this.setState({comments: commentsData.val()})
             }.bind(this));
         }.bind(this));
     }
