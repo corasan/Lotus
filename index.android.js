@@ -28,7 +28,9 @@ class Lotus extends Component {
 
     render() {
         return (
-            <Router sceneStyle={styles.container} navigationBarStyle={styles.navbar}
+            <Router
+                sceneStyle={styles.container}
+                navigationBarStyle={styles.navbar}
                 backButtonImage={require('./src/img/left.png')}
             >
                 <Scene key="root">

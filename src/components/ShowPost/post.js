@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
 import TimeAgo from 'react-native-timeago';
 
 export default class Post extends Component {
@@ -11,11 +11,27 @@ export default class Post extends Component {
     render() {
         return (
             <View style={styles.post}>
-                <Text style={styles.postTitle}>{this.props.title}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={styles.postTitle}>{this.props.title}</Text>
+                    <View style={{paddingTop: 6}}>
+                        <TimeAgo time={this.props.createdAt}/>
+                    </View>
+                </View>
+
                 <Text style={styles.postContent}>{this.props.text}</Text>
 
-                <View>
-                    <TimeAgo time={this.props.createdAt}/>
+                <View style={{flexDirection: 'row', left: 200}}>
+                    <TouchableHighlight>
+                        <Image source={require('../../img/hand.png')} style={styles.img}/>
+                    </TouchableHighlight><Text style={{marginTop: 4, marginRight: 6}}>0</Text>
+
+                    <TouchableHighlight>
+                        <Image source={require('../../img/thumbsUp.png')} style={styles.img}/>
+                    </TouchableHighlight><Text style={{marginTop: 4, marginRight: 6, marginLeft: 4}}>0</Text>
+
+                    <TouchableHighlight>
+                        <Image source={require('../../img/heart.png')} style={styles.img}/>
+                    </TouchableHighlight><Text style={{marginTop: 4, marginLeft: 4}}>0</Text>
                 </View>
             </View>
         );
@@ -25,11 +41,11 @@ export default class Post extends Component {
 const styles = StyleSheet.create({
     post: {
         backgroundColor: 'white',
-        padding: 15,
+        padding: 16,
         elevation: 3
     },
     postTitle: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: '900',
         marginBottom: 15,
     },
@@ -39,4 +55,8 @@ const styles = StyleSheet.create({
     time: {
         alignItems: 'flex-end'
     },
+    img: {
+        height: 26,
+        width: 26,
+    }
 });
