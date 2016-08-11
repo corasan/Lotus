@@ -41,16 +41,16 @@ export default class Signup extends Component {
                         value={this.state.firstName}
                         onChangeText={ (firstName) => this.setState({firstName}) }
                         style={[styles.input, {width: 160}]}
-                        underlineColorAndroid='#1abc9c'
-                         placeholder="First name"
-                         autoCapitalize="sentences"
+                        underlineColorAndroid='#02C39A'
+                        placeholder="First name"
+                        autoCapitalize="sentences"
                     />
 
                     <TextInput
                         value={this.state.lastName}
                         onChangeText={ (lastName) => this.setState({lastName}) }
                         style={[styles.input, {width: 160}]}
-                        underlineColorAndroid='#1abc9c'
+                        underlineColorAndroid='#02C39A'
                         placeholder="Last name"
                         autoCapitalize="sentences"
                     />
@@ -59,14 +59,14 @@ export default class Signup extends Component {
                 <TextInput value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
                     style={styles.input}
-                    underlineColorAndroid='#1abc9c'
+                    underlineColorAndroid='#02C39A'
                     placeholder="Email"
                 />
 
                 <TextInput value={this.state.password}
                     onChangeText={ (password) => this.setState({password}) }
                     style={styles.input}
-                    underlineColorAndroid='#1abc9c'
+                    underlineColorAndroid='#02C39A'
                     placeholder="Password"
                     secureTextEntry={true}
                 />
@@ -79,7 +79,7 @@ export default class Signup extends Component {
 
                 <View style={{marginTop: 50, alignItems: 'center'}}>
                     <TouchableHighlight onPress={ () => {Actions.pop()} } underlayColor="#16a085">
-                        <Text style={{fontSize: 20, fontWeight: '900', color: '#1ABC9C'}}>Login</Text>
+                        <Text style={{fontSize: 20, fontWeight: '900', color: '#02C39A'}}>Login</Text>
                     </TouchableHighlight>
                 </View>
             </View>

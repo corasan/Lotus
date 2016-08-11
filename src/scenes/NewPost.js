@@ -46,7 +46,7 @@ export default class NewPost extends Component {
                     onChangeText={this.handleTitle}
                     autoCapitalize="sentences"
                     style={[styles.input, {marginBottom: 30}]}
-                    underlineColorAndroid="#1abc9c"
+                    underlineColorAndroid="#02C39A"
                 />
 
                 <TextInput
@@ -57,7 +57,7 @@ export default class NewPost extends Component {
                     multiline={true}
                     maxLength={600}
                     numberOfLines={5}
-                    underlineColorAndroid="#1abc9c"
+                    underlineColorAndroid="#02C39A"
                     onChange={(event) => {
                         this.setState({
                             text: event.nativeEvent.text,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     sendBtn: {
-        backgroundColor: '#1ABC9C',
+        backgroundColor: '#02C39A',
         width: 200,
         alignItems: 'center',
         marginTop: 30,

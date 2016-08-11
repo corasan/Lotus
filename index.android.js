@@ -1,4 +1,4 @@
-import React, { Component, StatusBar } from 'react';
+import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +9,8 @@ import {
   TouchableHighlight,
   BackAndroid,
   AsyncStorage,
-  ToastAndroid
+  ToastAndroid,
+  StatusBar
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
@@ -20,7 +21,6 @@ import Signup from './src/scenes/Signup';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 
 let navigator;
-
 class Lotus extends Component {
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
@@ -33,7 +33,7 @@ class Lotus extends Component {
             >
                 <Scene key="root">
                     <Scene key="login" component={Login} initial={true} hideNavBar={true} type={ActionConst.REPLACE}/>
-                    <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE} title="Posts"/>
+                    <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
                     <Scene key="newPost" component={NewPost}/>
                     <Scene key="showPost" component={ShowPost} passProps={true}/>
                     <Scene key="signup" component={Signup} hideNavBar={true}/>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     navbar: {
-        backgroundColor: '#00BFA5',
+        backgroundColor: '#02C39A',
         elevation: 3,
         borderBottomWidth: 0,
     }

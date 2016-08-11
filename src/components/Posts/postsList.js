@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     commentText: {
         fontWeight: '900',
         fontSize: 14,
-        color: '#1ABC9C',
+        color: '#02C39A',
         marginTop: 2,
         marginLeft: 2
     },

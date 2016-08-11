@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableHighlight, Text, AsyncStorage, Image, Dimensions, StatusBar } from 'react-native';
 import PostsList from '../components/Posts/postsList';
 import firebase from '../../firebaseInit';
 import { Actions } from 'react-native-router-flux';
@@ -16,6 +16,9 @@ export default class Posts extends Component {
     }
 
     componentWillMount() {
+        StatusBar.setHidden(false);
+        StatusBar.setBackgroundColor('#235546');
+        StatusBar.setTranslucent(false);
         firebase.database().ref('Posts').on('value', function(data) {
             let posts = data.val();
             let sortedPosts = Object.keys(posts).reverse().map((date) => posts[date])
@@ -66,6 +69,6 @@ const styles = StyleSheet.create({
         left: 290,
         elevation: 10,
         borderRadius: 100,
-        backgroundColor: '#1ABC9C'
+        backgroundColor: '#02C39A'
     }
 });

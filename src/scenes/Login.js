@@ -8,7 +8,8 @@ import {
   TextInput,
   AsyncStorage,
   ActivityIndicator,
-  Image
+  Image,
+  StatusBar
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -23,6 +24,7 @@ export default class Login extends Component {
     }
 
     componentWillMount() {
+        StatusBar.setHidden(true);
         AsyncStorage.getItem('User', (err, result) => {
             if(result) {
                 this.setState({animating: true});
@@ -60,12 +62,12 @@ export default class Login extends Component {
                         source={require('../img/lotus-logo-big.png')}
                         style={{height: 64, width: 110, marginBottom: 20}}
                     />
-                    <Text style={{fontSize: 24, fontWeight: '600', color: '#1ABC9C', marginBottom: 20}}>Lotus</Text>
+                    <Text style={{fontSize: 24, fontWeight: '600', color: '#02C39A', marginBottom: 20}}>Lotus</Text>
                 </View>
                 <TextInput
                     value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
-                    underlineColorAndroid="#1abc9c"
+                    underlineColorAndroid="#02C39A"
                     placeholder="Email Address"
                     style={{paddingBottom: 6, fontSize: 20}}
                 />
@@ -73,7 +75,7 @@ export default class Login extends Component {
                 <TextInput
                     value={this.state.password}
                     onChangeText={ (password) => this.setState({password}) }
-                    underlineColorAndroid="#1abc9c"
+                    underlineColorAndroid="#02C39A"
                     placeholder="Password"
                     secureTextEntry={true}
                     style={{paddingBottom: 6, fontSize: 20}}
@@ -87,7 +89,7 @@ export default class Login extends Component {
 
                 <View style={styles.signupBtn}>
                     <TouchableHighlight onPress={ () => {Actions.signup()} } underlayColor="#16a085">
-                        <Text style={{fontSize: 20, fontWeight: '900', color: '#1ABC9C'}}>Sign up!</Text>
+                        <Text style={{fontSize: 20, fontWeight: '900', color: '#02C39A'}}>Sign up!</Text>
                     </TouchableHighlight>
                 </View>
 
