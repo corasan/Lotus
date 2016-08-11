@@ -34,19 +34,18 @@ export default class PostsList extends Component {
     renderRow = (data) => {
         return(
             <View style={styles.post}>
-                <Text style={styles.postTitle}>{data.title}</Text>
-                <Text style={styles.postContent}>{data.text}</Text>
-
-                <View style={styles.footer}>
-                    <View style={{marginTop: 8}}>
+                <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
+                    <Text style={styles.postTitle}>{data.title}</Text>
+                    <View style={{paddingTop: 6}}>
                         <TimeAgo time={data.createdAt}/>
                     </View>
+                </View>
+                <Text style={styles.postContent}>{data.text}</Text>
 
-                    <TouchableHighlight style={{padding: 10}} underlayColor="#ecf0f1"
-                        onPress={ () => Actions.showPost({postId: data.id}) }
-                    >
+                <View style={{alignItems: 'flex-end'}}>
+                    <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) }>
                         <View style={{flexDirection: 'row'}}>
-                            <Image source={require('../../img/reply.png')} style={styles.commentImg}/>
+                            <Image source={require('../../img/comments.png')} style={styles.commentImg}/>
                             <Text style={styles.commentText}>Comment</Text>
                         </View>
                     </TouchableHighlight>
@@ -68,21 +67,21 @@ export default class PostsList extends Component {
 
 const styles = StyleSheet.create({
     post: {
-        paddingLeft: 16,
-        paddingRight: 16,
-        paddingTop: 16,
+        padding: 16,
         backgroundColor: 'white',
         borderColor: '#E5E5E5',
         borderStyle: 'solid',
         borderWidth: 1,
     },
     postTitle: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: '900',
         marginBottom: 15,
+        color: '#494D4F'
     },
     postContent: {
-        marginBottom: 30
+        marginBottom: 30,
+        fontSize: 16
     },
     footer: {
         justifyContent: 'space-between',
@@ -91,14 +90,13 @@ const styles = StyleSheet.create({
     },
     commentText: {
         fontWeight: '900',
-        fontSize: 14,
+        fontSize: 16,
         color: '#02C39A',
-        marginTop: 2,
-        marginLeft: 2
     },
     commentImg: {
-        height: 25,
-        width: 25,
-        marginBottom: 5
+        height: 28,
+        width: 28,
+        marginBottom: 5,
+        marginRight: 5
     }
 })
