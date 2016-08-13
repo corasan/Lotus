@@ -52,7 +52,7 @@ export default class Posts extends Component {
             //     drawerPosition={DrawerLayoutAndroid.positions.Left}
             //     renderNavigationView={() => <Text>Henry</Text>}
             // >
-            <SideMenu menu={<Text>Hello!</Text>}>
+            // <SideMenu menu={<Text>Hello!</Text>}>
                 <View style={styles.posts}>
                     <TouchableHighlight onPress={this.logout}>
                         <Text>Sign out</Text>
@@ -71,7 +71,7 @@ export default class Posts extends Component {
                         </View>
                     </TouchableHighlight>
                 </View>
-            </SideMenu>
+            // </SideMenu>
             // </DrawerLayoutAndroid>
         )
     }

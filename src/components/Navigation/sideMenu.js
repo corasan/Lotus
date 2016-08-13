@@ -5,7 +5,11 @@ import { Actions, DefaultRenderer } from 'react-native-router-flux';
 export default class SideMenu extends Component {
     render() {
         return (
-            <Text>Henry Paulino</Text>
+            <View>
+                <Text>Henry Paulino</Text>
+                <Text>Henry Paulino</Text>
+                <Text>Henry Paulino</Text>
+            </View>
         );
     }
 }
