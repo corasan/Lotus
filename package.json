@@ -10,8 +10,10 @@
     "react": "15.2.1",
     "react-native": "0.31.0",
     "react-native-autogrow-textinput": "^2.0.4",
+    "react-native-drawer": "^2.2.6",
     "react-native-md-textinput": "^2.0.4",
     "react-native-router-flux": "^3.33.2",
+    "react-native-side-menu": "^0.20.0",
     "react-native-timeago": "^0.3.0"
   }
 }

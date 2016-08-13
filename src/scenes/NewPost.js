@@ -73,7 +73,7 @@ export default class NewPost extends Component {
                         placeholder="Title" style={styles.sendBtn}
                         underlayColor="#16a085"
                     >
-                        <Text style={{color: 'white', fontWeight: '900', fontSize: 16}}>Send Post</Text>
+                        <Text style={{color: 'white', fontSize: 22}}>Done</Text>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
         width: 200,
         alignItems: 'center',
         marginTop: 30,
-        paddingTop: 15,
-        paddingBottom: 15,
+        paddingTop: 12,
+        paddingBottom: 12,
         borderRadius: 30
     },
     input: {
