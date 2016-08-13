@@ -30,7 +30,6 @@ export default class Login extends Component {
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
-                    // this.props.navigator.resetTo({name: 'Posts'});
                     Actions.posts();
                 }, 1000);
             } else {
@@ -42,8 +41,7 @@ export default class Login extends Component {
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
-            AsyncStorage.setItem('User', JSON.stringify(user));
-            // this.props.navigator.resetTo({name: 'Posts'});
+            AsyncStorage.setItem('User', JSON.stringify(user.uid));
             Actions.posts();
         }).catch((error) => {
             Alert.alert('Login', error.message);

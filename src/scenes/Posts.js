@@ -38,20 +38,11 @@ export default class Posts extends Component {
 
     }
 
-    logout = () => {
-        AsyncStorage.removeItem('User', () => {
-            Actions.login();
-        });
-    }
-
     render() {
         return (
             <View style={styles.posts}>
-                <TouchableHighlight onPress={this.logout}>
-                    <Text>Sign out</Text>
-                </TouchableHighlight>
                 <ScrollView>
-                    <PostsList posts={this.state.posts} navigator={ this.state.nav}/>
+                    <PostsList posts={this.state.posts}/>
                 </ScrollView>
 
                 <TouchableHighlight

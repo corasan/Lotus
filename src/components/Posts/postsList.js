@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     postContent: {
         marginBottom: 30,
-        fontSize: 16
+        fontSize: 15
     },
     footer: {
         justifyContent: 'space-between',

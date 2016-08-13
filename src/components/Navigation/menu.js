@@ -1,16 +1,34 @@
 import React, { Component, PropTypes } from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import SideMenuButton from './sideMenuBtn';
 
 export default class Menu extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: null
+        }
+    }
+    logout = () => {
+        AsyncStorage.removeItem('User', () => {
+            Actions.login();
+        });
+    }
+
+    goToProfile = () => {
+        AsyncStorage.getItem('User', (err, userId) => {
+            Actions.profile({userId: userId});
+        });
+    }
+
     render() {
         return (
             <View>
                 <View>
                     <SideMenuButton
                         source={require('../../img/profile.png')}
-                        onPress={ () => console.log('pressed') }
+                        onPress={this.goToProfile}
                         menuText="Profile"
                     />
 
@@ -42,7 +60,7 @@ export default class Menu extends Component {
 
                     <SideMenuButton
                         source={require('../../img/logout.png')}
-                        onPress={ () => console.log('pressed') }
+                        onPress={this.logout}
                         menuText="Log out"
                     />
                 </View>

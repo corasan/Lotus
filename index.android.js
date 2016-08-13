@@ -19,28 +19,31 @@ import NewPost from './src/scenes/NewPost';
 import ShowPost from './src/scenes/ShowPost';
 import Login from './src/scenes/Login';
 import Signup from './src/scenes/Signup';
+import Profile from './src/scenes/Profile';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 import Menu from './src/components/Navigation/menu';
 import Drawer from 'react-native-drawer';
 
-const menu = <Menu/>
 let navigator;
 class Lotus extends Component {
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
     }
 
+    closeOnPress = () => {
+        console.log('pressed');
+        this._drawer.close();
+    }
+
     render() {
         return (
             <Drawer
                 type="static"
-                content={menu}
+                content={<Menu closeOnPress={this.closeOnPress}/>}
                 openDrawerOffset={100}
                 tweenHandler={Drawer.tweenPresets.parallax}
-                style={{backgroundColor: '#34495E'}}
-                //elevation={6}
-                //ref={ (ref) => this._drawer = ref }
                 tapToClose={true}
+                ref={ (ref) => this._drawer = ref }
             >
                 <Router
                     sceneStyle={styles.container}
@@ -54,6 +57,7 @@ class Lotus extends Component {
                         <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
                         <Scene key="newPost" component={NewPost}/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
+                        <Scene key="profile" component={Profile} passProps={true}/>
                     </Scene>
                 </Router>
             </Drawer>
