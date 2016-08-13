@@ -14,7 +14,6 @@ import {
 import PostsList from '../components/Posts/postsList';
 import firebase from '../../firebaseInit';
 import { Actions } from 'react-native-router-flux';
-import SideMenu from 'react-native-side-menu';
 
 const height = Dimensions.get('window').height;
 
@@ -47,32 +46,24 @@ export default class Posts extends Component {
 
     render() {
         return (
-            // <DrawerLayoutAndroid
-            //     drawerWidth={300}
-            //     drawerPosition={DrawerLayoutAndroid.positions.Left}
-            //     renderNavigationView={() => <Text>Henry</Text>}
-            // >
-            // <SideMenu menu={<Text>Hello!</Text>}>
-                <View style={styles.posts}>
-                    <TouchableHighlight onPress={this.logout}>
-                        <Text>Sign out</Text>
-                    </TouchableHighlight>
-                    <ScrollView>
-                        <PostsList posts={this.state.posts} navigator={ this.state.nav}/>
-                    </ScrollView>
+            <View style={styles.posts}>
+                <TouchableHighlight onPress={this.logout}>
+                    <Text>Sign out</Text>
+                </TouchableHighlight>
+                <ScrollView>
+                    <PostsList posts={this.state.posts} navigator={ this.state.nav}/>
+                </ScrollView>
 
-                    <TouchableHighlight
-                        underlayColor="#16a085"
-                        onPress={ () => Actions.newPost() }
-                        style={styles.newPost}
-                    >
-                        <View style={{alignItems: 'center', marginTop: -2}}>
-                            <Text style={{fontSize: 40, color: 'white'}}>+</Text>
-                        </View>
-                    </TouchableHighlight>
-                </View>
-            // </SideMenu>
-            // </DrawerLayoutAndroid>
+                <TouchableHighlight
+                    underlayColor="#16a085"
+                    onPress={ () => Actions.newPost() }
+                    style={styles.newPost}
+                >
+                    <View style={{alignItems: 'center', marginTop: -2}}>
+                        <Text style={{fontSize: 40, color: 'white'}}>+</Text>
+                    </View>
+                </TouchableHighlight>
+            </View>
         )
     }
 }
