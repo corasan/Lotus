@@ -20,13 +20,14 @@ export default class Signup extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
-                uid: user.uid
+                uid: user.uid,
+                displayName: this.state.firstName+ ' ' + this.state.lastName
             });
         })
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                AsyncStorage.setItem('User', JSON.stringify(user.uid));
+                AsyncStorage.setItem('User', JSON.parse(user.uid));
                 Actions.posts();
             }).catch((error) => Alert.alert('Login Error', error.message) );
         })

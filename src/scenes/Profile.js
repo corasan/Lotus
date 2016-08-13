@@ -1,17 +1,29 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
+let height = Dimensions.get('window').height;
+import firebase from '../../firebaseInit';
 
 export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user
+            displayName: ''
         }
     }
+
+    componentWillMount() {
+        let uid = this.props.userId.replace(/["]+/g, '');
+        firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
+            let user = snapshot.val();
+            console.log(user);
+            this.setState({displayName: user.displayName});
+        }.bind(this));
+    }
+
     render() {
         return (
-            <View style={{backgroundColor: 'white'}}>
-
+            <View style={{backgroundColor: 'white', height: height}}>
+                <Text style={{marginTop: 100}}>{this.state.displayName}</Text>
             </View>
         );
     }
