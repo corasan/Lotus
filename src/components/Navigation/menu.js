@@ -6,7 +6,7 @@ import SideMenuButton from './sideMenuBtn';
 export default class Menu extends Component {
     render() {
         return (
-            <View>
+            <View style={{paddingLeft: 26}}>
                 <SideMenuButton
                     source={require('../../img/profile.png')}
                     onPress={ () => console.log('pressed') }

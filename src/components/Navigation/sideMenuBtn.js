@@ -13,9 +13,11 @@ export default class SideMenuButton extends Component {
     render() {
         return(
             <TouchableHighlight onPress={this.props.onPress} underlayColor={this.props.underlayColor}>
-                <View>
+                <View style={{flexDirection: 'row'}}>
                     <Image source={this.props.source}/>
-                    <Text>{this.props.menuText}</Text>
+                    <View style={{justifyContent: 'center'}}>
+                        <Text style={{color: 'white', fontSize: 16}}>{this.props.menuText}</Text>
+                    </View>
                 </View>
             </TouchableHighlight>
         );
@@ -23,5 +25,5 @@ export default class SideMenuButton extends Component {
 }
 
 const styles = StyleSheet.create({
-    
+
 });
