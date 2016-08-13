@@ -11,11 +11,11 @@ export default class SideMenuButton extends Component {
 
     render() {
         return(
-            <View style={{marginBottom: 22}}>
+            <View>
                 <TouchableHighlight
                     onPress={this.props.onPress}
                     underlayColor={this.props.underlayColor}
-                    style={{paddingLeft: 26}}
+                    style={{paddingLeft: 26, paddingBottom: 10, paddingTop: 10}}
                     underlayColor="#2c3e50"
                 >
                     <View style={{flexDirection: 'row'}}>
