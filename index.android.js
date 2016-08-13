@@ -20,9 +20,10 @@ import ShowPost from './src/scenes/ShowPost';
 import Login from './src/scenes/Login';
 import Signup from './src/scenes/Signup';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
-import Menu from './src/components/Navigation/sideMenu';
+import Menu from './src/components/Navigation/menu';
 import Drawer from 'react-native-drawer';
 
+const menu = <Menu/>
 let navigator;
 class Lotus extends Component {
     componentDidMount() {
@@ -33,9 +34,10 @@ class Lotus extends Component {
         return (
             <Drawer
                 type="static"
-                content={<Text>Hello</Text>}
+                content={menu}
                 openDrawerOffset={100}
                 tweenHandler={Drawer.tweenPresets.parallax}
+                style={{backgroundColor: '#34495E'}}
             >
                 <Router
                     sceneStyle={styles.container}
