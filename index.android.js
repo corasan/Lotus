@@ -38,6 +38,9 @@ class Lotus extends Component {
                 openDrawerOffset={100}
                 tweenHandler={Drawer.tweenPresets.parallax}
                 style={{backgroundColor: '#34495E'}}
+                //elevation={6}
+                //ref={ (ref) => this._drawer = ref }
+                tapToClose={true}
             >
                 <Router
                     sceneStyle={styles.container}
