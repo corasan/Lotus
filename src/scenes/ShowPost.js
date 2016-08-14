@@ -38,7 +38,7 @@ export default class ShowPost extends Component {
         } else {
             return (
                 <View style={{flex: 1}}>
-                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
+                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt} postId={this.state.postId}/>
                     <CommentsList comments={this.state.comments} noComment={this.state.noComment}/>
                     <SendComment postId={this.state.postId}/>
                 </View>

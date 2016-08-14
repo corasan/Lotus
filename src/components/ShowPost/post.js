@@ -6,8 +6,43 @@ export default class Post extends Component {
     static propTypes = {
         title: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
-        createdAt: PropTypes.string.isRequired
+        createdAt: PropTypes.string.isRequired,
+        postId: PropTypes.string
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            highFives: '0',
+            thumbsUps: '0',
+            likes: '0',
+            postId: this.props.postId,
+        }
+    }
+
+    componentWillMount() {
+        firebase.database().ref(`Posts/${this.state.postId}`).on('value', function(snapshot) {
+            let data = snapshot.val();
+            this.setState({highFives: data.highFives, likes: data.likes, thumbsUps: data.thumbsUps});
+        }.bind(this));
+    }
+
+    reactioHandler = (target) => {
+        let postRef = firebase.database().ref(`Posts/${this.state.postId}`);
+        switch(target) {
+            case 'highFive':
+                postRef.update({highFives: this.state.highFives + 1});
+                break;
+            case 'like':
+                postRef.update({likes: this.state.likes + 1});
+                break;
+            case 'thumbsUp':
+                postRef.update({thumbsUps: this.state.thumbsUps + 1});
+                break;
+        }
+
+    }
+
     render() {
         return (
             <View style={styles.post}>
@@ -20,18 +55,21 @@ export default class Post extends Component {
 
                 <Text style={styles.postContent}>{this.props.text}</Text>
 
-                <View style={{flexDirection: 'row', left: 200}}>
-                    <TouchableHighlight>
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                    <TouchableHighlight onPress={ () => {this.reactioHandler('highFive')} }>
                         <Image source={require('../../img/hand.png')} style={styles.img}/>
-                    </TouchableHighlight><Text style={{marginTop: 4, marginRight: 6}}>0</Text>
+                    </TouchableHighlight>
+                    <Text style={{marginTop: 4, marginRight: 6}}>{this.state.highFives}</Text>
 
-                    <TouchableHighlight>
+                    <TouchableHighlight onPress={ () => {this.reactioHandler('thumbsUp')} }>
                         <Image source={require('../../img/thumbsUp.png')} style={styles.img}/>
-                    </TouchableHighlight><Text style={{marginTop: 4, marginRight: 6, marginLeft: 4}}>0</Text>
+                    </TouchableHighlight>
+                    <Text style={{marginTop: 4, marginRight: 6, marginLeft: 4}}>{this.state.thumbsUps}</Text>
 
-                    <TouchableHighlight>
+                    <TouchableHighlight onPress={ () => {this.reactioHandler('like')} }>
                         <Image source={require('../../img/heart.png')} style={styles.img}/>
-                    </TouchableHighlight><Text style={{marginTop: 4, marginLeft: 4}}>0</Text>
+                    </TouchableHighlight>
+                    <Text style={{marginTop: 4, marginLeft: 4}}>{this.state.likes}</Text>
                 </View>
             </View>
         );

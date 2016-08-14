@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 let height = Dimensions.get('window').height;
-import firebase from '../../firebaseInit';
 
 export default class Profile extends Component {
     constructor(props) {
