@@ -13,13 +13,14 @@ export default class ShowPost extends Component {
             createdAt: '',
             postId: this.props.postId,
             comments: [],
+            post: null
         }
     }
 
     componentWillMount() {
         firebase.database().ref('Posts/'+this.state.postId).on('value', function(data) {
             let post = data.val();
-            this.setState({title: post.title, text: post.text, createdAt: post.createdAt});
+            this.setState({title: post.title, text: post.text, createdAt: post.createdAt, post: post});
             firebase.database().ref('Comments/'+this.state.postId).on('value', function(commentsData) {
                 this.setState({comments: commentsData.val()})
             }.bind(this));
@@ -30,8 +31,8 @@ export default class ShowPost extends Component {
         if(!this.state.comments) {
             return (
                 <View style={{flex: 1}}>
-                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt}/>
-                    <Text>No comments</Text>
+                    <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt} postId={this.state.postId}/>
+                    <Text style={{fontSize: 30, marginLeft: 80, marginTop: 120}}>No comments</Text>
                     <SendComment postId={this.state.postId}/>
                 </View>
             );

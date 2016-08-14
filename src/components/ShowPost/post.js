@@ -8,15 +8,12 @@ export default class Post extends Component {
         title: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
         createdAt: PropTypes.string.isRequired,
-        postId: PropTypes.string
+        postId: PropTypes.string.isRequired
     }
 
     constructor(props) {
         super(props);
         this.state = {
-            highFives: 0,
-            thumbsUps: 0,
-            likes: 0,
             postId: this.props.postId,
         }
     }
@@ -28,7 +25,7 @@ export default class Post extends Component {
         }.bind(this));
     }
 
-    reactioHandler = (target) => {
+    reactionHandler = (target) => {
         let postRef = firebase.database().ref(`Posts/${this.state.postId}`);
         switch(target) {
             case 'highFive':
@@ -41,7 +38,6 @@ export default class Post extends Component {
                 postRef.update({thumbsUps: this.state.thumbsUps + 1});
                 break;
         }
-
     }
 
     render() {
@@ -58,19 +54,19 @@ export default class Post extends Component {
 
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
                     <ReactionButton
-                        onPress={ () => {this.reactioHandler('highFive')} }
+                        onPress={ () => {this.reactionHandler('highFive')} }
                         imgSource={require('../../img/hand.png')}
                         counterText={this.state.highFives}
                     />
 
                     <ReactionButton
-                        onPress={ () => {this.reactioHandler('thumbsUp')} }
+                        onPress={ () => {this.reactionHandler('thumbsUp')} }
                         imgSource={require('../../img/thumbsUp.png')}
                         counterText={this.state.thumbsUps}
                     />
 
                     <ReactionButton
-                        onPress={ () => {this.reactioHandler('like')} }
+                        onPress={ () => {this.reactionHandler('like')} }
                         imgSource={require('../../img/heart.png')}
                         counterText={this.state.likes}
                     />
