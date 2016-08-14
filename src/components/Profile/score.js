@@ -4,7 +4,6 @@ import { View, Text, StyleSheet } from 'react-native';
 export default class Score extends Component {
     static propTypes = {
         title: PropTypes.string.isRequired,
-        score: PropTypes.number.isRequired
     }
     render() {
         return (

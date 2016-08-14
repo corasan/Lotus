@@ -20,12 +20,19 @@ export default class Profile extends Component {
                 posts: user.posts,
                 rank: user.rank,
                 helped: user.helped,
-                reputation: user.reputation
+                reputation: user.reputation,
+                reputationNeeded: user.reputationNeeded,
+                progress: (user.reputation/100)/100
             });
         }.bind(this));
     }
 
+    setProgress = (x) => {
+        this.setState({progress: (x/100)/100});
+    }
+
     render() {
+        console.log('State:', this.state.progress);
         return (
             <View style={styles.container}>
                 <View style={{flexDirection: 'row', marginTop: 35}}>
@@ -43,7 +50,17 @@ export default class Profile extends Component {
                     <Text style={{fontSize: 18}}>Next Rank</Text>
                     <Image source={require('../img/levelUp.png')} style={{height: 30, width: 30, bottom: 4}}/>
                 </View>
-                <Progress.Bar progress={0.3} width={260} height={16} borderWidth={1} borderRadius={10} />
+                <View style={{marginTop: 10}}>
+                    <Progress.Bar
+                        progress={this.state.progress}
+                        width={260}
+                        height={16}
+                        borderWidth={2}
+                        borderRadius={10}
+                        borderColor="#ECF0F1"
+                        color="#02C39A"
+                    />
+                </View>
             </View>
         );
     }
