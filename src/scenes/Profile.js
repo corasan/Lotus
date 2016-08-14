@@ -1,16 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Score from '../components/Profile/score';
+import * as Progress from 'react-native-progress';
 
 export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             displayName: '',
-            posts: '',
-            rank: '',
-            helped: '',
-            reputation: ''
         }
     }
 
@@ -43,11 +40,10 @@ export default class Profile extends Component {
                 </View>
 
                 <View style={{flexDirection: 'row', marginTop: 35}}>
-                    <Text>Next Rank</Text>
-                    <View style={{bottom: 6}}>
-                        <Image source={require('../img/levelUp.png')} style={{height: 30, width: 30}}/>
-                    </View>
+                    <Text style={{fontSize: 18}}>Next Rank</Text>
+                    <Image source={require('../img/levelUp.png')} style={{height: 30, width: 30, bottom: 4}}/>
                 </View>
+                <Progress.Bar progress={0.3} width={260} height={16} borderWidth={1} borderRadius={10} />
             </View>
         );
     }
