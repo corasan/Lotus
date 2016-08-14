@@ -40,7 +40,9 @@ export default class ShowPost extends Component {
             return (
                 <View style={{flex: 1}}>
                     <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt} postId={this.state.postId}/>
-                    <CommentsList comments={this.state.comments} noComment={this.state.noComment}/>
+                    <ScrollView style={{marginBottom: 60}}>
+                        <CommentsList comments={this.state.comments} noComment={this.state.noComment}/>
+                    </ScrollView>
                     <SendComment postId={this.state.postId}/>
                 </View>
             );

@@ -80,7 +80,8 @@ const styles = {
     post: {
         backgroundColor: 'white',
         padding: 16,
-        elevation: 3
+        borderColor: '#ECF0F1',
+        borderWidth: 2
     },
     postTitle: {
         fontSize: 22,

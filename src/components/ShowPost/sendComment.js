@@ -31,7 +31,7 @@ export default class WriteComment extends Component {
                 id: this.state.postId,
                 commentId: commentId
             });
-            this.setState({commentText: ''});
+            this.setState({commentText: '', height: 50});
         }
     }
 
@@ -65,6 +65,7 @@ export default class WriteComment extends Component {
 
 const styles = {
     content: {
+        flex: 1,
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -72,7 +73,7 @@ const styles = {
         paddingTop: 5,
         paddingBottom: 5,
         paddingRight: 5,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     sendBtn: {
         height: 50,

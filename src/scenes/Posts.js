@@ -41,9 +41,7 @@ export default class Posts extends Component {
     render() {
         return (
             <View style={styles.posts}>
-                <ScrollView>
-                    <PostsList posts={this.state.posts}/>
-                </ScrollView>
+                <PostsList posts={this.state.posts}/>
 
                 <TouchableHighlight
                     underlayColor="#16a085"

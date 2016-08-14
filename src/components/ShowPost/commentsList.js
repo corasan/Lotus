@@ -45,10 +45,13 @@ export default class CommentsList extends Component {
 
 const styles = {
     comment: {
-        padding: 15,
-        width: 360,
-        elevation: 3,
+        minHeight: 100,
+        maxHeight: 400,
+        padding: 16,
         backgroundColor: 'white',
-        marginBottom: 15,
+        borderColor: '#ECF0F1',
+        borderWidth: 1,
+        paddingTop: 10,
+        paddingBottom: 10
     }
 };

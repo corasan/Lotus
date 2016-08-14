@@ -32,7 +32,6 @@ export default class Profile extends Component {
     }
 
     render() {
-        console.log('State:', this.state.progress);
         return (
             <View style={styles.container}>
                 <View style={{flexDirection: 'row', marginTop: 35}}>
