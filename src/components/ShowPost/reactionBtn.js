@@ -5,7 +5,6 @@ export default class ReactionButton extends Component {
     static propTypes = {
         onPress: PropTypes.func.isRequired,
         imgSource: PropTypes.number.isRequired,
-        // counterText: PropTypes.number.isRequired
     }
 
     render() {

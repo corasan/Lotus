@@ -14,7 +14,7 @@ export default class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            postId: this.props.postId,
+            postId: this.props.postId
         }
     }
 
@@ -76,7 +76,7 @@ export default class Post extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     post: {
         backgroundColor: 'white',
         padding: 16,
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
         height: 26,
         width: 26,
     }
-});
+};

@@ -43,7 +43,7 @@ export default class CommentsList extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     comment: {
         padding: 15,
         width: 360,
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: 15,
     }
-})
+};

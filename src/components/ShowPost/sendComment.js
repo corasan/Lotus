@@ -63,7 +63,7 @@ export default class WriteComment extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     content: {
         backgroundColor: 'white',
         position: 'absolute',
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
         marginRight: 10,
         borderRadius: 8
     }
-});
+};

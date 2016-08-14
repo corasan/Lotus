@@ -21,7 +21,9 @@ export default class Signup extends Component {
                 lastName: this.state.lastName,
                 email: this.state.email,
                 uid: user.uid,
-                displayName: this.state.firstName+ ' ' + this.state.lastName
+                displayName: this.state.firstName+ ' ' + this.state.lastName,
+                points: 0,
+                rank: 1
             });
         })
         .then(() => {

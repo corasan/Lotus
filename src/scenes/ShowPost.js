@@ -48,7 +48,7 @@ export default class ShowPost extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     post: {
         backgroundColor: 'white',
         padding: 15,
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '900'
     },
-});
+};

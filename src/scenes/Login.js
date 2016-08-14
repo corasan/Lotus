@@ -99,7 +99,7 @@ export default class Login extends Component {
 }
 
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#bdc3c7',
         marginBottom: 30,
         borderRadius: 4,
-        // elevation: 2,
         padding: -2
     },
     input: {
@@ -134,4 +133,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50
     }
-});
+};

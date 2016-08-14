@@ -65,7 +65,7 @@ class Lotus extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
         flex: 1,
         backgroundColor: '#EFEBE9',
@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 3
     },
-});
+};
 
 AppRegistry.registerComponent('Lotus', () => Lotus);
