@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
 import TimeAgo from 'react-native-timeago';
+import ReactionButton from './reactionBtn';
 
 export default class Post extends Component {
     static propTypes = {
@@ -13,9 +14,9 @@ export default class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            highFives: '0',
-            thumbsUps: '0',
-            likes: '0',
+            highFives: 0,
+            thumbsUps: 0,
+            likes: 0,
             postId: this.props.postId,
         }
     }
@@ -56,20 +57,23 @@ export default class Post extends Component {
                 <Text style={styles.postContent}>{this.props.text}</Text>
 
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-                    <TouchableHighlight onPress={ () => {this.reactioHandler('highFive')} }>
-                        <Image source={require('../../img/hand.png')} style={styles.img}/>
-                    </TouchableHighlight>
-                    <Text style={{marginTop: 4, marginRight: 6}}>{this.state.highFives}</Text>
+                    <ReactionButton
+                        onPress={ () => {this.reactioHandler('highFive')} }
+                        imgSource={require('../../img/hand.png')}
+                        counterText={this.state.highFives}
+                    />
 
-                    <TouchableHighlight onPress={ () => {this.reactioHandler('thumbsUp')} }>
-                        <Image source={require('../../img/thumbsUp.png')} style={styles.img}/>
-                    </TouchableHighlight>
-                    <Text style={{marginTop: 4, marginRight: 6, marginLeft: 4}}>{this.state.thumbsUps}</Text>
+                    <ReactionButton
+                        onPress={ () => {this.reactioHandler('thumbsUp')} }
+                        imgSource={require('../../img/thumbsUp.png')}
+                        counterText={this.state.thumbsUps}
+                    />
 
-                    <TouchableHighlight onPress={ () => {this.reactioHandler('like')} }>
-                        <Image source={require('../../img/heart.png')} style={styles.img}/>
-                    </TouchableHighlight>
-                    <Text style={{marginTop: 4, marginLeft: 4}}>{this.state.likes}</Text>
+                    <ReactionButton
+                        onPress={ () => {this.reactioHandler('like')} }
+                        imgSource={require('../../img/heart.png')}
+                        counterText={this.state.likes}
+                    />
                 </View>
             </View>
         );
