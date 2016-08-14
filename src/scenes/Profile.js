@@ -22,7 +22,8 @@ export default class Profile extends Component {
                 helped: user.helped,
                 reputation: user.reputation,
                 reputationNeeded: user.reputationNeeded,
-                progress: (user.reputation/100)/100
+                progress: (user.reputation/100)/100,
+                medals: user.medals
             });
         }.bind(this));
     }
@@ -36,7 +37,7 @@ export default class Profile extends Component {
             <View style={styles.container}>
                 <View style={{flexDirection: 'row', marginTop: 35}}>
                     <Text style={styles.name}>{this.state.displayName}</Text>
-                    <Text style={{fontSize: 18, marginTop: 6, color: '#95989A'}}>Rank {this.state.rank}</Text>
+                    <Text style={{fontSize: 16, marginTop: 8, color: '#95989A'}}>Rank {this.state.rank}</Text>
                 </View>
 
                 <View style={{flexDirection: 'row', marginTop: 35, justifyContent: 'space-between'}}>
@@ -46,7 +47,7 @@ export default class Profile extends Component {
                 </View>
 
                 <View style={{flexDirection: 'row', marginTop: 35}}>
-                    <Text style={{fontSize: 18}}>Next Rank</Text>
+                    <Text style={{fontSize: 18, color: '#494D4F'}}>Next Rank</Text>
                     <Image source={require('../img/levelUp.png')} style={{height: 30, width: 30, bottom: 4}}/>
                 </View>
                 <View style={{marginTop: 10}}>
@@ -59,6 +60,11 @@ export default class Profile extends Component {
                         borderColor="#ECF0F1"
                         color="#02C39A"
                     />
+                </View>
+
+                <View style={{marginTop: 35, flexDirection: 'row'}}>
+                    <Text style={{fontSize: 18, color: '#494D4F'}}>Medals</Text>
+                    <Text style={{fontSize: 16, color: '#95989A', marginTop: 3, marginLeft: 10}}>{this.state.medals}</Text>
                 </View>
             </View>
         );
@@ -76,6 +82,7 @@ const styles = {
     name: {
         fontSize: 24,
         fontWeight: '900',
-        marginRight: 10
+        marginRight: 10,
+        color: '#494D4F'
     }
 };
