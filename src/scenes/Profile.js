@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Score from '../components/Profile/score';
 
 export default class Profile extends Component {
@@ -40,6 +40,13 @@ export default class Profile extends Component {
                     <Score title="Reputation" score={this.state.reputation}/>
                     <Score title="Posts" score={this.state.posts}/>
                     <Score title="Helped" score={this.state.helped}/>
+                </View>
+
+                <View style={{flexDirection: 'row', marginTop: 35}}>
+                    <Text>Next Rank</Text>
+                    <View style={{bottom: 6}}>
+                        <Image source={require('../img/levelUp.png')} style={{height: 30, width: 30}}/>
+                    </View>
                 </View>
             </View>
         );
