@@ -57,7 +57,7 @@ export default class Posts extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     posts: {
         flex: 1,
         height: height
@@ -71,4 +71,4 @@ const styles = {
         borderRadius: 100,
         backgroundColor: '#02C39A'
     }
-};
+});

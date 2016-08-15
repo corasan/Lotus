@@ -8,9 +8,21 @@ export default class Score extends Component {
     render() {
         return (
             <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 18, color: '#494D4F'}}>{this.props.title}</Text>
-                <Text style={{color: '#02C39A', fontWeight: '900', fontSize: 24}}>{this.props.score}</Text>
+                <Text style={styles.title}>{this.props.title}</Text>
+                <Text style={styles.score}>{this.props.score}</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    score: {
+        color: '#02C39A',
+        fontWeight: '900',
+        fontSize: 24
+    },
+    title: {
+        fontSize: 18,
+        color: '#494D4F'
+    }
+})

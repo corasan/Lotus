@@ -55,7 +55,7 @@ export default class WriteComment extends Component {
 
                 <View>
                     <TouchableHighlight underlayColor="#ecf0f1" onPress={this.sendComment} style={styles.sendBtn}>
-                        <Text style={{fontSize: 18, fontWeight: '900', color: '#02C39A'}}>Send</Text>
+                        <Text style={styles.sendText}>Send</Text>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -63,7 +63,7 @@ export default class WriteComment extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     content: {
         flex: 1,
         backgroundColor: 'white',
@@ -82,5 +82,10 @@ const styles = {
         paddingTop: 10,
         marginRight: 10,
         borderRadius: 8
+    },
+    sendText: {
+        marginTop: 4,
+        marginRight: 6,
+        marginLeft: 4
     }
-};
+});

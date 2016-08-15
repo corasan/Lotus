@@ -13,8 +13,16 @@ export default class ReactionButton extends Component {
                 <TouchableHighlight onPress={this.props.onPress}>
                     <Image source={this.props.imgSource} style={{height: 26, width: 26}}/>
                 </TouchableHighlight>
-                <Text style={{marginTop: 4, marginRight: 6, marginLeft: 4}}>{this.props.counterText}</Text>
+                <Text style={styles.counter}>{this.props.counterText}</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    counter: {
+        marginTop: 4,
+        marginRight: 6,
+        marginLeft: 4
+    }
+});

@@ -69,7 +69,7 @@ export default class Profile extends Component {
 }
 
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
@@ -99,4 +99,4 @@ const styles = {
         width: 30,
         bottom: 4
     }
-};
+});

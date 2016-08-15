@@ -32,7 +32,7 @@ export default class ShowPost extends Component {
             return (
                 <View style={{flex: 1}}>
                     <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt} postId={this.state.postId}/>
-                    <Text style={{fontSize: 30, marginLeft: 80, marginTop: 120}}>No comments</Text>
+                    <Text style={styles.noComment}>No comments</Text>
                     <SendComment postId={this.state.postId}/>
                 </View>
             );
@@ -50,7 +50,7 @@ export default class ShowPost extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     post: {
         backgroundColor: 'white',
         padding: 15,
@@ -74,4 +74,7 @@ const styles = {
         fontSize: 16,
         fontWeight: '900'
     },
-};
+    noComment: {
+        fontSize: 30, marginLeft: 80, marginTop: 120
+    }
+});

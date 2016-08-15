@@ -81,7 +81,7 @@ export default class NewPost extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     content: {
         flex: 1,
         paddingLeft: 20,
@@ -102,4 +102,4 @@ const styles = {
         paddingBottom: 6,
         fontSize: 18,
     },
-};
+});

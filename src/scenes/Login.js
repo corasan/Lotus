@@ -56,18 +56,15 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <View style={{alignItems: 'center', }}>
-                    <Image
-                        source={require('../img/lotus-logo-big.png')}
-                        style={{height: 64, width: 110, marginBottom: 20}}
-                    />
-                    <Text style={{fontSize: 24, fontWeight: '600', color: '#02C39A', marginBottom: 20}}>Lotus</Text>
+                    <Image source={require('../img/lotus-logo-big.png')} style={styles.logoImg}/>
+                    <Text style={styles.logoTitle}>Lotus</Text>
                 </View>
                 <TextInput
                     value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
                     underlineColorAndroid="#02C39A"
                     placeholder="Email Address"
-                    style={{paddingBottom: 6, fontSize: 20}}
+                    style={styles.input}
                 />
 
                 <TextInput
@@ -76,30 +73,27 @@ export default class Login extends Component {
                     underlineColorAndroid="#02C39A"
                     placeholder="Password"
                     secureTextEntry={true}
-                    style={{paddingBottom: 6, fontSize: 20}}
+                    style={styles.input}
                 />
 
                 <View style={{alignItems: 'center', marginTop: 20}}>
                     <TouchableHighlight onPress={this.login} style={styles.loginBtn} underlayColor="#16a085">
-                        <Text style={{color: 'white', fontSize: 18, fontWeight: '900'}}>Log in</Text>
+                        <Text style={styles.loginText}>Log in</Text>
                     </TouchableHighlight>
                 </View>
 
                 <View style={styles.signupBtn}>
                     <TouchableHighlight onPress={ () => {Actions.signup()} } underlayColor="#16a085">
-                        <Text style={{fontSize: 20, fontWeight: '900', color: '#02C39A'}}>Sign up!</Text>
+                        <Text style={styles.signupText}>Sign up!</Text>
                     </TouchableHighlight>
                 </View>
-
-                {/*<ActivityIndicator size="large" color="#00BFA5"
-                    animating={this.state.animating} style={{top: -210, elevation: 4}} />*/}
             </View>
         );
     }
 }
 
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -116,21 +110,33 @@ const styles = {
         justifyContent: 'center',
         borderRadius: 30
     },
-    inputDiv: {
-        backgroundColor: '#bdc3c7',
-        marginBottom: 30,
-        borderRadius: 4,
-        padding: -2
-    },
     input: {
-        backgroundColor: 'white',
         paddingBottom: 6,
-        paddingLeft: 6,
-        fontSize: 20,
-        paddingTop: 5
+        fontSize: 20
     },
     signupBtn: {
         alignItems: 'center',
         marginTop: 50
+    },
+    signupText: {
+        fontSize: 20,
+        fontWeight: '900',
+        color: '#02C39A'
+    },
+    loginText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: '900'
+    },
+    logoTitle: {
+        fontSize: 24,
+        fontWeight: '600',
+        color: '#02C39A',
+        marginBottom: 20
+    },
+    logoImg: {
+        height: 64,
+        width: 110,
+        marginBottom: 20
     }
-};
+});

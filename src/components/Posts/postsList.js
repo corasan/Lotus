@@ -65,13 +65,13 @@ export default class PostsList extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     post: {
         padding: 16,
         backgroundColor: 'white',
-        borderColor: '#E5E5E5',
+        borderBottomColor: '#E5E5E5',
         borderStyle: 'solid',
-        borderWidth: 1,
+        borderBottomWidth: 1,
     },
     postTitle: {
         fontSize: 22,
@@ -99,4 +99,4 @@ const styles = {
         marginBottom: 5,
         marginRight: 5
     }
-};
+});

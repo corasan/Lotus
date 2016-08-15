@@ -43,7 +43,7 @@ export default class Post extends Component {
     render() {
         return (
             <View style={styles.post}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={styles.postArea}>
                     <Text style={styles.postTitle}>{this.props.title}</Text>
                     <View style={{paddingTop: 6}}>
                         <TimeAgo time={this.props.createdAt}/>
@@ -52,7 +52,7 @@ export default class Post extends Component {
 
                 <Text style={styles.postContent}>{this.props.text}</Text>
 
-                <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                <View style={styles.reactionBtns}>
                     <ReactionButton
                         onPress={ () => {this.reactionHandler('highFive')} }
                         imgSource={require('../../img/hand.png')}
@@ -76,7 +76,7 @@ export default class Post extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     post: {
         backgroundColor: 'white',
         padding: 16,
@@ -97,5 +97,13 @@ const styles = {
     img: {
         height: 26,
         width: 26,
+    },
+    reactionBtns: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    postArea: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
-};
+});

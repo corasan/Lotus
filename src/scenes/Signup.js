@@ -76,13 +76,13 @@ export default class Signup extends Component {
 
                 <View style={{alignItems: 'center'}}>
                     <TouchableHighlight style={styles.signupBtn} onPress={this.signup}>
-                        <Text style={{fontSize: 20, fontWeight: '900', color: 'white'}}>Sign up</Text>
+                        <Text style={styles.signupText}>Sign up</Text>
                     </TouchableHighlight>
                 </View>
 
                 <View style={{marginTop: 50, alignItems: 'center'}}>
                     <TouchableHighlight onPress={ () => {Actions.pop()} } underlayColor="#16a085">
-                        <Text style={{fontSize: 20, fontWeight: '900', color: '#02C39A'}}>Login</Text>
+                        <Text style={styles.loginText}>Login</Text>
                     </TouchableHighlight>
                 </View>
             </View>
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         backgroundColor: 'white',
-        // marginTop: 30
     },
     inputDiv: {
         backgroundColor: 'white',
@@ -120,4 +119,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 30
     },
+    loginText: {
+        fontSize: 20,
+        fontWeight: '900',
+        color: '#02C39A'
+    },
+    signupText: {
+        fontSize: 20,
+        fontWeight: '900',
+        color: 'white'
+    }
 });
