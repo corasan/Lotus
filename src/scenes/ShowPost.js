@@ -8,12 +8,8 @@ export default class ShowPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            content: '',
-            createdAt: '',
             postId: this.props.postId,
             comments: [],
-            post: null
         }
     }
 
@@ -41,7 +37,7 @@ export default class ShowPost extends Component {
                 <View style={{flex: 1}}>
                     <Post title={this.state.title} text={this.state.text} createdAt={this.state.createdAt} postId={this.state.postId}/>
                     <ScrollView style={{marginBottom: 60}}>
-                        <CommentsList comments={this.state.comments} noComment={this.state.noComment}/>
+                        <CommentsList comments={this.state.comments}/>
                     </ScrollView>
                     <SendComment postId={this.state.postId}/>
                 </View>

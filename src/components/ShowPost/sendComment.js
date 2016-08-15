@@ -86,6 +86,9 @@ const styles = StyleSheet.create({
     sendText: {
         marginTop: 4,
         marginRight: 6,
-        marginLeft: 4
+        marginLeft: 4,
+        fontWeight: '900',
+        fontSize: 18,
+        color: '#02C39A'
     }
 });
