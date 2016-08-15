@@ -30,20 +30,15 @@ class Lotus extends Component {
         BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
     }
 
-    closeOnPress = () => {
-        console.log('pressed');
-        this._drawer.close();
-    }
-
     render() {
         return (
             <Drawer
                 type="static"
-                content={<Menu closeOnPress={this.closeOnPress}/>}
+                content={<Menu closeDrawer={ () => this.drawer.close() }/>}
                 openDrawerOffset={100}
                 tweenHandler={Drawer.tweenPresets.parallax}
                 tapToClose={true}
-                ref={ (ref) => this._drawer = ref }
+                ref={ (ref) => this.drawer = ref}
             >
                 <Router
                     sceneStyle={styles.container}

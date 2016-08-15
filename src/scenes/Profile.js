@@ -46,6 +46,7 @@ export default class Profile extends Component {
                     <Text style={styles.labelName}>Next Rank</Text>
                     <Image source={require('../img/levelUp.png')} style={styles.img}/>
                 </View>
+
                 <View style={{marginTop: 10}}>
                     <Progress.Bar
                         progress={this.state.progress}

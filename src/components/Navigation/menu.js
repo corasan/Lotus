@@ -3,14 +3,16 @@ import { View, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import SideMenuButton from './sideMenuBtn';
 
-export default class Menu extends Component {    
+export default class Menu extends Component {
     logout = () => {
+        this.props.closeDrawer();
         AsyncStorage.removeItem('User', () => {
             Actions.login();
         });
     }
 
     goToProfile = () => {
+        this.props.closeDrawer();
         AsyncStorage.getItem('User', (err, userId) => {
             Actions.profile({userId: userId});
         });
