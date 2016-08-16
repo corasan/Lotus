@@ -41,7 +41,7 @@ export default class PostsList extends Component {
                     </View>
                 </View>
                 <Text style={styles.postContent}>{data.text}</Text>
-
+                {/*TODO: Show the posts points and increment the user reputation depending on the points a post has*/}
                 <View style={{alignItems: 'flex-end'}}>
                     <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) }>
                         <View style={{flexDirection: 'row'}}>

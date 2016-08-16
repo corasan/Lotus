@@ -24,7 +24,7 @@ export default class Post extends Component {
             this.setState({highFives: data.highFives, likes: data.likes, thumbsUps: data.thumbsUps});
         }.bind(this));
     }
-
+    // TODO: Make these buttons disabled when you already voted
     reactionHandler = (target) => {
         let postRef = firebase.database().ref(`Posts/${this.state.postId}`);
         switch(target) {
