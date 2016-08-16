@@ -50,7 +50,7 @@ export default class WriteComment extends Component {
                             height: event.nativeEvent.contentSize.height,
                         });
                     }}
-                    style={{height: Math.max(50, this.state.height > 200 ? 200 : this.state.height), fontSize: 18, width: 300}}
+                    style={{height: Math.max(50, this.state.height > 200 ? 200 : this.state.height), fontSize: 18, flex: 1}}
                 />
 
                 <View>
