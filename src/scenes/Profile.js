@@ -15,14 +15,16 @@ export default class Profile extends Component {
         let uid = this.props.userId.replace(/["]+/g, '');
         firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
             let user = snapshot.val();
+            let reputationNeeded = user.reputationNeeded;
+            let reputation = user.reputation;
             this.setState({
                 displayName: user.displayName,
                 posts: user.posts,
                 rank: user.rank,
                 helped: user.helped,
-                reputation: user.reputation,
-                reputationNeeded: user.reputationNeeded,
-                progress: (user.reputation/100)/100,
+                reputation: reputation,
+                reputationNeeded: reputationNeeded,
+                progress: (reputation/reputationNeeded),
                 medals: user.medals
             });
         }.bind(this));

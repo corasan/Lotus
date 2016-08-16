@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { Actions } from 'react-native-router-flux';
 
 export default class NewPost extends Component {
     constructor(props) {
@@ -30,10 +31,13 @@ export default class NewPost extends Component {
                 title: this.state.title,
                 text: this.state.text,
                 id: postId,
-                createdAt: date
+                createdAt: date,
+                highFives: 0,
+                likes: 0,
+                thumbsUps: 0
             });
             this.setState({title: '', text: ''});
-            this.props.navigator.pop();
+            Actions.pop();
         }
     }
 
