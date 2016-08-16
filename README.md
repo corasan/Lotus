@@ -13,5 +13,5 @@ Community where people can talk about their problems anonymously and get positiv
 **This is just the design of Lotus, made with [Adobe Experience Design CC][1]**
 
 
-[lotus-design]:https://github.com/corasan/Lotus/tree/main/lotus-design.gif "Lotus"
+[lotus-design]:https://github.com/corasan/Lotus/blob/main/lotus-design.gif "Lotus"
 [1]: http://www.adobe.com/products/experience-design.html
