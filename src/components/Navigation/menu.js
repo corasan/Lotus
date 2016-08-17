@@ -30,7 +30,7 @@ export default class Menu extends Component {
 
                     <SideMenuButton
                         source={require('../../img/notifications.png')}
-                        onPress={ () => console.log('pressed') }
+                        onPress={ () => Actions.example() }
                         menuText="Notifications"
                     />
 

@@ -11,7 +11,7 @@ import {
   AsyncStorage,
   ToastAndroid,
   StatusBar,
-  DrawerLayoutAndroid
+  Animated,
 } from 'react-native';
 import Posts from './src/scenes/Posts';
 import firebase from './firebaseInit';
@@ -20,11 +20,13 @@ import ShowPost from './src/scenes/ShowPost';
 import Login from './src/scenes/Login';
 import Signup from './src/scenes/Signup';
 import Profile from './src/scenes/Profile';
+import Example from './src/scenes/example';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 import Menu from './src/components/Navigation/menu';
 import Drawer from 'react-native-drawer';
 
 let navigator;
+
 class Lotus extends Component {
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
@@ -38,7 +40,7 @@ class Lotus extends Component {
                 openDrawerOffset={100}
                 tweenHandler={Drawer.tweenPresets.parallax}
                 tapToClose={true}
-                ref={ (ref) => this.drawer = ref}
+                ref={ (ref) => this.drawer = ref }
             >
                 <Router
                     sceneStyle={styles.container}
@@ -53,6 +55,7 @@ class Lotus extends Component {
                         <Scene key="newPost" component={NewPost}/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
                         <Scene key="profile" component={Profile} passProps={true}/>
+                        <Scene key="example" component={Example} onRight={() => Actions.refresh({open: true})} rightTitle="Menu"/>
                     </Scene>
                 </Router>
             </Drawer>

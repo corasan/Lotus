@@ -43,7 +43,7 @@ export default class PostsList extends Component {
                 <Text style={styles.postContent}>{data.text}</Text>
                 {/*TODO: Show the posts points and increment the user reputation depending on the points a post has*/}
                 <View style={{alignItems: 'flex-end'}}>
-                    <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) }>
+                    <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) } underlayColor="transparent">
                         <View style={{flexDirection: 'row'}}>
                             <Image source={require('../../img/comments.png')} style={styles.commentImg}/>
                             <Text style={styles.commentText}>Comment</Text>
