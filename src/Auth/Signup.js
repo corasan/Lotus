@@ -16,19 +16,19 @@ export default class Signup extends Component {
     signup = () => {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
-            let repNeeded = Math.pow(35*1, 2);
+            let repNeeded = Math.pow(40*1, 2);
             let rep = 0;
             firebase.database().ref(`Users/${user.uid}`).set({
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
                 uid: user.uid,
-                displayName: this.state.firstName+ ' ' + this.state.lastName,
-                points: 0,
+                displayName: `${this.state.firstName} ${this.state.lastName}`,
                 rank: 1,
                 reputation: rep,
                 repNeeded: repNeeded,
-                nextRankRep: repNeeded - rep
+                nextRankRep: repNeeded - rep,
+                currentRankRep: 0
             });
         })
         .then(() => {
