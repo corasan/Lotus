@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert } from 'react-native';
+import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert, ToastAndroid } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { Actions } from 'react-native-router-flux';
 
@@ -37,6 +37,7 @@ export default class NewPost extends Component {
                 thumbsUps: 0
             });
             this.setState({title: '', text: ''});
+            ToastAndroid.show('Post created', ToastAndroid.SHORT);
             Actions.pop();
         }
     }
