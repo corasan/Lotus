@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         elevation: 3,
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingRight: 5,
+        // paddingTop: 5,
+        // paddingBottom: 5,
+        // paddingRight: 5,
         flexDirection: 'row',
     },
     sendBtn: {
@@ -80,8 +80,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 60,
         paddingTop: 10,
-        marginRight: 10,
-        borderRadius: 8
+        // marginRight: 5,
+        // borderRadius: 8,
+        backgroundColor: '#02C39A'
     },
     sendText: {
         marginTop: 4,
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
         marginLeft: 4,
         fontWeight: '900',
         fontSize: 18,
-        color: '#02C39A'
+        // color: '#02C39A'
+        color: 'white'
     }
 });

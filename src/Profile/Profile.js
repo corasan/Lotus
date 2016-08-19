@@ -68,7 +68,7 @@ export default class Profile extends Component {
                     <Image source={require('../img/levelUp.png')} style={styles.img}/>
                 </View>
 
-                <View style={{marginTop: 10}}>
+                <View style={{marginTop: 10, flexDirection: 'row'}}>
                     <Progress.Bar
                         progress={this.state.progress}
                         width={260}
@@ -78,13 +78,13 @@ export default class Profile extends Component {
                         borderColor="#ECF0F1"
                         color="#02C39A"
                     />
-                    <Text>Needed: {this.state.nextRankRep}</Text>
+                    <Text style={{fontSize: 12, marginLeft: 10}}>{this.state.nextRankRep}</Text>
                 </View>
 
-                <View style={styles.label}>
+                {/*<View style={styles.label}>
                     <Text style={styles.labelName}>Medals</Text>
                     <Text style={[styles.subLabel, {marginTop: 3}]}>{this.state.medals}</Text>
-                </View>
+                </View>*/}
             </View>
         );
     }

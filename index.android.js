@@ -75,12 +75,7 @@ const styles = {
         backgroundColor: '#02C39A',
         elevation: 3,
         borderBottomWidth: 0,
-    },
-    drawer: {
-        shadowColor: '#000000',
-        shadowOpacity: 0.8,
-        shadowRadius: 3
-    },
+    }
 };
 
 AppRegistry.registerComponent('Lotus', () => Lotus);
