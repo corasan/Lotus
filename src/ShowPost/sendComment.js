@@ -54,7 +54,7 @@ export default class WriteComment extends Component {
                 />
 
                 <View>
-                    <TouchableHighlight underlayColor="#ecf0f1" onPress={this.sendComment} style={styles.sendBtn}>
+                    <TouchableHighlight underlayColor="#16a085" onPress={this.sendComment} style={styles.sendBtn}>
                         <Text style={styles.sendText}>Send</Text>
                     </TouchableHighlight>
                 </View>
