@@ -45,7 +45,7 @@ export default class PostsList extends Component {
                 <View style={{alignItems: 'flex-end'}}>
                     <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) }>
                         <View style={{flexDirection: 'row'}}>
-                            <Image source={require('../../img/comments.png')} style={styles.commentImg}/>
+                            <Image source={require('../img/comments.png')} style={styles.commentImg}/>
                             <Text style={styles.commentText}>Comment</Text>
                         </View>
                     </TouchableHighlight>

@@ -11,7 +11,7 @@ import {
     StatusBar,
     DrawerLayoutAndroid
 } from 'react-native';
-import PostsList from '../components/Posts/postsList';
+import PostsList from './postsList';
 import firebase from '../../firebaseInit';
 import { Actions } from 'react-native-router-flux';
 

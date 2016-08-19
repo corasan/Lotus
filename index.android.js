@@ -13,15 +13,15 @@ import {
   StatusBar,
   DrawerLayoutAndroid
 } from 'react-native';
-import Posts from './src/scenes/Posts';
+import Posts from './src/Posts/Posts';
 import firebase from './firebaseInit';
-import NewPost from './src/scenes/NewPost';
-import ShowPost from './src/scenes/ShowPost';
-import Login from './src/scenes/Login';
-import Signup from './src/scenes/Signup';
-import Profile from './src/scenes/Profile';
+import NewPost from './src/Posts/NewPost';
+import ShowPost from './src/ShowPost/ShowPost';
+import Login from './src/Auth/Login';
+import Signup from './src/Auth/Signup';
+import Profile from './src/Profile/Profile';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
-import Menu from './src/components/Navigation/menu';
+import Menu from './src/Navigation/menu';
 import Drawer from 'react-native-drawer';
 
 let navigator;

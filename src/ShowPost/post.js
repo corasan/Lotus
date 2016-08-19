@@ -55,19 +55,19 @@ export default class Post extends Component {
                 <View style={styles.reactionBtns}>
                     <ReactionButton
                         onPress={ () => {this.reactionHandler('highFive')} }
-                        imgSource={require('../../img/hand.png')}
+                        imgSource={require('../img/hand.png')}
                         counterText={this.state.highFives}
                     />
 
                     <ReactionButton
                         onPress={ () => {this.reactionHandler('thumbsUp')} }
-                        imgSource={require('../../img/thumbsUp.png')}
+                        imgSource={require('../img/thumbsUp.png')}
                         counterText={this.state.thumbsUps}
                     />
 
                     <ReactionButton
                         onPress={ () => {this.reactionHandler('like')} }
-                        imgSource={require('../../img/heart.png')}
+                        imgSource={require('../img/heart.png')}
                         counterText={this.state.likes}
                     />
                 </View>

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Score from '../components/Profile/score';
+import Score from './score';
 import * as Progress from 'react-native-progress';
 
 export default class Profile extends Component {

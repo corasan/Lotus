@@ -23,25 +23,25 @@ export default class Menu extends Component {
             <View>
                 <View>
                     <SideMenuButton
-                        source={require('../../img/profile.png')}
+                        source={require('../img/profile.png')}
                         onPress={this.goToProfile}
                         menuText="Profile"
                     />
 
                     <SideMenuButton
-                        source={require('../../img/notifications.png')}
+                        source={require('../img/notifications.png')}
                         onPress={ () => console.log('pressed') }
                         menuText="Notifications"
                     />
 
                     <SideMenuButton
-                        source={require('../../img/clock.png')}
+                        source={require('../img/clock.png')}
                         onPress={ () => console.log('pressed') }
                         menuText="History"
                     />
 
                     <SideMenuButton
-                        source={require('../../img/about.png')}
+                        source={require('../img/about.png')}
                         onPress={ () => console.log('pressed') }
                         menuText="About"
                     />
@@ -49,13 +49,13 @@ export default class Menu extends Component {
 
                 <View style={{bottom: -70}}>
                     <SideMenuButton
-                        source={require('../../img/settings.png')}
+                        source={require('../img/settings.png')}
                         onPress={ () => console.log('pressed') }
                         menuText="Settings"
                     />
 
                     <SideMenuButton
-                        source={require('../../img/logout.png')}
+                        source={require('../img/logout.png')}
                         onPress={this.logout}
                         menuText="Log out"
                     />
