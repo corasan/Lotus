@@ -31,19 +31,22 @@ export default class Profile extends Component {
                 progress: (currentRankRep/nextRankRep),
                 medals: user.medals
             });
-            if (currentRankRep >= nextRankRep) {
-                let nextRank = user.rank + 1;
-                let num = Math.pow(40*nextRank, 2)
-                console.log(num);
-                userRef.update({
-                    rank: nextRank,
-                    repNeeded: num,
-                    currentRankRep: 0,
-                    nextRankRep: num - rep
-                });
-                this.setState({progress: 0});
-            }
+            this.rankUp(rep, user.rank, currentRankRep, nextRankRep, userRef);
         }.bind(this));
+    }
+
+    rankUp = (rep, rank, currentRankRep, nextRankRep, userRef) => {
+        if (currentRankRep >= nextRankRep) {
+            let nextRank = rank + 1;
+            let num = Math.pow(40*nextRank, 2)
+            userRef.update({
+                rank: nextRank,
+                repNeeded: num,
+                currentRankRep: 0,
+                nextRankRep: num - rep
+            });
+            this.setState({progress: 0});
+        }
     }
 
     render() {
