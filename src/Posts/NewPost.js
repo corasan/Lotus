@@ -60,7 +60,7 @@ export default class NewPost extends Component {
                     onChangeText={this.handleText}
                     autoCapitalize="sentences"
                     multiline={true}
-                    maxLength={600}
+                    maxLength={400}
                     numberOfLines={5}
                     underlineColorAndroid="#02C39A"
                     onChange={(event) => {
@@ -71,6 +71,12 @@ export default class NewPost extends Component {
                     }}
                     style={[styles.input, {height: Math.max(58, this.state.height > 200 ? 200 : this.state.height)}]}
                 />
+
+                <View style={{alignItems: 'flex-end', marginRight: 4}}>
+                    <Text style={{color: 400 - this.state.text.length <= 10 ? 'red' : 'black'}}>
+                        {400 - this.state.text.length}
+                    </Text>
+                </View>
 
                 <View style={{marginTop: 40, alignItems: 'center'}}>
                     <TouchableHighlight
