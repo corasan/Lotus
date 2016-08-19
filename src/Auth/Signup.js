@@ -16,6 +16,8 @@ export default class Signup extends Component {
     signup = () => {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
+            let repNeeded = Math.pow(35*1, 2);
+            let rep = 0;
             firebase.database().ref(`Users/${user.uid}`).set({
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -23,7 +25,10 @@ export default class Signup extends Component {
                 uid: user.uid,
                 displayName: this.state.firstName+ ' ' + this.state.lastName,
                 points: 0,
-                rank: 1
+                rank: 1,
+                reputation: rep,
+                repNeeded: repNeeded,
+                nextRankRep: repNeeded - rep
             });
         })
         .then(() => {

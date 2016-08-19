@@ -13,20 +13,36 @@ export default class Profile extends Component {
 
     componentWillMount() {
         let uid = this.props.userId.replace(/["]+/g, '');
-        firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
+        let userRef = firebase.database().ref(`Users/${uid}`);
+        userRef.on('value', function(snapshot) {
             let user = snapshot.val();
-            let reputationNeeded = user.reputationNeeded;
-            let reputation = user.reputation;
+            let rep = user.reputation;                  // User total reputation
+            let repNeeded = Math.pow(40*user.rank, 2);  // Total reputation needed
+            let nextRankRep = user.nextRankRep;         // Reputation needed to advance to next Rank
+            let currentRankRep = user.currentRankRep;   // Current reputation to advance to next level
             this.setState({
                 displayName: user.displayName,
                 posts: user.posts,
                 rank: user.rank,
-                helped: user.helped,
-                reputation: reputation,
-                reputationNeeded: reputationNeeded,
-                progress: (reputation/reputationNeeded),
+                helpful: user.helpful,
+                reputation: rep,
+                nextRankRep: nextRankRep,
+                repNeeded: repNeeded,
+                progress: (currentRankRep/nextRankRep),
                 medals: user.medals
             });
+            if (currentRankRep >= nextRankRep) {
+                let nextRank = user.rank + 1;
+                let num = Math.pow(40*nextRank, 2)
+                console.log(num);
+                userRef.update({
+                    rank: nextRank,
+                    repNeeded: num,
+                    currentRankRep: 0,
+                    nextRankRep: num - rep
+                });
+                this.setState({progress: 0});
+            }
         }.bind(this));
     }
 
@@ -41,7 +57,7 @@ export default class Profile extends Component {
                 <View style={[styles.label, {justifyContent: 'space-between'}]}>
                     <Score title="Reputation" score={this.state.reputation}/>
                     <Score title="Posts" score={this.state.posts}/>
-                    <Score title="Helped" score={this.state.helped}/>
+                    <Score title="Helpful" score={this.state.helpful}/>
                 </View>
 
                 <View style={styles.label}>
@@ -59,6 +75,7 @@ export default class Profile extends Component {
                         borderColor="#ECF0F1"
                         color="#02C39A"
                     />
+                    <Text>Needed: {this.state.nextRankRep}</Text>
                 </View>
 
                 <View style={styles.label}>
