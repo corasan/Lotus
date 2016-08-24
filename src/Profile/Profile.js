@@ -16,10 +16,10 @@ export default class Profile extends Component {
         let userRef = firebase.database().ref(`Users/${uid}`);
         userRef.on('value', function(snapshot) {
             let user = snapshot.val();
-            let rep = user.reputation;                  // User total reputation
-            let repNeeded = Math.pow(40*user.rank, 2);  // Total reputation needed
-            let currentRankRep = user.currentRankRep;   // Current reputation to advance to next level
-            let nextRankRep = user.nextRankRep - currentRankRep;         // Reputation needed to advance to next Rank
+            let rep = user.reputation;                                // User total reputation
+            let repNeeded = Math.pow(40*user.rank, 2);                // Total reputation needed
+            let currentRankRep = user.currentRankRep;                 // Current reputation to advance to next level
+            let nextRankRep = user.nextRankRep - currentRankRep;      // Reputation needed to advance to next Rank
             this.setState({
                 displayName: user.displayName,
                 posts: user.posts,

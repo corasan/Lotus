@@ -36,7 +36,7 @@ export default class NewPost extends Component {
         this.setState({title});
     }
 
-    updatePostsNumber = () => {
+    updatePostsNumberAndReputation = () => {
         firebase.database().ref(`Users/${this.state.uid}`).update({
             posts: this.state.posts + 1,
             currentRankRep: this.state.currentRankRep + 2,
@@ -61,7 +61,7 @@ export default class NewPost extends Component {
             });
             this.setState({title: '', text: ''});
             ToastAndroid.show('Post created', ToastAndroid.SHORT);
-            this.updatePostsNumber();
+            this.updatePostsNumberAndReputation();
             Actions.pop();
         }
     }

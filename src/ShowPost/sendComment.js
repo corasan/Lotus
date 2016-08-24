@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TextInput, Dimensions, Alert, AsyncStorage } from 'react-native';
 
 export default class WriteComment extends Component {
     static propTypes = {
@@ -15,8 +15,30 @@ export default class WriteComment extends Component {
         }
     }
 
+    componentWillMount() {
+        AsyncStorage.getItem('User', (err, result) => {
+            let uid = result.replace(/["]+/g, '');
+            firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
+                let data = snapshot.val();
+                this.setState({
+                    posts: data.posts,
+                    uid: uid,
+                    currentRankRep: data.currentRankRep,
+                    rep: data.reputation
+                });
+            }.bind(this));
+        });
+    }
+
     handleComment = (commentText) => {
         this.setState({commentText});
+    }
+
+    updateReputation = () => {
+        firebase.database().ref(`Users/${this.state.uid}`).update({
+            currentRankRep: this.state.currentRankRep + 2,
+            reputation: this.state.rep + 2
+        });
     }
 
     sendComment = () => {
@@ -32,6 +54,7 @@ export default class WriteComment extends Component {
                 commentId: commentId
             });
             this.setState({commentText: '', height: 50});
+            this.updateReputation();
         }
     }
 
