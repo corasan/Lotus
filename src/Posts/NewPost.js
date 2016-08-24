@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, StyleSheet, Text, View, TextInput, ScrollView, Alert, ToastAndroid } from 'react-native';
+import { TouchableHighlight, StyleSheet, Text, View, TextInput, AsyncStorage, Alert, ToastAndroid } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { Actions } from 'react-native-router-flux';
 
@@ -13,12 +13,28 @@ export default class NewPost extends Component {
         }
     }
 
+    componentWillMount() {
+        AsyncStorage.getItem('User', (err, result) => {
+            let uid = result.replace(/["]+/g, '');
+            firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
+                let data = snapshot.val();
+                this.setState({posts: data.posts, uid: uid});
+            }.bind(this));
+        });
+    }
+
     handleText = (text) => {
         this.setState({text});
     }
 
     handleTitle = (title) => {
         this.setState({title});
+    }
+
+    updatePostsNumber = () => {
+        firebase.database().ref(`Users/${this.state.uid}`).update({
+            posts: this.state.posts + 1
+        });
     }
 
     sendPost = () => {
@@ -38,6 +54,7 @@ export default class NewPost extends Component {
             });
             this.setState({title: '', text: ''});
             ToastAndroid.show('Post created', ToastAndroid.SHORT);
+            this.updatePostsNumber();
             Actions.pop();
         }
     }

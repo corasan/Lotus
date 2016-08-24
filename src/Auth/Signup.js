@@ -34,7 +34,7 @@ export default class Signup extends Component {
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                AsyncStorage.setItem('User', JSON.parse(user.uid));
+                AsyncStorage.setItem('User', JSON.stringify(user.uid));
                 Actions.posts();
             }).catch((error) => Alert.alert('Login Error', error.message) );
         })

@@ -52,7 +52,7 @@ export default class Post extends Component {
 
                 <Text style={styles.postContent}>{this.props.text}</Text>
 
-                <View style={styles.reactionBtns}>
+                {/*<View style={styles.reactionBtns}>
                     <ReactionButton
                         onPress={ () => {this.reactionHandler('highFive')} }
                         imgSource={require('../img/hand.png')}
@@ -70,7 +70,7 @@ export default class Post extends Component {
                         imgSource={require('../img/heart.png')}
                         counterText={this.state.likes}
                     />
-                </View>
+                </View>*/}
             </View>
         );
     }

@@ -83,7 +83,7 @@ export default class Login extends Component {
                 </View>
 
                 <View style={styles.signupBtn}>
-                    <TouchableHighlight onPress={ () => {Actions.signup()} } underlayColor="#16a085">
+                    <TouchableHighlight onPress={ () => Actions.signup() } underlayColor="#16a085">
                         <Text style={styles.signupText}>Sign up!</Text>
                     </TouchableHighlight>
                 </View>
