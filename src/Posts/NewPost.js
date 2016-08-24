@@ -18,7 +18,12 @@ export default class NewPost extends Component {
             let uid = result.replace(/["]+/g, '');
             firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
                 let data = snapshot.val();
-                this.setState({posts: data.posts, uid: uid});
+                this.setState({
+                    posts: data.posts,
+                    uid: uid,
+                    currentRankRep: data.currentRankRep,
+                    rep: data.reputation
+                });
             }.bind(this));
         });
     }
@@ -33,7 +38,9 @@ export default class NewPost extends Component {
 
     updatePostsNumber = () => {
         firebase.database().ref(`Users/${this.state.uid}`).update({
-            posts: this.state.posts + 1
+            posts: this.state.posts + 1,
+            currentRankRep: this.state.currentRankRep + 2,
+            reputation: this.state.rep + 2
         });
     }
 
