@@ -18,8 +18,8 @@ export default class Profile extends Component {
             let user = snapshot.val();
             let rep = user.reputation;                  // User total reputation
             let repNeeded = Math.pow(40*user.rank, 2);  // Total reputation needed
-            let nextRankRep = user.nextRankRep;         // Reputation needed to advance to next Rank
             let currentRankRep = user.currentRankRep;   // Current reputation to advance to next level
+            let nextRankRep = user.nextRankRep - currentRankRep;         // Reputation needed to advance to next Rank
             this.setState({
                 displayName: user.displayName,
                 posts: user.posts,
@@ -73,7 +73,7 @@ export default class Profile extends Component {
                         progress={this.state.progress}
                         width={260}
                         height={16}
-                        borderWidth={2}
+                        borderWidth={4}
                         borderRadius={10}
                         borderColor="#ECF0F1"
                         color="#02C39A"
