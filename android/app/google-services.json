@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "278010709322",
+    "firebase_url": "https://lotus-app-cfff5.firebaseio.com",
+    "project_id": "lotus-app-cfff5",
+    "storage_bucket": "lotus-app-cfff5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278010709322:android:44cfe8374e9936bf",
+        "android_client_info": {
+          "package_name": "com.lotus.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278010709322-9ljpvt2rpd6kh7d6qa8fr89kr20jpsvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJRdIasMzMjGZ8tpxCNpvqun4g3VS8dEI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
