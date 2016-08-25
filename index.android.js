@@ -20,6 +20,7 @@ import ShowPost from './src/ShowPost/ShowPost';
 import Login from './src/Auth/Login';
 import Signup from './src/Auth/Signup';
 import Profile from './src/Profile/Profile';
+import Settings from './src/Settings/Settings';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 import Menu from './src/Navigation/menu';
 import Drawer from 'react-native-drawer';
@@ -53,6 +54,7 @@ class Lotus extends Component {
                         <Scene key="newPost" component={NewPost}/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
                         <Scene key="profile" component={Profile} passProps={true}/>
+                        <Scene key="settings" component={Settings}/> 
                     </Scene>
                 </Router>
             </Drawer>

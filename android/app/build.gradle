@@ -116,7 +116,7 @@ android {
            storeFile file(MYAPP_RELEASE_STORE_FILE)
            storePassword pass
            keyAlias MYAPP_RELEASE_KEY_ALIAS
-           keyPassword MYAPP_RELEASE_KEY_PASSWORD
+           keyPassword pass
        }
    }
     splits {

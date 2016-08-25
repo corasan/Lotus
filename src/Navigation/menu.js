@@ -18,6 +18,11 @@ export default class Menu extends Component {
         });
     }
 
+    goToSettings = () => {
+        this.props.closeDrawer();
+        Actions.settings();
+    }
+
     render() {
         return (
             <View>
@@ -50,7 +55,7 @@ export default class Menu extends Component {
                 <View style={{bottom: -70}}>
                     <SideMenuButton
                         source={require('../img/settings.png')}
-                        onPress={ () => console.log('pressed') }
+                        onPress={this.goToSettings}
                         menuText="Settings"
                     />
 
