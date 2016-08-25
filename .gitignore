@@ -39,3 +39,5 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+android/gradle.properties
+/Users/Henry/Github/Lotus/android/gradle.properties

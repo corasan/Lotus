@@ -50,8 +50,8 @@ export default class WriteComment extends Component {
         } else {
             firebase.database().ref(`${commentsRef}/${commentId}`).update({
                 comment: this.state.commentText,
-                id: this.state.postId,
-                commentId: commentId
+                postId: this.state.postId,
+                id: commentId
             });
             this.setState({commentText: '', height: 50});
             this.updateReputation();
