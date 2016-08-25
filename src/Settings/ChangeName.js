@@ -2,36 +2,42 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 'react-native';
 
 export default class ChangeName extends Component {
-    handleNewFirstName = (firstN) => {
-        this.setState({firstN});
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstN: '',
+            lastN: ''
+        }
     }
-
-    handleNewLastName = (lastN) => {
-        this.setState({lastN});
-    }
+    // handleNewFirstName = (firstN) => {
+    //     this.setState({firstN});
+    // }
+    //
+    // handleNewLastName = (lastN) => {
+    //     this.setState({lastN});
+    // }
 
     render() {
         return (
             <View style={styles.container}>
-                <TextInput
-                    style={styles.changeName}
-                    underlineColorAndroid="#02C39A"
-                    style={styles.input}
-                    onChangeText={this.handleNewFirstName}
-                    placeholder="New First Name"
-                />
-                <TextInput
-                    style={styles.changeName}
-                    underlineColorAndroid="#02C39A"
-                    style={styles.input}
-                    onChangeText={this.handleNewLastName}
-                    placeholder="New Last Name"
-                />
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <TextInput
+                        value={this.state.firstN}
+                        onChangeText={ (firstN) => this.setState({firstN}) }
+                        style={[styles.input, {width: 160}]}
+                        underlineColorAndroid='#02C39A'
+                        placeholder="First name"
+                        autoCapitalize="sentences"
+                    />
 
-                <View style={{justifyContent: 'center'}}>
-                    <TouchableHighlight style={styles.saveName}>
-                        <Text style={styles.saveText}>Save</Text>
-                    </TouchableHighlight>
+                    <TextInput
+                        value={this.state.lastN}
+                        onChangeText={ (lastN) => this.setState({lastN}) }
+                        style={[styles.input, {width: 160}]}
+                        underlineColorAndroid='#02C39A'
+                        placeholder="Last name"
+                        autoCapitalize="sentences"
+                    />
                 </View>
             </View>
         );
