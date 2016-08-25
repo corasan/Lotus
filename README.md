@@ -1,4 +1,5 @@
 # About
+### Note: Most updated development branch is main
 
 Built with React Native and Firebase.
 
