@@ -7,34 +7,46 @@ export default class Settings extends Component {
         super(props);
         this.state = {
             name: '',
-            height: new Animated.Value(0)
+            show: new Animated.Value(0),
+            visible: false
         }
     }
     componentWillMount() {
-        AsyncStorage.getItem('User', (err, uid) => {
-            uid = uid.replace(/["]+/g, '');
+        AsyncStorage.getItem('User', (err, result) => {
+            let uid = result.replace(/["]+/g, '');
             firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
                 let user = snapshot.val();
-                this.setState({name: user.displayName});
+                this.setState({name: user.displayName, uid: uid});
             }.bind(this));
         });
     }
 
     showContent = () => {
-        Animated.spring(this.state.height, {toValue: 150}).start();
+        this.setState({visible: !this.state.visible});
+        if(this.state.visible) {
+            Animated.spring(this.state.show, {toValue: 0}).start();
+        } else {
+            this.setState({visible: !this.state.visible});
+            Animated.spring(this.state.show, {toValue: 1}).start();
+        }
+    }
+
+    hideContent = () => {
+        Animated.spring(this.state.show, {toValue: 0}).start();
+        this.setState({visible: !this.state.visible});
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 30}}>
                     <Text style={styles.name}>{this.state.name}</Text>
-                    <TouchableHighlight onPress={this.showContent}>
-                        <Text>Edit</Text>
+                    <TouchableHighlight onPress={this.showContent} underlayColor="transparent" style={{marginTop: 3}}>
+                        <Text style={styles.editText}>Edit</Text>
                     </TouchableHighlight>
                 </View>
-                <Animated.View style={{height: this.state.height, backgroundColor: 'white'}}>
-                    <ChangeName/>
+                <Animated.View style={{opacity: this.state.show, backgroundColor: 'white'}}>
+                    <ChangeName hide={this.hideContent}/>
                 </Animated.View>
             </View>
         );
@@ -51,5 +63,22 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         fontWeight: 'bold'
+    },
+    saveName: {
+        height: 45,
+        width: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+        backgroundColor: '#02C39A'
+    },
+    saveText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    editText: {
+        fontSize: 18,
+        color: '#02C39A'
     }
 });

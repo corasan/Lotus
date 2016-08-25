@@ -1,21 +1,28 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage } from 'react-native';
 
 export default class ChangeName extends Component {
     constructor(props) {
         super(props);
         this.state = {
             firstN: '',
-            lastN: ''
+            lastN: '',
         }
     }
-    // handleNewFirstName = (firstN) => {
-    //     this.setState({firstN});
-    // }
-    //
-    // handleNewLastName = (lastN) => {
-    //     this.setState({lastN});
-    // }
+
+    saveName = () => {
+        if (this.state.firstN === '' && this.state.lastN === '') {
+            Alert.alert('Error', 'Please enter a new first and last name');
+        } else {
+            firebase.database().ref(`Users/${this.props.uid}`).update({
+                firstName: this.state.firstN,
+                lastName: this.state.lastN,
+                displayName: `${this.state.firstN} ${this.state.lastN}`
+            });
+            ToastAndroid.show('Saved', ToastAndroid.SHORT);
+            this.setState({firstN: '', lastN: ''});
+        }
+    }
 
     render() {
         return (
@@ -39,6 +46,16 @@ export default class ChangeName extends Component {
                         autoCapitalize="sentences"
                     />
                 </View>
+
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10}}>
+                    <TouchableHighlight style={styles.closeBtn} onPress={this.props.hide}>
+                        <Text style={styles.closeText}>Close</Text>
+                    </TouchableHighlight>
+
+                    <TouchableHighlight style={styles.saveName} onPress={this.saveName}>
+                        <Text style={styles.saveText}>Save</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -57,11 +74,25 @@ const styles = StyleSheet.create({
         width: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 6
+        borderRadius: 6,
+        backgroundColor: '#02C39A'
     },
     saveText: {
-        color: '#02C39A',
+        color: 'white',
         fontWeight: 'bold',
         fontSize: 18
+    },
+    closeText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    closeBtn: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 10,
+        backgroundColor: '#ecf0f1',
+        height: 45,
+        width: 70,
+        borderRadius: 6,
     }
 })
