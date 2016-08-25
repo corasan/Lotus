@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage, ActivityIndicator } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 
 export default class Signup extends Component {
     constructor(props) {
@@ -14,6 +14,7 @@ export default class Signup extends Component {
     }
 
     signup = () => {
+        let username = this.state.email.split('@')[0];
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
             let repNeeded = Math.pow(40*1, 2);
@@ -28,14 +29,19 @@ export default class Signup extends Component {
                 reputation: rep,
                 repNeeded: repNeeded,
                 nextRankRep: repNeeded - rep,
-                currentRankRep: 0
+                currentRankRep: 0,
+                username: username
             });
+            return user.uid
+        })
+        .then((uid) => {
+            firebase.database().ref('Usernames/'+username).set({uid: uid});
         })
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
                 AsyncStorage.setItem('User', JSON.stringify(user.uid));
-                Actions.posts();
+                Actions.posts({type: ActionConst.RESET});
             }).catch((error) => Alert.alert('Login Error', error.message) );
         })
         .catch((error) =>  Alert.alert('Signup Error', error.message) );

@@ -11,7 +11,7 @@ import {
   Image,
   StatusBar
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 
 export default class Login extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export default class Login extends Component {
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
-                    Actions.posts();
+                    Actions.posts({type: ActionConst.RESET});
                 }, 1000);
             } else {
                 this.setState({animating: !this.state.animating});
