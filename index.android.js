@@ -35,15 +35,14 @@ class Lotus extends Component {
         return (
             <Drawer
                 type="overlay"
-                styles={{backgroundColor: 'blue'}}
                 tapToClose={true}
                 content={<Menu closeDrawer={ () => this.drawer.close() }/>}
                 //openDrawerOffset={100}
                 //tweenHandler={Drawer.tweenPresets.parallax}
                 tapToClose={true}
                 ref={ (ref) => this.drawer = ref}
-                // second drawer
-                openDrawerOffset={0.2} // 20% gap on the right side of drawer
+                // Overlay drawer settings
+                openDrawerOffset={0.2}
                 panCloseMask={0.2}
                 closedDrawerOffset={-3}
                 elevation={3}
