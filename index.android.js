@@ -34,12 +34,19 @@ class Lotus extends Component {
     render() {
         return (
             <Drawer
-                type="static"
+                type="overlay"
+                styles={{backgroundColor: 'blue'}}
+                tapToClose={true}
                 content={<Menu closeDrawer={ () => this.drawer.close() }/>}
-                openDrawerOffset={100}
-                tweenHandler={Drawer.tweenPresets.parallax}
+                //openDrawerOffset={100}
+                //tweenHandler={Drawer.tweenPresets.parallax}
                 tapToClose={true}
                 ref={ (ref) => this.drawer = ref}
+                // second drawer
+                openDrawerOffset={0.2} // 20% gap on the right side of drawer
+                panCloseMask={0.2}
+                closedDrawerOffset={-3}
+                elevation={3}
             >
                 <Router
                     sceneStyle={styles.container}
@@ -54,7 +61,7 @@ class Lotus extends Component {
                         <Scene key="newPost" component={NewPost}/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
                         <Scene key="profile" component={Profile} passProps={true}/>
-                        <Scene key="settings" component={Settings}/> 
+                        <Scene key="settings" component={Settings}/>
                     </Scene>
                 </Router>
             </Drawer>
