@@ -12,8 +12,7 @@ export default class Profile extends Component {
     }
 
     componentWillMount() {
-        let uid = this.props.userId.replace(/["]+/g, '');
-        let userRef = firebase.database().ref(`Users/${uid}`);
+        let userRef = firebase.database().ref(`Users/${this.props.uid}`);
         userRef.on('value', function(snapshot) {
             let user = snapshot.val();
             let rep = user.reputation;                                // User total reputation

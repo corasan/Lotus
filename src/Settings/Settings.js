@@ -13,11 +13,11 @@ export default class Settings extends Component {
         }
     }
     componentWillMount() {
-        AsyncStorage.getItem('User', (err, result) => {
-            let uid = result.replace(/["]+/g, '');
-            firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
-                let user = snapshot.val();
-                this.setState({name: user.displayName, uid: uid, email: user.email});
+        AsyncStorage.getItem('User', (err, user) => {
+            user = JSON.parse(user);
+            firebase.database().ref(`Users/${user.uid}`).on('value', function(snapshot) {
+                let data = snapshot.val();
+                this.setState({name: data.displayName, uid: user.uid, email: data.email});
             }.bind(this));
         });
     }
@@ -33,13 +33,13 @@ export default class Settings extends Component {
                 <EditElement
                     label="Name"
                     valueName={this.state.name}
-                    component={<ChangeName/>}
+                    component={<ChangeName uid={this.state.uid}/>}
                 />
 
                 <EditElement
                     label="Email"
                     valueName={this.state.email}
-                    component={<ChangeEmail/>}
+                    component={<ChangeEmail uid={this.state.uid}/>}
                 />
             </View>
         );

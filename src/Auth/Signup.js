@@ -32,19 +32,19 @@ export default class Signup extends Component {
                 currentRankRep: 0,
                 username: username
             });
-            return user.uid
-        })
-        .then((uid) => {
-            firebase.database().ref('Usernames/'+username).set({uid: uid});
+            this.setState({uid: user.uid})
         })
         .then(() => {
+            firebase.database().ref('Usernames/'+username).set({uid: this.state.uid});
+        })
+        .then(() => {
+            let userObject = {uid: this.state.uid, email: this.state.email, password: this.state.password};
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                AsyncStorage.setItem('User', JSON.stringify(user.uid));
+                AsyncStorage.setItem('User', JSON.stringify(userObject));
                 Actions.posts({type: ActionConst.RESET});
             }).catch((error) => Alert.alert('Login Error', error.message) );
-        })
-        .catch((error) =>  Alert.alert('Signup Error', error.message) );
+        }).catch((error) =>  Alert.alert('Signup Error', error.message) );
     }
 
     render() {

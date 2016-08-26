@@ -25,8 +25,10 @@ export default class Login extends Component {
 
     componentWillMount() {
         StatusBar.setHidden(true);
-        AsyncStorage.getItem('User', (err, result) => {
-            if(result) {
+        AsyncStorage.getItem('User', (err, user) => {
+            user = JSON.parse(user);
+            if(user) {
+                firebase.auth().signInWithEmailAndPassword(user.email, user.password);
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
@@ -41,7 +43,8 @@ export default class Login extends Component {
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
-            AsyncStorage.setItem('User', JSON.stringify(user.uid));
+            let userObject = {uid: user.uid, email: this.state.email, password: this.state.password};
+            AsyncStorage.setItem('User', JSON.stringify(userObject));
             Actions.posts();
         }).catch((error) => {
             Alert.alert('Login', error.message);

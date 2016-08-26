@@ -13,8 +13,9 @@ export default class Menu extends Component {
 
     goToProfile = () => {
         this.props.closeDrawer();
-        AsyncStorage.getItem('User', (err, userId) => {
-            Actions.profile({userId: userId});
+        AsyncStorage.getItem('User', (err, user) => {
+            user = JSON.parse(user);
+            Actions.profile({uid: user.uid});
         });
     }
 

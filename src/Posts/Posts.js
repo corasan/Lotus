@@ -5,7 +5,6 @@ import {
     ScrollView,
     TouchableHighlight,
     Text,
-    AsyncStorage,
     Image,
     Dimensions,
     StatusBar,

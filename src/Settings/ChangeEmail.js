@@ -8,7 +8,14 @@ export default class ChangeEmail extends Component {
             newEmail: ''
         }
     }
-    
+
+    saveEmail = () => {
+        firebase.database().ref(`Users/${this.props.uid}`).update({
+            email: this.state.newEmail
+        });
+        this.setState({newEmail: ''});
+    }
+
     render() {
         return (
             <View style={styles.container}>

@@ -16,13 +16,13 @@ export default class WriteComment extends Component {
     }
 
     componentWillMount() {
-        AsyncStorage.getItem('User', (err, result) => {
-            let uid = result.replace(/["]+/g, '');
-            firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
+        AsyncStorage.getItem('User', (err, user) => {
+            user = JSON.parse(user);
+            firebase.database().ref(`Users/${user.uid}`).on('value', function(snapshot) {
                 let data = snapshot.val();
                 this.setState({
                     posts: data.posts,
-                    uid: uid,
+                    uid: user.uid,
                     currentRankRep: data.currentRankRep,
                     rep: data.reputation
                 });

@@ -14,8 +14,9 @@ export default class NewPost extends Component {
     }
 
     componentWillMount() {
-        AsyncStorage.getItem('User', (err, result) => {
-            let uid = result.replace(/["]+/g, '');
+        AsyncStorage.getItem('User', (err, user) => {
+            user = JSON.parse(user);
+            let uid = user.uid;
             firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
                 let data = snapshot.val();
                 this.setState({
