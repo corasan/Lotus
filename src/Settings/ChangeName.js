@@ -82,17 +82,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18
     },
-    closeText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    closeBtn: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 10,
-        backgroundColor: '#ecf0f1',
-        height: 45,
-        width: 70,
-        borderRadius: 6,
-    }
 })

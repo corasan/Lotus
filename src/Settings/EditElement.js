@@ -2,6 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, Animated } from 'react-native';
 
 export default class EditElement extends Component {
+    static propTypes = {
+        valueName: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        component: PropTypes.element.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {
