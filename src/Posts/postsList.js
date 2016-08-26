@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     postTitle: {
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: '900',
         marginBottom: 15,
         color: '#494D4F'

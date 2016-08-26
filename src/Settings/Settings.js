@@ -17,7 +17,12 @@ export default class Settings extends Component {
             user = JSON.parse(user);
             firebase.database().ref(`Users/${user.uid}`).on('value', function(snapshot) {
                 let data = snapshot.val();
-                this.setState({name: data.displayName, uid: user.uid, email: data.email});
+                this.setState({
+                    name: data.displayName,
+                    uid: user.uid,
+                    email: data.email,
+                    username: data.username
+                });
             }.bind(this));
         });
     }
@@ -37,10 +42,17 @@ export default class Settings extends Component {
                 />
 
                 <EditElement
+                    label="Username"
+                    valueName={this.state.username}
+                    component={<View/>}
+                />
+
+                <EditElement
                     label="Email"
                     valueName={this.state.email}
                     component={<ChangeEmail uid={this.state.uid}/>}
                 />
+
             </View>
         );
     }
