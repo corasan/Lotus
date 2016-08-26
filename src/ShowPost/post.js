@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     post: {
         backgroundColor: 'white',
         padding: 16,
-        borderColor: '#ECF0F1',
-        borderWidth: 2
+        borderBottomColor: '#ECF0F1',
+        borderBottomWidth: 2
     },
     postTitle: {
         fontSize: 22,
