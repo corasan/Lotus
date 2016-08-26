@@ -15,8 +15,8 @@ export default class EditElement extends Component {
     showContent = () => {
         this.setState({visible: !this.state.visible});
         if(this.state.visible) {
+            this.setState({edit: 'Edit'});
             Animated.spring(this.state.height, {toValue: 0}).start();
-            this.setState({edit: 'Close'});
         } else {
             this.setState({visible: !this.state.visible, edit: 'Close'});
             Animated.spring(this.state.height, {toValue: 135}).start();

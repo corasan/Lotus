@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, AsyncStorage, Animated, TouchableHighlight } from 'react-native';
 import ChangeName from './ChangeName';
+import ChangeEmail from './ChangeEmail';
 import EditElement from './EditElement';
 
 export default class Settings extends Component {
@@ -22,16 +23,6 @@ export default class Settings extends Component {
         });
     }
 
-    // showContent = () => {
-    //     this.setState({visible: !this.state.visible});
-    //     if(this.state.visible) {
-    //         Animated.spring(this.state.nameEditHeight, {toValue: 0}).start();
-    //     } else {
-    //         this.setState({visible: !this.state.visible});
-    //         Animated.spring(this.state.nameEditHeight, {toValue: 135}).start();
-    //     }
-    // }
-
     hideContent = () => {
         Animated.spring(this.state.nameEditHeight, {toValue: 0}).start();
         this.setState({visible: !this.state.visible});
@@ -40,19 +31,16 @@ export default class Settings extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/*<EditElement label="Name" valueName={this.state.name} showContent={this.showContent}/>*/}
-                {/*<Animated.View style={{height: this.state.nameEditHeight, backgroundColor: 'white'}}>
-                    <ChangeName hide={this.hideContent}/>
-                </Animated.View>
-
-                <EditElement label="Email" valueName={this.state.email} showContent={this.showContent}/>
-                <Animated.View style={{height: this.state.emailEditHeight, backgroundColor: 'white'}}>
-                    <ChangeName hide={this.hideContent}/>
-                </Animated.View>*/}
                 <EditElement
                     label="Name"
                     valueName={this.state.name}
                     component={<ChangeName/>}
+                />
+
+                <EditElement
+                    label="Email"
+                    valueName={this.state.email}
+                    component={<ChangeEmail/>}
                 />
             </View>
         );
