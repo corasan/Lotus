@@ -19,7 +19,7 @@ export default class SideMenuButton extends Component {
                     underlayColor="#2c3e50"
                 >
                     <View style={{flexDirection: 'row'}}>
-                        <Image source={this.props.source}/>
+                        <Image source={this.props.source} style={{height: 42, width: 42}}/>
                         <View style={{justifyContent: 'center'}}>
                             <Text style={styles.menuText}>{this.props.menuText}</Text>
                         </View>
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     menuText: {
         color: 'white',
         fontSize: 16,
-        marginLeft: 8
+        marginLeft: 16
     },
     menuBtn: {
-        paddingLeft: 26,
+        paddingLeft: 16,
         paddingBottom: 10,
         paddingTop: 10
     }

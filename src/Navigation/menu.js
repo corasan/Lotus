@@ -26,7 +26,7 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{marginTop: 130}}>
                 <View>
                     <SideMenuButton
                         source={require('../img/profile.png')}
