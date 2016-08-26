@@ -1,10 +1,10 @@
 import firebase from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyCEQx873k19FK4qbzHgGVFKyCGH5uyepkU",
-    authDomain: "lotus-app-1a2db.firebaseapp.com",
-    databaseURL: "https://lotus-app-1a2db.firebaseio.com",
-    storageBucket: "lotus-app-1a2db.appspot.com",
+    apiKey: "AIzaSyCpOC0y4mqP2Q79dPeEDuX-Afcn-y5hQ74",
+    authDomain: "lotus-app-cfff5.firebaseapp.com",
+    databaseURL: "https://lotus-app-cfff5.firebaseio.com",
+    storageBucket: "",
 };
 
 export default firebase.initializeApp(config);
