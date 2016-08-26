@@ -1,42 +1,37 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, Animated, Alert, ToastAndroid } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage } from 'react-native';
 
-export default class ChangeEmail extends Component {
+export default class ChangeUsername extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newEmail: ''
+            newUsername: '',
         }
     }
 
-    saveEmail = () => {
-        let currentUser = firebase.auth().currentUser;
-        let newEmail = this.state.newEmail;
+    saveUsername = () => {
+        let currentUsername = this.props.username;
+        let newUsername = this.state.newUsername;
         let uid = this.props.uid;
-        currentUser.updateEmail(newEmail).then(function() {
-            firebase.database().ref(`Users/${uid}`).update({
-                email: newEmail
-            });
-            ToastAndroid.show('Saved', ToastAndroid.SHORT);
-        }, function(error) {
-            Alert.alert('Error', error)
-        });
-        this.setState({newEmail: ''});
+        firebase.database().ref(`Users/${uid}`).update({username: newUsername});
+        firebase.database().ref(`Usernames/${newUsername}`).set({uid: uid});
+        firebase.database().ref(`Usernames/${currentUsername}`).remove();
+        this.setState({newUsername: ''});
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <TextInput
-                    value={this.state.newEmail}
-                    onChangeText={ (newEmail) => this.setState({newEmail}) }
+                    value={this.state.newUsername}
+                    onChangeText={ (newUsername) => this.setState({newUsername}) }
                     style={styles.input}
                     underlineColorAndroid='#02C39A'
-                    placeholder="New Email"
+                    placeholder="New Username"
                 />
 
                 <View style={styles.button}>
-                    <TouchableHighlight style={styles.saveEmail} onPress={this.saveEmail}>
+                    <TouchableHighlight style={styles.saveUsername} onPress={this.saveUsername}>
                         <Text style={styles.saveText}>Save</Text>
                     </TouchableHighlight>
                 </View>
@@ -55,7 +50,7 @@ const styles = StyleSheet.create({
         paddingBottom: 6,
         fontSize: 16,
     },
-    saveEmail: {
+    saveUsername: {
         height: 40,
         width: 70,
         justifyContent: 'center',

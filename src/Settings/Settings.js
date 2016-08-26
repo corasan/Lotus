@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, AsyncStorage, Animated, TouchableHighlight } from 'react-native';
 import ChangeName from './ChangeName';
 import ChangeEmail from './ChangeEmail';
+import ChangeUsername from './ChangeUsername';
 import EditElement from './EditElement';
 
 export default class Settings extends Component {
@@ -44,7 +45,7 @@ export default class Settings extends Component {
                 <EditElement
                     label="Username"
                     valueName={this.state.username}
-                    component={<View/>}
+                    component={<ChangeUsername uid={this.state.uid} username={this.state.username}/>}
                 />
 
                 <EditElement
