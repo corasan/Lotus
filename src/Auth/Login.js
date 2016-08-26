@@ -28,12 +28,14 @@ export default class Login extends Component {
         AsyncStorage.getItem('User', (err, user) => {
             user = JSON.parse(user);
             if(user) {
-                firebase.auth().signInWithEmailAndPassword(user.email, user.password);
-                this.setState({animating: true});
-                setTimeout(() => {
-                    this.setState({animating: !this.state.animating});
-                    Actions.posts({type: ActionConst.RESET});
-                }, 1000);
+                firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then(() => {
+                    this.setState({animating: true});
+                    setTimeout(() => {
+                        this.setState({animating: !this.state.animating});
+                        Actions.posts({type: ActionConst.RESET});
+                    }, 1000);
+                }).catch((error) => Alert.alert('Login error', error.message))
             } else {
                 this.setState({animating: !this.state.animating});
             }
@@ -47,7 +49,7 @@ export default class Login extends Component {
             AsyncStorage.setItem('User', JSON.stringify(userObject));
             Actions.posts();
         }).catch((error) => {
-            Alert.alert('Login', error.message);
+            Alert.alert('Login error', error.message);
         });
     }
 
