@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, AsyncStorage, Animated, TouchableHighlight } from 'react-native';
 import ChangeName from './ChangeName';
+import EditElement from './EditElement';
 
 export default class Settings extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            show: new Animated.Value(0),
+            // show: new Animated.Value(0),
             visible: false
         }
     }
@@ -16,38 +17,43 @@ export default class Settings extends Component {
             let uid = result.replace(/["]+/g, '');
             firebase.database().ref(`Users/${uid}`).on('value', function(snapshot) {
                 let user = snapshot.val();
-                this.setState({name: user.displayName, uid: uid});
+                this.setState({name: user.displayName, uid: uid, email: user.email});
             }.bind(this));
         });
     }
 
-    showContent = () => {
-        this.setState({visible: !this.state.visible});
-        if(this.state.visible) {
-            Animated.spring(this.state.show, {toValue: 0}).start();
-        } else {
-            this.setState({visible: !this.state.visible});
-            Animated.spring(this.state.show, {toValue: 1}).start();
-        }
-    }
+    // showContent = () => {
+    //     this.setState({visible: !this.state.visible});
+    //     if(this.state.visible) {
+    //         Animated.spring(this.state.nameEditHeight, {toValue: 0}).start();
+    //     } else {
+    //         this.setState({visible: !this.state.visible});
+    //         Animated.spring(this.state.nameEditHeight, {toValue: 135}).start();
+    //     }
+    // }
 
     hideContent = () => {
-        Animated.spring(this.state.show, {toValue: 0}).start();
+        Animated.spring(this.state.nameEditHeight, {toValue: 0}).start();
         this.setState({visible: !this.state.visible});
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 30}}>
-                    <Text style={styles.name}>{this.state.name}</Text>
-                    <TouchableHighlight onPress={this.showContent} underlayColor="transparent" style={{marginTop: 3}}>
-                        <Text style={styles.editText}>Edit</Text>
-                    </TouchableHighlight>
-                </View>
-                <Animated.View style={{opacity: this.state.show, backgroundColor: 'white'}}>
+                {/*<EditElement label="Name" valueName={this.state.name} showContent={this.showContent}/>*/}
+                {/*<Animated.View style={{height: this.state.nameEditHeight, backgroundColor: 'white'}}>
                     <ChangeName hide={this.hideContent}/>
                 </Animated.View>
+
+                <EditElement label="Email" valueName={this.state.email} showContent={this.showContent}/>
+                <Animated.View style={{height: this.state.emailEditHeight, backgroundColor: 'white'}}>
+                    <ChangeName hide={this.hideContent}/>
+                </Animated.View>*/}
+                <EditElement
+                    label="Name"
+                    valueName={this.state.name}
+                    component={<ChangeName/>}
+                />
             </View>
         );
     }
@@ -56,13 +62,14 @@ export default class Settings extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingLeft: 16,
-        paddingRight: 16,
-        backgroundColor: 'white'
+        paddingTop: 60
+    },
+    edit: {
+        flexDirection: 'row',
+        marginBottom: 30
     },
     name: {
-        fontSize: 20,
-        fontWeight: 'bold'
+        fontSize: 18,
     },
     saveName: {
         height: 45,
@@ -79,6 +86,11 @@ const styles = StyleSheet.create({
     },
     editText: {
         fontSize: 18,
-        color: '#02C39A'
+        color: '#02C39A',
+        fontWeight: 'bold'
+    },
+    label: {
+        fontSize: 18,
+        fontWeight: 'bold'
     }
 });

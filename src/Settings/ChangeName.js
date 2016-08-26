@@ -27,7 +27,7 @@ export default class ChangeName extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={styles.inputs}>
                     <TextInput
                         value={this.state.firstN}
                         onChangeText={ (firstN) => this.setState({firstN}) }
@@ -47,11 +47,7 @@ export default class ChangeName extends Component {
                     />
                 </View>
 
-                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10}}>
-                    <TouchableHighlight style={styles.closeBtn} onPress={this.props.hide}>
-                        <Text style={styles.closeText}>Close</Text>
-                    </TouchableHighlight>
-
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10, marginBottom: 10}}>
                     <TouchableHighlight style={styles.saveName} onPress={this.saveName}>
                         <Text style={styles.saveText}>Save</Text>
                     </TouchableHighlight>
@@ -63,7 +59,11 @@ export default class ChangeName extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center'
+        justifyContent: 'center',
+    },
+    inputs: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     input: {
         paddingBottom: 6,
