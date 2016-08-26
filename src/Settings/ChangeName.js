@@ -47,7 +47,7 @@ export default class ChangeName extends Component {
                     />
                 </View>
 
-                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10, marginBottom: 10}}>
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10, marginBottom: 5}}>
                     <TouchableHighlight style={styles.saveName} onPress={this.saveName}>
                         <Text style={styles.saveText}>Save</Text>
                     </TouchableHighlight>
@@ -60,6 +60,8 @@ export default class ChangeName extends Component {
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
+        paddingRight: 16,
+        paddingLeft: 16
     },
     inputs: {
         flexDirection: 'row',
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     saveName: {
-        height: 45,
+        height: 40,
         width: 70,
         justifyContent: 'center',
         alignItems: 'center',

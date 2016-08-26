@@ -9,7 +9,6 @@ export default class Settings extends Component {
         super(props);
         this.state = {
             name: '',
-            // show: new Animated.Value(0),
             visible: false
         }
     }

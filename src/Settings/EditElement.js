@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, Animated 
 
 export default class EditElement extends Component {
     static propTypes = {
-        valueName: PropTypes.string.isRequired,
+        valueName: PropTypes.string,
         label: PropTypes.string.isRequired,
         component: PropTypes.element.isRequired
     }
@@ -25,7 +25,7 @@ export default class EditElement extends Component {
             Animated.spring(this.state.height, {toValue: 0}).start();
         } else {
             this.setState({visible: !this.state.visible, edit: 'Close'});
-            Animated.spring(this.state.height, {toValue: 135}).start();
+            Animated.spring(this.state.height, {toValue: 125}).start();
         }
     }
 
