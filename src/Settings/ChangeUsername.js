@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage, Alert } from 'react-native';
 
 export default class ChangeUsername extends Component {
     constructor(props) {
@@ -13,15 +13,19 @@ export default class ChangeUsername extends Component {
         let currentUsername = this.props.username;
         let newUsername = this.state.newUsername;
         let uid = this.props.uid;
-        firebase.database().ref(`Users/${uid}`).update({username: newUsername});
-        firebase.database().ref(`Usernames/${newUsername}`).set({uid: uid});
-        firebase.database().ref(`Usernames/${currentUsername}`).remove();
-        this.setState({newUsername: ''});
+        if (newUsername === '') {
+            Alert.alert('Can\'t be empty', 'Please if enter a new username if you want to change it.')
+        } else {
+            firebase.database().ref(`Users/${uid}`).update({username: newUsername});
+            firebase.database().ref(`Usernames/${newUsername}`).set({uid: uid});
+            firebase.database().ref(`Usernames/${currentUsername}`).remove();
+            this.setState({newUsername: ''});
+        }
     }
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TextInput
                     value={this.state.newUsername}
                     onChangeText={ (newUsername) => this.setState({newUsername}) }
