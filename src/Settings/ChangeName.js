@@ -1,7 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage } from 'react-native';
+import { View,
+    Text,
+    StyleSheet,
+    Image,
+    TextInput,
+    TouchableHighlight,
+    ToastAndroid,
+    AsyncStorage
+} from 'react-native';
 
 export default class ChangeName extends Component {
+    static propTypes = {
+        uid: PropTypes.string.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {

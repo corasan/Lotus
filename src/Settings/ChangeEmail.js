@@ -1,7 +1,20 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, Animated, Alert, ToastAndroid } from 'react-native';
+import { View,
+    Text,
+    StyleSheet,
+    Image,
+    TextInput,
+    TouchableHighlight,
+    Animated,
+    Alert,
+    ToastAndroid
+} from 'react-native';
 
 export default class ChangeEmail extends Component {
+    static propTypes = {
+        uid: PropTypes.string.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {

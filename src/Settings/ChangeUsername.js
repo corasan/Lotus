@@ -1,7 +1,22 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight, ToastAndroid, AsyncStorage, Alert } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    TextInput,
+    TouchableHighlight,
+    ToastAndroid,
+    AsyncStorage,
+    Alert
+} from 'react-native';
 
 export default class ChangeUsername extends Component {
+    static propTypes = {
+        username: PropTypes.string.isRequired,
+        uid: PropTypes.string.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {
