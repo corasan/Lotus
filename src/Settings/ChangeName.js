@@ -11,7 +11,7 @@ import { View,
 
 export default class ChangeName extends Component {
     static propTypes = {
-        uid: PropTypes.string.isRequired
+        uid: PropTypes.string
     }
 
     constructor(props) {

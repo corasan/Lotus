@@ -13,8 +13,8 @@ import {
 
 export default class ChangeUsername extends Component {
     static propTypes = {
-        username: PropTypes.string.isRequired,
-        uid: PropTypes.string.isRequired
+        username: PropTypes.string,
+        uid: PropTypes.string
     }
 
     constructor(props) {
