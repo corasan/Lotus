@@ -75,13 +75,14 @@ const styles = StyleSheet.create({
     },
     postTitle: {
         fontSize: 18,
-        fontWeight: '900',
+        fontWeight: 'bold',
         marginBottom: 15,
         color: '#494D4F'
     },
     postContent: {
         marginBottom: 30,
-        fontSize: 15
+        fontSize: 15,
+        color: '#494D4F'
     },
     footer: {
         justifyContent: 'space-between',

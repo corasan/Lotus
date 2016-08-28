@@ -85,11 +85,13 @@ const styles = StyleSheet.create({
     },
     postTitle: {
         fontSize: 22,
-        fontWeight: '900',
+        fontWeight: 'bold',
         marginBottom: 15,
+        color: '#494D4F'
     },
     postContent: {
-        marginBottom: 30
+        marginBottom: 30,
+        color: '#494D4F'
     },
     time: {
         alignItems: 'flex-end'

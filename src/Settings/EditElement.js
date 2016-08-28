@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginRight: 10
+        marginRight: 10,
+        color: '#494D4F'
     }
 });

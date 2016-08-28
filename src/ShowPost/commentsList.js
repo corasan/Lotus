@@ -27,7 +27,7 @@ export default class CommentsList extends Component {
     renderRow = (data) => {
         return(
             <View style={styles.comment}>
-                <Text style={{fontSize: 16}}>{data.comment}</Text>
+                <Text style={{fontSize: 16, color: '#494D4F'}}>{data.comment}</Text>
             </View>
         );
     }
