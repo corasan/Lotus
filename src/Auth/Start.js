@@ -28,7 +28,7 @@ export default class Start extends Component {
                 .then(() => {
                     ToastAndroid.show(`Logged in as ${user.email}`, ToastAndroid.SHORT);
                     setTimeout( () => {
-                        Actions.posts({type: ActionConst.RESET});
+                        Actions.posts({type: ActionConst.RESET, animation: 'fade'});
                     }, 1000 );
                 }).catch((error) => Alert.alert('Login error', error.message))
             } else {

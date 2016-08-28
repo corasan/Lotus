@@ -59,10 +59,10 @@ class Lotus extends Component {
                         <Scene key="login" component={Login} type={ActionConst.REPLACE}/>
                         <Scene key="signup" component={Signup}/>
                         <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
-                        <Scene key="newPost" component={NewPost}/>
+                        <Scene key="newPost" component={NewPost} direction="vertical"/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
-                        <Scene key="profile" component={Profile} passProps={true}/>
-                        <Scene key="settings" component={Settings}/>
+                        <Scene key="profile" component={Profile} passProps={true} direction="leftToRight"/>
+                        <Scene key="settings" component={Settings} direction="leftToRight"/>
                     </Scene>
                 </Router>
             </Drawer>
