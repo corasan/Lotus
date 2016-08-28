@@ -8,6 +8,10 @@ export default class EditElement extends Component {
         component: PropTypes.element.isRequired
     }
 
+    static get defaultProps() {
+        return {heightIncrease: 125}
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +29,7 @@ export default class EditElement extends Component {
             Animated.spring(this.state.height, {toValue: 0}).start();
         } else {
             this.setState({visible: !this.state.visible, edit: 'Close'});
-            Animated.spring(this.state.height, {toValue: 125}).start();
+            Animated.spring(this.state.height, {toValue: this.props.heightIncrease}).start();
         }
     }
 

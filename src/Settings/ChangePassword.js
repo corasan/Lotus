@@ -35,6 +35,12 @@ export default class ChangePassword extends Component {
                     underlineColorAndroid='#02C39A'
                     placeholder="Confirm Password"
                 />
+
+                <View style={styles.button}>
+                    <TouchableHighlight style={styles.savePassword}>
+                        <Text style={styles.saveText}>Save</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
         paddingBottom: 6,
         fontSize: 16,
     },
-    saveUsername: {
+    savePassword: {
         height: 40,
         width: 70,
         justifyContent: 'center',

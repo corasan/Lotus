@@ -61,6 +61,7 @@ export default class Settings extends Component {
                         label="Password"
                         valueName="********"
                         component={<ChangePassword/>}
+                        heightIncrease={180}
                     />
                 </View>
             </View>
