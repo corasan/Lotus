@@ -45,12 +45,12 @@ export default class Post extends Component {
             <View style={styles.post}>
                 <View style={styles.postArea}>
                     <Text style={styles.postTitle}>{this.props.title}</Text>
-                    <View style={{paddingTop: 6}}>
-                        <TimeAgo time={this.props.createdAt}/>
-                    </View>
                 </View>
 
                 <Text style={styles.postContent}>{this.props.text}</Text>
+                <View>
+                    <TimeAgo time={this.props.createdAt}/>
+                </View>
 
                 {/*<View style={styles.reactionBtns}>
                     <ReactionButton

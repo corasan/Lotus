@@ -36,13 +36,11 @@ export default class PostsList extends Component {
             <View style={styles.post}>
                 <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
                     <Text style={styles.postTitle}>{data.title}</Text>
-                    <View style={{paddingTop: 6}}>
-                        <TimeAgo time={data.createdAt}/>
-                    </View>
                 </View>
                 <Text style={styles.postContent}>{data.text}</Text>
                 {/*TODO: Show the posts points and increment the user reputation depending on the points a post has*/}
-                <View style={{alignItems: 'flex-end'}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <TimeAgo time={data.createdAt}/>
                     <TouchableHighlight onPress={ () => Actions.showPost({postId: data.id}) } underlayColor="transparent">
                         <View style={{flexDirection: 'row'}}>
                             <Image source={require('../img/comments.png')} style={styles.commentImg}/>

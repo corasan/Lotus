@@ -12,7 +12,7 @@ import { View,
     AsyncStorage
 } from 'react-native';
 import { Actions, ActionConst } from 'react-native-router-flux';
-// Test
+
 export default class Start extends Component {
     constructor(props) {
         super(props);
