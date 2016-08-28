@@ -32,11 +32,21 @@ export default class ChangePassword extends Component {
                 'Change Password',
                 'Are you sure you want to change your password?',
                 [
-                    {text: 'Cancel', onPress: () => console.log('Cancel')},
-                    {text: 'Ok', onPress: () => console.log('Ok')}
+                    {text: 'Cancel', onPress: () => this.setState({newPassword: '', confirmPassword: ''})},
+                    {text: 'Ok', onPress: this.saveNewPassword}
                 ]
             );
         }
+    }
+
+    saveNewPassword = () => {
+        let user = firebase.auth().currentUser;
+        user.updatePassword(this.state.newPassword).then( () => {
+            ToastAndroid.show('Password changed successfully',ToastAndroid.SHORT);
+            this.setState({newPassword: '', confirmPassword: ''});
+        }, function(error) {
+            Alert.alert('Error changing password', error);
+        });
     }
 
     render() {
@@ -48,6 +58,7 @@ export default class ChangePassword extends Component {
                     style={styles.input}
                     underlineColorAndroid='#02C39A'
                     placeholder="New Password"
+                    secureTextEntry={true}
                 />
 
                 <TextInput
@@ -56,6 +67,7 @@ export default class ChangePassword extends Component {
                     style={styles.input}
                     underlineColorAndroid='#02C39A'
                     placeholder="Confirm Password"
+                    secureTextEntry={true}
                 />
 
                 <View style={styles.button}>
