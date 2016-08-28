@@ -132,12 +132,11 @@ const styles = StyleSheet.create({
     deleteAccountBtn: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 50,
+        height: 60,
         backgroundColor: '#e74c3c',
     },
     deleteAccountText: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 20,
         color: 'white'
     }
 });
