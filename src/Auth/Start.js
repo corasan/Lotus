@@ -29,12 +29,12 @@ export default class Start extends Component {
                     ToastAndroid.show(`Logged in as ${user.email}`, ToastAndroid.SHORT);
                     setTimeout( () => {
                         Actions.posts({type: ActionConst.RESET});
-                    }, 600 );
+                    }, 1000 );
                 }).catch((error) => Alert.alert('Login error', error.message))
             } else {
                 setTimeout( () => {
                     Actions.login({type: ActionConst.RESET});
-                }, 600 );
+                }, 1000 );
             }
         });
     }
@@ -42,7 +42,8 @@ export default class Start extends Component {
     render () {
         return (
             <View style={styles.container}>
-
+                <Image source={require('../img/lotus-logo-big.png')} style={styles.logo}/>
+                <Text style={styles.name}>Lotus</Text>
             </View>
         );
     }
@@ -51,6 +52,18 @@ export default class Start extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
+    name: {
+        fontSize: 40,
+        marginTop: 200,
+        color: '#95a5a6'
+    },
+    logo: {
+        height: 100,
+        width: 170,
+        marginTop: 80
+    }
 });
