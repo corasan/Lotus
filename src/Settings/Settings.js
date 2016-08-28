@@ -45,11 +45,10 @@ export default class Settings extends Component {
     deleteAccountConfirmation = () => {
         Alert.alert(
             'Delete Account',
-            `${this.state.name}, are you sure you want to delete your account?
-            All your data will be delete. Like, are you really really sure??`,
+            `${this.state.name}, are you sure you want to delete your account? All your data will be delete. \n\nLike, are you really really sure??`,
             [
                 {text: 'Cancel', onPress: () => console.log('Pressed cancel')},
-                {text: 'Yes, delete account', onPress: () => this.deleteAccount}
+                {text: 'Yes, delete my account', onPress: () => this.deleteAccount}
             ]
         );
     }
@@ -57,6 +56,7 @@ export default class Settings extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={{marginLeft: 16, fontSize: 16}}>Profile</Text>
                 <EditElement
                     label="Name"
                     valueName={this.state.name}
@@ -84,7 +84,7 @@ export default class Settings extends Component {
                         heightIncrease={180}
                     />
 
-                    <View style={{marginTop: 40}}>
+                    <View style={{marginTop: 60}}>
                         <TouchableHighlight style={styles.deleteAccountBtn} onPress={this.deleteAccountConfirmation}>
                             <Text style={styles.deleteAccountText}>Delete Account</Text>
                         </TouchableHighlight>
@@ -98,7 +98,7 @@ export default class Settings extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 60
+        paddingTop: 30
     },
     edit: {
         flexDirection: 'row',
