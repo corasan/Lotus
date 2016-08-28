@@ -17,6 +17,28 @@ export default class ChangePassword extends Component {
         this.state = {newPassword: '', confirmPassword: ''}
     }
 
+    confirmPasswordChange = () => {
+        let confirmPassword = this.state.confirmPassword;
+        let newPassword = this.state.confirmPassword;
+
+        if (confirmPassword !== newPassword) {
+            Alert.alert('Change Password', 'Password doesn\'t match.');
+        } else if (newPassword === '') {
+            Alert.alert('Change Password', 'You must type a new password.');
+        } else if (confirmPassword === '') {
+            Alert.alert('Change Password', 'You must type a password confirmation.');
+        } else {
+            Alert.alert(
+                'Change Password',
+                'Are you sure you want to change your password?',
+                [
+                    {text: 'Cancel', onPress: () => console.log('Cancel')},
+                    {text: 'Ok', onPress: () => console.log('Ok')}
+                ]
+            );
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -37,7 +59,7 @@ export default class ChangePassword extends Component {
                 />
 
                 <View style={styles.button}>
-                    <TouchableHighlight style={styles.savePassword}>
+                    <TouchableHighlight style={styles.savePassword} onPress={this.confirmPasswordChange}>
                         <Text style={styles.saveText}>Save</Text>
                     </TouchableHighlight>
                 </View>
