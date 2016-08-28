@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, AsyncStorage, Animated, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, AsyncStorage, Animated, TouchableHighlight, Alert } from 'react-native';
 import ChangeName from './ChangeName';
 import ChangeEmail from './ChangeEmail';
 import ChangeUsername from './ChangeUsername';
@@ -42,6 +42,18 @@ export default class Settings extends Component {
         });
     }
 
+    deleteAccountConfirmation = () => {
+        Alert.alert(
+            'Delete Account',
+            `${this.state.name}, are you sure you want to delete your account?
+            All your data will be delete. Like, are you really really sure??`,
+            [
+                {text: 'Cancel', onPress: () => console.log('Pressed cancel')},
+                {text: 'Yes, delete account', onPress: () => this.deleteAccount}
+            ]
+        );
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -73,7 +85,7 @@ export default class Settings extends Component {
                     />
 
                     <View style={{marginTop: 40}}>
-                        <TouchableHighlight style={styles.deleteAccountBtn}>
+                        <TouchableHighlight style={styles.deleteAccountBtn} onPress={this.deleteAccountConfirmation}>
                             <Text style={styles.deleteAccountText}>Delete Account</Text>
                         </TouchableHighlight>
                     </View>
