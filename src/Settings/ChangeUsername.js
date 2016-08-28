@@ -19,9 +19,7 @@ export default class ChangeUsername extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            newUsername: '',
-        }
+        this.state = {newUsername: ''}
     }
 
     saveUsername = () => {
