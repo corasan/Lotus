@@ -21,6 +21,7 @@ import Login from './src/Auth/Login';
 import Signup from './src/Auth/Signup';
 import Profile from './src/Profile/Profile';
 import Settings from './src/Settings/Settings';
+import Start from './src/Auth/Start';
 import { Actions, Router, Scene, ActionConst } from 'react-native-router-flux';
 import Menu from './src/Navigation/menu';
 import Drawer from 'react-native-drawer';
@@ -54,7 +55,8 @@ class Lotus extends Component {
                     drawerImage={require('./src/img/side-menu.png')}
                 >
                     <Scene key="root">
-                        <Scene key="login" component={Login} initial={true} hideNavBar={true} type={ActionConst.REPLACE}/>
+                        <Scene key="start" component={Start} initial={true} hideNavBar={true}/>
+                        <Scene key="login" component={Login} type={ActionConst.REPLACE}/>
                         <Scene key="signup" component={Signup}/>
                         <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
                         <Scene key="newPost" component={NewPost}/>

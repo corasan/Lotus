@@ -23,25 +23,6 @@ export default class Login extends Component {
         }
     }
 
-    componentWillMount() {
-        StatusBar.setHidden(true);
-        AsyncStorage.getItem('User', (err, user) => {
-            user = JSON.parse(user);
-            if(user) {
-                firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-                .then(() => {
-                    this.setState({animating: true});
-                    setTimeout(() => {
-                        this.setState({animating: !this.state.animating});
-                        Actions.posts({type: ActionConst.RESET});
-                    }, 1000);
-                }).catch((error) => Alert.alert('Login error', error.message))
-            } else {
-                this.setState({animating: !this.state.animating});
-            }
-        });
-    }
-
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
@@ -51,10 +32,6 @@ export default class Login extends Component {
         }).catch((error) => {
             Alert.alert('Login error', error.message);
         });
-    }
-
-    goToSignup = () => {
-        Actions.signup();
     }
 
     render() {
