@@ -34,6 +34,14 @@ export default class Settings extends Component {
         this.setState({visible: !this.state.visible});
     }
 
+    deleteAccount = () => {
+        let user = firebase.auth().currentUser;
+        user.delete().then( () => {
+            firebase.database().ref(`Users/${user.uid}`).remove();
+            firebase.database().ref(`Usernames/${this.state.username}`).remove();
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -63,6 +71,12 @@ export default class Settings extends Component {
                         component={<ChangePassword/>}
                         heightIncrease={180}
                     />
+
+                    <View style={{marginTop: 40}}>
+                        <TouchableHighlight style={styles.deleteAccountBtn}>
+                            <Text style={styles.deleteAccountText}>Delete Account</Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
             </View>
         );
@@ -102,5 +116,16 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 18,
         fontWeight: 'bold'
+    },
+    deleteAccountBtn: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        backgroundColor: '#e74c3c',
+    },
+    deleteAccountText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white'
     }
 });
