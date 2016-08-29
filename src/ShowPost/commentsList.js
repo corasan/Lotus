@@ -29,7 +29,9 @@ export default class CommentsList extends Component {
         return(
             <View style={styles.comment}>
                 <Text style={{fontSize: 16, color: '#494D4F'}}>{data.comment}</Text>
-                <TimeAgo time={data.createdAt}/>
+                <View style={{marginTop: 25}}>
+                    <TimeAgo time={data.createdAt}/>
+                </View>
             </View>
         );
     }
@@ -49,11 +51,12 @@ const styles = {
     comment: {
         minHeight: 100,
         maxHeight: 400,
-        padding: 16,
+        paddingRight: 16,
+        paddingLeft: 16,
         backgroundColor: 'white',
         borderColor: '#ECF0F1',
         borderWidth: 1,
         paddingTop: 10,
-        paddingBottom: 10
+        // paddingBottom: 10,
     }
 };
