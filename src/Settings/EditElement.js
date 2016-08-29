@@ -26,10 +26,10 @@ export default class EditElement extends Component {
         this.setState({visible: !this.state.visible});
         if(this.state.visible) {
             this.setState({edit: 'Edit'});
-            Animated.spring(this.state.height, {toValue: 0}).start();
+            Animated.timing(this.state.height, {toValue: 0}).start();
         } else {
             this.setState({visible: !this.state.visible, edit: 'Close'});
-            Animated.spring(this.state.height, {toValue: this.props.heightIncrease}).start();
+            Animated.timing(this.state.height, {toValue: this.props.heightIncrease}).start();
         }
     }
 

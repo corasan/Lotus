@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Alert, TextInput, AsyncStorage, ActivityIndicator } from 'react-native';
 import { Actions, ActionConst } from 'react-native-router-flux';
+// TODO: Let user create the username
 
 export default class Signup extends Component {
     constructor(props) {
@@ -30,7 +31,9 @@ export default class Signup extends Component {
                 repNeeded: repNeeded,
                 nextRankRep: repNeeded - rep,
                 currentRankRep: 0,
-                username: username
+                username: username,
+                posts: 0,
+                helpful: 0
             });
             this.setState({uid: user.uid})
         })

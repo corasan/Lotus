@@ -56,8 +56,8 @@ class Lotus extends Component {
                 >
                     <Scene key="root">
                         <Scene key="start" component={Start} initial={true} hideNavBar={true}/>
-                        <Scene key="login" component={Login} type={ActionConst.REPLACE}/>
-                        <Scene key="signup" component={Signup}/>
+                        <Scene key="login" component={Login} hideNavBar={true} type={ActionConst.REPLACE}/>
+                        <Scene key="signup" component={Signup} hideNavBar={true}/>
                         <Scene key="posts" component={Posts} hideNavBar={false} type={ActionConst.REPLACE}/>
                         <Scene key="newPost" component={NewPost} direction="vertical"/>
                         <Scene key="showPost" component={ShowPost} passProps={true}/>
