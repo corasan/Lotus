@@ -28,10 +28,6 @@ import Drawer from 'react-native-drawer';
 
 let navigator;
 class Lotus extends Component {
-    componentDidMount() {
-        BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop());
-    }
-
     render() {
         return (
             <Drawer
@@ -53,6 +49,7 @@ class Lotus extends Component {
                     navigationBarStyle={styles.navbar}
                     backButtonImage={require('./src/img/left.png')}
                     drawerImage={require('./src/img/side-menu.png')}
+                    backAndroid={ () => BackAndroid.addEventListener('hardwareBackPress', () => Actions.pop()) }
                 >
                     <Scene key="root">
                         <Scene key="start" component={Start} initial={true} hideNavBar={true}/>
