@@ -10,21 +10,24 @@ export default class Signup extends Component {
             email: '',
             password: '',
             firstName: '',
-            lastName: ''
+            lastName: '',
+            username: ''
         }
     }
 
     signup = () => {
-        let username = this.state.email.split('@')[0];
+        let username = this.state.username;
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((user) => {
             let repNeeded = Math.pow(40*1, 2);
             let rep = 0;
-            firebase.database().ref(`Users/${user.uid}`).set({
+            let uid = user.uid;
+
+            firebase.database().ref(`Users/${uid}`).set({
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,
-                uid: user.uid,
+                uid: uid,
                 displayName: `${this.state.firstName} ${this.state.lastName}`,
                 rank: 1,
                 reputation: rep,
@@ -35,13 +38,10 @@ export default class Signup extends Component {
                 posts: 0,
                 helpful: 0
             });
-            this.setState({uid: user.uid})
-        })
-        .then(() => {
-            firebase.database().ref('Usernames/'+username).set({uid: this.state.uid});
-        })
-        .then(() => {
+            firebase.database().ref('Usernames/'+username).set({uid: uid});
+        }).then(() => {
             let userObject = {uid: this.state.uid, email: this.state.email, password: this.state.password};
+
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
                 AsyncStorage.setItem('User', JSON.stringify(userObject));
@@ -72,6 +72,13 @@ export default class Signup extends Component {
                         autoCapitalize="sentences"
                     />
                 </View>
+
+                <TextInput value={this.state.username}
+                    onChangeText={ (username) => this.setState({username}) }
+                    style={styles.input}
+                    underlineColorAndroid='#02C39A'
+                    placeholder="Username"
+                />
 
                 <TextInput value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
