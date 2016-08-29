@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import TimeAgo from 'react-native-timeago';
 // TODO: make comments have the time they were posted
 export default class CommentsList extends Component {
     constructor(props) {
@@ -28,6 +29,7 @@ export default class CommentsList extends Component {
         return(
             <View style={styles.comment}>
                 <Text style={{fontSize: 16, color: '#494D4F'}}>{data.comment}</Text>
+                <TimeAgo time={data.createdAt}/>
             </View>
         );
     }

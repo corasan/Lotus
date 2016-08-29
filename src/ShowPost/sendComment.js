@@ -16,6 +16,7 @@ export default class WriteComment extends Component {
     }
 
     componentWillMount() {
+        let date = new Date();
         AsyncStorage.getItem('User', (err, user) => {
             user = JSON.parse(user);
             firebase.database().ref(`Users/${user.uid}`).on('value', function(snapshot) {
@@ -24,7 +25,8 @@ export default class WriteComment extends Component {
                     posts: data.posts,
                     uid: user.uid,
                     currentRankRep: data.currentRankRep,
-                    rep: data.reputation
+                    rep: data.reputation,
+                    createdAt: date
                 });
             }.bind(this));
         });
