@@ -34,7 +34,6 @@ export default class Signup extends Component {
                     rank: 1,
                     reputation: rep,
                     repNeeded: repNeeded,
-                    nextRankRep: repNeeded - rep,
                     currentRankRep: 0,
                     username: username,
                     posts: 0,

@@ -16,33 +16,31 @@ export default class Profile extends Component {
         userRef.on('value', function(snapshot) {
             let user = snapshot.val();
             let rep = user.reputation;                                // User total reputation
-            let repNeeded = Math.pow(40*user.rank, 2);                // Total reputation needed
+            let repNeeded = user.repNeeded;
             let currentRankRep = user.currentRankRep;                 // Current reputation to advance to next level
-            let nextRankRep = user.nextRankRep - currentRankRep;      // Reputation needed to advance to next Rank
             this.setState({
                 displayName: user.displayName,
                 posts: user.posts,
                 rank: user.rank,
                 helpful: user.helpful,
                 reputation: rep,
-                nextRankRep: nextRankRep,
                 repNeeded: repNeeded,
-                progress: (currentRankRep/nextRankRep),
+                progress: (currentRankRep/repNeeded),
                 medals: user.medals
             });
-            this.rankUp(rep, user.rank, currentRankRep, nextRankRep, userRef);
+            this.rankUp(rep, user.rank, currentRankRep, repNeeded, userRef);
         }.bind(this));
     }
 
-    rankUp = (rep, rank, currentRankRep, nextRankRep, userRef) => {
-        if (currentRankRep >= nextRankRep) {
+    rankUp = (rep, rank, currentRankRep, repNeeded, userRef) => {
+        let oldRepNeeded = repNeeded
+        if (currentRankRep >= repNeeded) {
             let nextRank = rank + 1;
-            let num = Math.pow(40*nextRank, 2)
+            let num = oldRepNeeded*nextRank;
             userRef.update({
                 rank: nextRank,
                 repNeeded: num,
                 currentRankRep: 0,
-                nextRankRep: num - rep
             });
             this.setState({progress: 0});
         }
@@ -73,7 +71,6 @@ export default class Profile extends Component {
                         width={260}
                         height={16}
                         borderWidth={4}
-                        borderRadius={10}
                         borderColor="#ECF0F1"
                         color="#02C39A"
                     />
