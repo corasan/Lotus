@@ -63,11 +63,11 @@ export default class Settings extends Component {
                     component={<ChangeName uid={this.state.uid}/>}
                 />
 
-                <EditElement
+                {/* <EditElement
                     label="Username"
                     valueName={this.state.username}
                     component={<ChangeUsername uid={this.state.uid} username={this.state.username}/>}
-                />
+                /> */}
 
                 <EditElement
                     label="Email"

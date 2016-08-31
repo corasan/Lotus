@@ -11,44 +11,45 @@ export default class Signup extends Component {
             password: '',
             firstName: '',
             lastName: '',
-            username: ''
+            username: '',
+            border: '#02C39A'
         }
     }
 
     signup = () => {
-        let username = this.state.username;
-        firebase.database().ref('Usernames/'+username).set({email: this.state.email})
-        .then( () => {
-            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        // let username = this.state.username;
+        // firebase.database().ref(`Usernames/${username}`).set({username: this.state.email})
+        // .then( () => {
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then((user) => {
+            let repNeeded = Math.pow(40*1, 2);
+            let rep = 0;
+            let uid = user.uid;
+
+            firebase.database().ref(`Users/${uid}`).set({
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                uid: uid,
+                displayName: `${this.state.firstName} ${this.state.lastName}`,
+                rank: 1,
+                reputation: rep,
+                repNeeded: repNeeded,
+                currentRankRep: 0,
+                // username: username,
+                posts: 0,
+                helpful: 0
+            });
+        }).then(() => {
+            let userObject = {uid: this.state.uid, email: this.state.email, password: this.state.password};
+
+            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((user) => {
-                let repNeeded = Math.pow(40*1, 2);
-                let rep = 0;
-                let uid = user.uid;
-
-                firebase.database().ref(`Users/${uid}`).set({
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    email: this.state.email,
-                    uid: uid,
-                    displayName: `${this.state.firstName} ${this.state.lastName}`,
-                    rank: 1,
-                    reputation: rep,
-                    repNeeded: repNeeded,
-                    currentRankRep: 0,
-                    username: username,
-                    posts: 0,
-                    helpful: 0
-                });
-            }).then(() => {
-                let userObject = {uid: this.state.uid, email: this.state.email, password: this.state.password};
-
-                firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-                .then((user) => {
-                    AsyncStorage.setItem('User', JSON.stringify(userObject));
-                    Actions.posts({type: ActionConst.RESET});
-                }).catch( (error) => Alert.alert('Login Error', error.message) );
-            }).catch( (error) =>  Alert.alert('Signup Error', error.message) );
-        }).catch( () => Alert.alert('Signup Error', 'Username already in use.'));
+                AsyncStorage.setItem('User', JSON.stringify(userObject));
+                Actions.posts({type: ActionConst.RESET});
+            }).catch( (error) => Alert.alert('Login Error', error.message) );
+        }).catch( (error) =>  Alert.alert('Signup Error', error.message) );
+        // }).catch( () => Alert.alert('Signup Error', 'Username already in use.'));
     }
 
     render() {
@@ -74,12 +75,13 @@ export default class Signup extends Component {
                     />
                 </View>
 
-                <TextInput value={this.state.username}
+                {/* <TextInput value={this.state.username}
                     onChangeText={ (username) => this.setState({username}) }
                     style={styles.input}
-                    underlineColorAndroid='#02C39A'
+                    underlineColorAndroid={this.state.border}
                     placeholder="Username"
-                />
+                    onChange={this.checkUsername}
+                /> */}
 
                 <TextInput value={this.state.email}
                     onChangeText={ (email) => this.setState({email}) }
